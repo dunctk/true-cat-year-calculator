@@ -39,7 +39,8 @@ Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → mai
 - index.html — accessible content and citations
 - styles.css — responsive visual design
 - model.js — pure, independently testable age-conversion model
-- app.js — accessible controls, SVG charts and URL sharing
+- app.js — accessible controls, SVG charts, URL sharing and age→cat scene updates
+- cat-scene.js — standalone procedural WebGL cat, progressive ageing, reduced-motion & 2D fallback
 - tests/model.test.cjs — zero-dependency Node tests of anchors and monotonicity
 - favicon.svg — brand favicon
 - .nojekyll — prevents Jekyll processing if served via GitHub Pages
@@ -55,3 +56,6 @@ Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → mai
 Fully client-side. No cookies, analytics, API calls, fonts or third-party JS. Run on any static server or simply open index.html. All medical and longevity values are sourced or explicitly identified as illustrative.
 
 Licensed under the repository's LICENSE.
+## Interactive 3D portrait
+
+The calculator and its slider are now in the opening viewport. The accompanying character is rendered with **native WebGL 1.0**, without Three.js, network fonts, external assets or build tools. Its mesh proportions, eyes, ear/whisker details, warm fur tint and later-life silver fur transition smoothly as age changes. Animated breathing and an occasional blink stop when motion reduction is requested or the scene leaves the viewport. A bundled SVG appears if WebGL is unavailable. This is an *illustration*, not a claim that individual cats physically age in this pattern.

@@ -15,19 +15,42 @@
 <a class="skip" href="#calculator">Skip to calculator</a>
 <header class="site-header wrap">
 <a href="./" class="brand" aria-label="True Cat Years home"><span class="brand-mark" aria-hidden="true">✳</span><span>true<span class="brand-italic">cat</span>years<span class="brand-dot">.</span></span></a>
-<nav aria-label="Primary navigation"><a href="#how-it-works">The method</a><a href="#the-evidence">The evidence</a><a class="nav-github" href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">Open source ↗</a></nav>
+<nav aria-label="Primary navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">The method</a><a href="#the-evidence">The evidence</a><a class="nav-github" href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">Open source ↗</a></nav>
 </header>
 <main>
-<section class="hero wrap" aria-labelledby="hero-title">
-  <div class="hero-copy">
-    <p class="kicker"><span class="kicker-rule"></span>A different perspective on ageing</p>
-    <h1 id="hero-title">A cat's life<br>is <em>not a straight</em><br>line<span class="period">.</span></h1>
-    <p class="hero-lede">Forget the seven-year myth. Meet a cat-age calculator inspired by two extraordinary lives — and informed by what we know about feline maturity and mortality.</p>
-    <a class="hero-link" href="#calculator">Meet your cat's human age <span aria-hidden="true">↘</span></a>
+
+<section class="calculator-section experience-section" id="calculator" aria-labelledby="calc-heading">
+<div class="wrap">
+  <div class="experience-heading">
+    <div><p class="kicker"><span class="kicker-rule"></span>THE CURIOUS SCIENCE OF CAT YEARS</p>
+      <h1 id="calc-heading">How old is your cat, <em>really?</em></h1></div>
+    <p class="experience-intro">Forget multiplying by seven. Meet a new perspective on cat years, grounded in record-breaking lives and illustrated with a cat that grows up with yours.</p>
   </div>
-  <div class="hero-art" aria-hidden="true">
-    <div class="orb orb-one"></div><div class="orb orb-two"></div>
-    <svg viewBox="0 0 420 410" class="cat-art" xmlns="http://www.w3.org/2000/svg">
+  <div class="calc-grid experience-grid">
+    <div class="control-panel experience-control">
+      <div class="panel-index"><span>YOUR CAT'S AGE</span><span>IN CAT YEARS</span></div>
+      <div class="hero-result">
+        <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49.0</strong><span>human<br>years</span></div>
+        <div class="hero-sub"><span>Our illustrative age analogy</span><span id="stage" class="stage-pill">Senior</span></div>
+      </div>
+      <div class="age-fields"><div><label for="years">Years</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Months</label><select id="months" aria-label="Additional months"><option value="0">0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div></div>
+      <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Cat age in years">
+      <div class="range-ends"><span>Just born</span><span>38 years · record holder</span></div>
+      <div class="quick-label">TRY A MILESTONE</div>
+      <div class="presets"><button type="button" data-age="0.5">6 mos</button><button type="button" data-age="2">2 yrs</button><button type="button" data-age="5">5 yrs</button><button type="button" data-age="10">10 yrs</button><button type="button" data-age="15">15 yrs</button><button type="button" data-age="20">20 yrs</button><button type="button" data-age="38.0082">Record ↗</button></div>
+      <div class="control-lower">
+        <div><p class="control-subhead">Conversion method</p><div class="switcher" role="group" aria-label="Age conversion model"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Maturity-adjusted</button><button id="mode-linear" type="button" aria-pressed="false">Record percentage</button></div></div>
+        <div class="record-meter"><div class="record-meter-label"><span>Of the cat longevity record</span><strong id="record-share">39.5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
+      </div>
+      <p class="method-explain" id="mode-description">A teenage analogy at age two, then a fading early-maturity boost over the longevity-record baseline. Illustrative, not clinical.</p>
+      <div class="result-actions"><button type="button" id="copy-link" class="action-main">Share your cat's age ↗</button><button type="button" id="reset-age" class="action-alt">Reset</button></div>
+      <p id="copy-status" class="sr-only" role="status"></p>
+    </div>
+    <div class="scene-panel" aria-label="Cat character illustration showing a gradual life-stage transition">
+      <div class="scene-top"><span>✳ A CAT THROUGH TIME</span><span class="scene-status">INTERACTIVE 3D</span></div>
+      <div class="cat-viewport" id="cat-viewport">
+        <canvas id="cat-canvas" aria-hidden="true"></canvas>
+        <div id="cat-fallback" class="cat-fallback" aria-hidden="true"><svg viewBox="0 0 420 410" class="cat-art" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="221" cy="372" rx="152" ry="19" fill="#343c34" opacity=".11"/>
       <path d="M119 299C78 340 45 306 60 271C68 252 90 259 88 277" fill="none" stroke="#28372e" stroke-width="22" stroke-linecap="round"/>
       <path d="M167 151C124 190 118 236 130 293C135 337 168 356 230 357C296 356 325 334 323 277C321 218 290 163 252 146Z" fill="#293930"/>
@@ -41,35 +64,10 @@
       <path d="M171 350C162 335 162 311 173 299C184 286 207 292 210 307L207 356Z M246 355L242 308C243 292 267 288 279 301C290 314 287 337 280 352Z" fill="#35493c"/>
       <ellipse cx="197" cy="336" rx="22" ry="13" fill="#405445"/><ellipse cx="267" cy="336" rx="22" ry="13" fill="#405445"/>
       <path d="M207 120Q228 130 250 123" stroke="#647969" opacity=".55" stroke-width="5" fill="none" stroke-linecap="round"/>
-    </svg>
-    <div class="art-stamp"><span>38</span><small>years & 3 days<br>Creme Puff's record</small></div>
-    <span class="art-caption">The cat who rewrote the rules.</span>
-  </div>
-</section>
-<section class="calculator-section" id="calculator" aria-labelledby="calc-heading">
-<div class="wrap">
-  <div class="section-heading"><div><p class="kicker">01 / The calculator</p><h2 id="calc-heading">So, how old is your cat <em>really?</em></h2></div><p>Drag, type, or tap a milestone. Watch the curve move.</p></div>
-  <div class="calc-grid">
-    <div class="control-panel">
-      <div class="panel-index"><span>Your cat's actual age</span><span>IN CAT YEARS</span></div>
-      <div class="age-fields"><div><label for="years">Years</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Months</label><select id="months" aria-label="Additional months"><option value="0">0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div></div>
-      <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Cat age in years">
-      <div class="range-ends"><span>Newborn</span><span>38 years</span></div>
-      <div class="quick-label">Try an age</div><div class="presets"><button type="button" data-age="2">2 yrs</button><button type="button" data-age="5">5 yrs</button><button type="button" data-age="10">10 yrs</button><button type="button" data-age="15">15 yrs</button><button type="button" data-age="20">20 yrs</button><button type="button" data-age="38.0082">Record ↗</button></div>
-      <div class="control-rule"></div>
-      <p class="control-subhead">Choose a model</p>
-      <div class="switcher" role="group" aria-label="Age conversion model"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Maturity-adjusted</button><button id="mode-linear" type="button" aria-pressed="false">Record percentage</button></div>
-      <p class="method-explain" id="mode-description">Fast early maturation meets the two verified world longevity records. An illustrative model, not a biological clock.</p>
-    </div>
-    <div class="result-panel" aria-live="polite" aria-atomic="true">
-      <div class="result-overline">YOUR CAT'S HUMAN-AGE ANALOGY <span class="result-star" aria-hidden="true">✳</span></div>
-      <div class="human-num"><span id="result-years">49.0</span><small>human years</small></div>
-      <p class="result-context">A way of visualising age — <strong>not</strong> a prediction of remaining life.</p>
-      <div class="result-divider"></div>
-      <div class="result-details"><div><span>Life stage</span><strong id="stage">Senior</strong></div><div><span>Of the cat longevity record</span><strong id="record-share">39.5%</strong></div></div>
-      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
-      <div class="result-actions"><button type="button" id="copy-link" class="action-main">Copy shareable link <span aria-hidden="true">↗</span></button><button type="button" id="reset-age" class="action-alt">Reset</button></div>
-      <p id="copy-status" class="sr-only" role="status"></p>
+    </svg></div>
+      </div>
+      <div class="scene-foot"><span>GROWING UP, ONE YEAR AT A TIME</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
+      <p class="scene-note">An artistic ageing illustration: cats vary in appearance, and greying or body shape cannot diagnose health or biological age.</p>
     </div>
   </div>
   <div class="comparison-band"><div><span class="mini-overline">THE SAME CAT, THREE ANSWERS</span><p>Why the method matters</p></div><div><strong id="compare-seven">105</strong><small>The old 7× rule</small></div><div><strong id="compare-vet">76</strong><small>Common veterinary chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our longevity-based model</small></div></div>
@@ -114,5 +112,6 @@
 </main>
 <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">✳</span><span>true<span class="brand-italic">cat</span>years<span class="brand-dot">.</span></span></a><p>Made with curiosity, not veterinary authority. Educational only; not medical advice. No tracking, cookies or data collection.</p><a href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">View source ↗</a></footer>
 <script src="./model.js" defer></script>
+<script src="./cat-scene.js" defer></script>
 <script src="./app.js" defer></script>
 </body></html>
