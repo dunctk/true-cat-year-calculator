@@ -17,9 +17,11 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const smooth=(a,b,x)=>{let t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
 const color=h=>[0,2,4].map(i=>parseInt(h.slice(i+1,i+3),16)/255);
 const blend=(a,b,t)=>a.map((v,i)=>lerp(v,b[i],t));
-const fur=color('#b88e68'),silver=color('#929b95'),light=color('#f0d5b5');
-const greyLight=color('#daddd5'),deep=color('#725b48'),nose=color('#cf897f');
-const iris=color('#94ad77'),pupil=color('#263731'),white=color('#fff9e8');
+// The original anime-storybook cat keeps the same 3D geometry and growth model.
+const fur=color('#efdfd1'),silver=color('#b5b9bd'),light=color('#fff1e4');
+const greyLight=color('#e0e2de'),deep=color('#756f82'),nose=color('#d58e9f');
+const iris=color('#85b9ac'),pupil=color('#293b50'),white=color('#fffdf0');
+const ribbon=color('#c17d99'),ribbonDark=color('#a96f8c'),gold=color('#e7bd84');
 let gl;
 try{gl=canvas.getContext('webgl',{alpha:true,antialias:true,powerPreference:'low-power'});}catch(e){return}
 if(!gl)return;
@@ -30,7 +32,7 @@ function shader(type,source){
 let program;
 try{
  let v=shader(gl.VERTEX_SHADER,'attribute vec3 aPos;attribute vec3 aNorm;uniform mat4 uP;uniform mat4 uV;uniform mat4 uM;varying vec3 vN;void main(){vN=normalize(mat3(uM)*aNorm);gl_Position=uP*uV*uM*vec4(aPos,1.0);}');
- let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=max(dot(n,normalize(vec3(-0.55,0.9,1.2))),0.0);float s=max(dot(n,normalize(vec3(0.8,0.4,-0.6))),0.0);float rim=pow(1.0-abs(n.z),2.0);gl_FragColor=vec4(uColor*(0.54+0.40*d+0.13*s)+vec3(0.10,0.09,0.07)*rim,1.0);}');
+ let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=max(dot(n,normalize(vec3(-0.45,0.94,1.1))),0.0);float band=0.68+0.32*smoothstep(0.24,0.54,d);float bounce=0.1*max(dot(n,normalize(vec3(0.7,0.5,-0.6))),0.0);float ink=1.0-0.25*(1.0-smoothstep(0.11,0.42,abs(n.z)));vec3 result=uColor*(band+bounce)*ink;float highlight=pow(max(dot(n,normalize(vec3(-0.5,0.8,0.65))),0.0),7.0);result+=vec3(0.08,0.06,0.06)*highlight;gl_FragColor=vec4(result,1.0);}');
  program=gl.createProgram();gl.attachShader(program,v);gl.attachShader(program,f);gl.linkProgram(program);
  if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('link');
  gl.deleteShader(v);gl.deleteShader(f);
@@ -98,7 +100,7 @@ function paint(time){
  const p=root.TrueCatYearsGrowth.pose(age);
  const {kitten,senior,elder,overallScale,headScale,eyeScale,earScale}=p;
  const coat=blend(fur,silver,p.coatSilver),pale=blend(light,greyLight,senior*.55+elder*.20);
- const dark=blend(deep,color('#738078'),senior*.36);
+ const dark=blend(deep,color('#8b8c99'),senior*.27);
  const breathe=reduce.matches?0:Math.sin(time*.00135)*.008;
  const headY=.91-.18*kitten-.065*senior+breathe;
  const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6400)-3900)/150),2)*.92;
@@ -131,7 +133,8 @@ function paint(time){
  orb(0,headY-.055,zH+.46*headScale,.42*headScale,.42*headScale,.048,blend(coat,pale,.16));
  // Restrained tabby forehead details follow the skull surface.
  for(const sign of [-1,1])orb(sign*.18*headScale,headY+.433*headScale,zH+.405*headScale,.037,.12,.017,dark,0,-sign*.22);
- orb(0,headY+.445*headScale,zH+.423*headScale,.043,.132,.017,dark);
+ // A pale forehead with very faint inky pencil marks instead of a heavy tabby mask.
+ orb(0,headY+.445*headScale,zH+.423*headScale,.032,.094,.012,blend(dark,coat,.40));
  // Tilted tapered ears, with recessed pink inner shapes.
  for(const sign of [-1,1]){
    const ex=sign*.478*headScale,ey=headY+.65*headScale+.16*earScale;
@@ -147,7 +150,13 @@ function paint(time){
    orb(ex,ey,ez+.024,.134*s,.137*s*eyesOpen,.030,pale);
    orb(ex,ey,ez+.052,.105*s,.12*s*eyesOpen,.028,iris);
    orb(ex,ey,ez+.076,.025*s,.100*s*eyesOpen,.019,pupil);
-   orb(ex-.034*s,ey+.037*s*eyesOpen,ez+.093,.018,.025*eyesOpen+.001,.009,white);
+   orb(ex-.034*s,ey+.037*s*eyesOpen,ez+.093,.025,.030*eyesOpen+.001,.01,white);
+   orb(ex+.028*s,ey-.042*s*eyesOpen,ez+.09,.009,.012*eyesOpen+.001,.005,white);
+   // Sweeping dark lashes and a finely inked upper eyelid; signature anime expression.
+   orb(ex,ey+.140*s*eyesOpen,ez+.040,.146*s,.016,.018,deep,0,sign*.08);
+   orb(ex+sign*.120*s,ey+.152*s*eyesOpen,ez+.03,.049,.012,.013,deep,0,sign*.37);
+   // A little pink cheek tint, becoming less prominent with maturity.
+   if(kitten>.08)orb(sign*.510*headScale,headY-.156*headScale,zH+.34*headScale,.085*kitten,.046*kitten,.027,blend(nose,pale,.43));
    if(senior>.02)orb(sign*.598*headScale,headY-.13,zH+.298*headScale,.087*senior,.074*senior,.031,greyLight);
  }
  // A smaller, less protruding muzzle follows facial maturity, with a
@@ -164,6 +173,21 @@ function paint(time){
    const len=.255+(.04*(i+1)),offset=sign*(.432+.018*(i+1));
    orb(offset,headY-.274*headScale+i*.082,faceZ+.09,len,.0028,.004,blend(white,greyLight,senior*.3),0,sign*(i*.11+.045));
  }
+ // Elegant tapered cheek tufts soften the silhouette instead of toy-like balls.
+ for(const sign of [-1,1]){
+   orb(sign*.61*headScale,headY-.259,zH+.19*headScale,.122,.053,.044,coat,0,sign*.24);
+   orb(sign*.64*headScale,headY-.313,zH+.16*headScale,.082,.041,.03,coat,0,sign*.36);
+ }
+ // Rosy silk neck bow: two soft loops, narrow ribbon tails, gold bell.
+ // All components remain inside the scaled 3D root.
+ const bowY=.085-.025*kitten;
+ orb(0,bowY-.03,.60,.435,.07,.085,ribbonDark);
+ for(const sign of [-1,1]){
+   orb(sign*.152,bowY,.735,.163,.090,.055,ribbon,0,sign*.42);
+   orb(sign*.099,bowY-.122,.717,.057,.130,.026,ribbonDark,0,sign*.20);
+ }
+ orb(0,bowY,.787,.069,.069,.049,gold);
+ orb(0,bowY-.018,.832,.014,.015,.009,white);
 }
 function tick(t){
  raf=0;if(failed||document.hidden||!visible)return;
