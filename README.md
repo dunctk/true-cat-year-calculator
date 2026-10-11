@@ -40,7 +40,8 @@ Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → mai
 - styles.css — responsive visual design
 - model.js — pure, independently testable age-conversion model
 - app.js — accessible controls, SVG charts, URL sharing and age→cat scene updates
-- cat-scene.js — standalone procedural WebGL cat, progressive ageing, reduced-motion & 2D fallback
+- cat-growth.js — pure, testable kitten-to-adult growth and proportion model
+- cat-scene.js — standalone procedural WebGL cat, ground-planted full-body growth, progressive ageing, reduced-motion & 2D fallback
 - tests/model.test.cjs — zero-dependency Node tests of anchors and monotonicity
 - favicon.svg — brand favicon
 - .nojekyll — prevents Jekyll processing if served via GitHub Pages
@@ -59,3 +60,7 @@ Licensed under the repository's LICENSE.
 ## Interactive 3D portrait
 
 The calculator and its slider are now in the opening viewport. The accompanying character is rendered with **native WebGL 1.0**, without Three.js, network fonts, external assets or build tools. Its mesh proportions, eyes, ear/whisker details, warm fur tint and later-life silver fur transition smoothly as age changes. Animated breathing and an occasional blink stop when motion reduction is requested or the scene leaves the viewport. A bundled SVG appears if WebGL is unavailable. This is an *illustration*, not a claim that individual cats physically age in this pattern.
+
+### Cat growth design
+
+In the stylised 3D portrait, total character size grows smoothly from 43% (newborn) to full adult size by 2.5 cat years, while relative head, body, leg and muzzle proportions also mature. Paws remain grounded through the scale change. The numerical years conversion remains unchanged. Senior greying is subtle and illustrative rather than a health or diagnostic claim. Run the pure-model checks with `node --test tests/cat-growth.test.cjs`.

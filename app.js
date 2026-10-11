@@ -19,7 +19,7 @@ function render(){
 setInputs();
 const human=mode==='adjusted'?adjusted(age):linear(age);
 globalThis.TrueCatYearsCat?.setAge(age);
-$('portrait-stage').textContent=stage(age)+' cat';
+$('portrait-stage').textContent=age<1?'Growing kitten':age<3?'Young cat':age<10?'Adult cat':age<20?'Senior cat':'Long-lived elder';
 $('result-years').textContent=fmt(human);$('record-share').textContent=fmt(age/CAT_MAX*100)+'%';$('stage').textContent=stage(age);$('progress-bar').style.width=fmt(age/CAT_MAX*100,2)+'%';
 $('compare-seven').textContent=fmt(age*7);$('compare-vet').textContent=fmt(vet(age));$('compare-ours').textContent=fmt(adjusted(age));
 $('ratio').textContent=fmt(RATIO,5);$('boost').textContent=fmt(BOOST,4);

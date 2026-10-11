@@ -95,55 +95,75 @@ function resize(){
 function paint(time){
  resize();
  gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
- const young=1-smooth(.3,4,age),senior=smooth(12,33,age),veryOld=smooth(20,CAT_MAX,age);
- const coat=blend(fur,silver,senior*.65+veryOld*.25),pale=blend(light,greyLight,senior*.84);
- const dark=blend(deep,color('#738078'),senior*.55);
- const head=1+.19*young-.045*senior,body=1-.17*young-.025*senior;
- const breathe=reduce.matches?0:Math.sin(time*.0013)*.014;
- const headY=.91-.11*senior+breathe;
- const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6300)-3900)/150),2)*.94;
- const eye=1+.25*young-.06*senior,open=1-blink,zH=.32;
- rootM=Y(yaw+(reduce.matches?0:Math.sin(time*.0006)*.025));
- // Floor shadow and continuous curling tail.
- orb(0,-1.56,-.24,1.2,.03,.7,[.68,.71,.66]);
- draw(tail,-.73,-1.31,-.22,1,1,1,dark,.08+(reduce.matches?0:Math.sin(time*.0014)*.04));
- // Body, haunches, neck and bib.
- orb(0,-.60,0,.73*body,1.0*body+breathe,.62*body,coat);
- orb(0,-.64,.51,.52*body,.72*body,.19,pale);
- for(const sign of [-1,1])orb(sign*.59,-1.03,-.06,.36*body,.46*body,.4*body,coat);
+ const p=root.TrueCatYearsGrowth.pose(age);
+ const {kitten,senior,elder,overallScale,headScale,eyeScale,earScale}=p;
+ const coat=blend(fur,silver,p.coatSilver),pale=blend(light,greyLight,senior*.55+elder*.20);
+ const dark=blend(deep,color('#738078'),senior*.36);
+ const breathe=reduce.matches?0:Math.sin(time*.00135)*.008;
+ const headY=.91-.18*kitten-.065*senior+breathe;
+ const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6400)-3900)/150),2)*.92;
+ const eyesOpen=1-blink,zH=.31;
+ const rotation=Y(yaw+(reduce.matches?0:Math.sin(time*.0006)*.012));
+ // Shadow remains in ground coordinates; only the character is scaled.
+ rootM=rotation;
+ orb(0,-1.58,-.22,Math.max(.48,1.1*overallScale),.023,.61*overallScale,[.67,.70,.64]);
+ rootM=mul(rotation,mul(T(0,p.groundOffset,0),S(overallScale,overallScale,overallScale)));
+ draw(tail,-.69,-1.29,-.23,.93,.90,.92,dark,.06+(reduce.matches?0:Math.sin(time*.0013)*.025));
+ // Rounded body is intentionally a continuous silhouette rather than
+ // a collection of separate toy spheres.
+ const bodyTop=-.59-.10*kitten;
+ const bodyHalf=1.00*p.bodyHeight;
+ orb(0,bodyTop,.025,.72*p.bodyWidth,bodyHalf+breathe,.59*p.bodyWidth,coat);
+ orb(0,bodyTop-.02,.492,.45*p.bodyWidth,.67*p.bodyHeight,.113,pale);
+ // Tucked haunches and slender legs which lengthen through adolescence.
  for(const sign of [-1,1]){
-  orb(sign*.4,-1.03,.43,.215,.45,.22,coat);
-  orb(sign*.415,-1.45,.63,.29,.14,.29,pale);
-  for(let i=-1;i<=1;i++)orb(sign*.415+i*.11,-1.49,.82,.059,.029,.068,pale);
+   orb(sign*.52*p.bodyWidth,-1.04,-.06,.35*p.bodyWidth,.43*p.bodyHeight,.37*p.bodyWidth,coat);
+   const legCenter=-1.46+.45*p.legLength;
+   orb(sign*.395,legCenter,.417,.18,.45*p.legLength,.195,coat);
+   orb(sign*.41,-1.445,.582,.253,.082,.255,coat);
+   // Tiny separation lines imply toes; eliminate the six button-like bumps.
+   orb(sign*.41-.075,-1.492,.777,.015,.018,.016,dark);
+   orb(sign*.41+.075,-1.492,.777,.015,.018,.016,dark);
  }
- // Full 3D head, forehead tabby stripes.
- orb(0,headY,zH,.75*head,.65*head,.59*head,coat);
- for(const sign of [-1,1])orb(sign*.19*head,headY+.44*head,zH+.43*head,.052,.17,.026,dark,0,-sign*.32);
- orb(0,headY+.45*head,zH+.45*head,.055,.20,.025,dark);
- // Three-dimensional ears, with inset coral colouring.
+ // Head allometry: a kitten's relatively rounder head becomes an adult
+ // feline's slimmer muzzle, while the WHOLE cat grows independently.
+ orb(0,headY,zH,.75*headScale,.632*headScale,.575*headScale,coat);
+ orb(0,headY-.055,zH+.46*headScale,.42*headScale,.42*headScale,.048,blend(coat,pale,.16));
+ // Restrained tabby forehead details follow the skull surface.
+ for(const sign of [-1,1])orb(sign*.18*headScale,headY+.433*headScale,zH+.405*headScale,.037,.12,.017,dark,0,-sign*.22);
+ orb(0,headY+.445*headScale,zH+.423*headScale,.043,.132,.017,dark);
+ // Tilted tapered ears, with recessed pink inner shapes.
  for(const sign of [-1,1]){
-  let x=sign*.49*head,y=headY+.67*head+.21;
-  draw(ear,x,y,zH-.04,.205*head,.52*head,.13,coat,0,-sign*.17);
-  draw(ear,x,y-.015,zH+.06,.112*head,.35*head,.04,blend(nose,pale,senior*.3),0,-sign*.17);
+   const ex=sign*.478*headScale,ey=headY+.65*headScale+.16*earScale;
+   draw(ear,ex,ey,zH-.085,.176*headScale*earScale,.446*headScale*earScale,.118,coat,0,-sign*.13);
+   draw(ear,ex,ey-.012,zH+.015,.097*headScale*earScale,.302*headScale*earScale,.031,blend(nose,pale,senior*.26),0,-sign*.13);
  }
- // Large kitten eyes become more proportional as the cat grows up.
+ // Calm, almond-shaped eyes: dark eyelid rim and shallow layered iris,
+ // rather than the previous protruding white/green orb stacks.
  for(const sign of [-1,1]){
-  let x=sign*.288*head,y=headY+.12*head,z=zH+.516*head;
-  orb(x,y,z,.162*eye,.19*eye*open,.077,pale);
-  orb(x,y,z+.062,.12*eye,.158*eye*open,.052,iris);
-  orb(x,y,z+.11,.038*eye,.132*eye*open,.022,pupil);
-  orb(x-.03*eye,y+.054*open,z+.13,.027,.032*open+.001,.011,white);
-  if(senior>.02)orb(sign*.61*head,headY-.13,zH+.28*head,.125*senior,.1*senior,.07*senior,greyLight);
+   const ex=sign*.281*headScale,ey=headY+.095*headScale,ez=zH+.494*headScale;
+   const s=eyeScale;
+   orb(ex,ey,ez,.151*s,.153*s*eyesOpen,.031,dark);
+   orb(ex,ey,ez+.024,.134*s,.137*s*eyesOpen,.030,pale);
+   orb(ex,ey,ez+.052,.105*s,.12*s*eyesOpen,.028,iris);
+   orb(ex,ey,ez+.076,.025*s,.100*s*eyesOpen,.019,pupil);
+   orb(ex-.034*s,ey+.037*s*eyesOpen,ez+.093,.018,.025*eyesOpen+.001,.009,white);
+   if(senior>.02)orb(sign*.598*headScale,headY-.13,zH+.298*headScale,.087*senior,.074*senior,.031,greyLight);
  }
- // Cream muzzle, nose, mouth and six slender whiskers.
- orb(-.135,headY-.24,zH+.555*head,.215,.152,.14,pale);
- orb(.135,headY-.24,zH+.555*head,.215,.152,.14,pale);
- draw(ear,0,headY-.21,zH+.73*head,.09,.096,.055,nose,0,Math.PI);
- orb(-.08,headY-.35,zH+.68*head,.085,.01,.012,dark,0,-.15);
- orb(.08,headY-.35,zH+.68*head,.085,.01,.012,dark,0,.15);
- for(const sign of [-1,1])for(let i=-1;i<=1;i++)
-  orb(sign*.46,headY-.265+i*.104,zH+.67*head,.27,.005,.006,blend(white,greyLight,senior*.25),0,sign*i*.16);
- orb(0,-.35,.693,.135,.16,.029,pale);
+ // A smaller, less protruding muzzle follows facial maturity, with a
+ // subtle inverted triangular nose and no cartoon ball cheeks.
+ const faceZ=zH+(.495*p.muzzleDepth)*headScale;
+ const muzzleW=.207*headScale,muzzleDepth=.091*p.muzzleDepth;
+ orb(-.124*headScale,headY-.246*headScale,faceZ,muzzleW,.108*headScale,muzzleDepth,pale);
+ orb(.124*headScale,headY-.246*headScale,faceZ,muzzleW,.108*headScale,muzzleDepth,pale);
+ draw(ear,0,headY-.227*headScale,faceZ+.097*p.muzzleDepth,.066,.072,.026,nose,0,Math.PI);
+ orb(-.072*headScale,headY-.336*headScale,faceZ+.092,.056,.006,.008,dark,0,-.18);
+ orb(.072*headScale,headY-.336*headScale,faceZ+.092,.056,.006,.008,dark,0,.18);
+ // Individually angled, barely-there whiskers (not a rigid fan).
+ for(const sign of [-1,1])for(let i=-1;i<=1;i++){
+   const len=.255+(.04*(i+1)),offset=sign*(.432+.018*(i+1));
+   orb(offset,headY-.274*headScale+i*.082,faceZ+.09,len,.0028,.004,blend(white,greyLight,senior*.3),0,sign*(i*.11+.045));
+ }
 }
 function tick(t){
  raf=0;if(failed||document.hidden||!visible)return;
