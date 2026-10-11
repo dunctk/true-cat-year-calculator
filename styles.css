@@ -135,3 +135,30 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
 .scene-panel .cat-viewport{z-index:1}
 .scene-panel:before{content:"✧";position:absolute;z-index:1;top:17%;right:17%;font:32px var(--serif);color:#fff7de;opacity:.85;text-shadow:0 0 17px #fff}
 @media(max-width:700px){.scene-panel:before{font-size:23px}}
+
+/* Depth of field: gently blur only the illustrated Paris backdrop.
+   The WebGL cat and calculator UI stay crisp above this layer. */
+.scene-panel{
+  background:#f5dece;
+  overflow:hidden;
+}
+.scene-panel::before{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  top:-6px;
+  right:-6px;
+  bottom:-6px;
+  left:-6px;
+  z-index:0;
+  pointer-events:none;
+  background:#f5dece url("./paris-balcony.svg") center center / cover no-repeat;
+  filter:blur(2.5px);
+  transform:scale(1.015);
+  opacity:1;
+  font:initial;
+  color:initial;
+  text-shadow:none;
+}
+.scene-panel .cat-viewport{position:relative;z-index:1}
+.scene-panel .scene-top,.scene-panel .scene-foot,.scene-panel .scene-note{position:relative;z-index:2}
