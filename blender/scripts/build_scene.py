@@ -185,7 +185,7 @@ def configure_render(size):
         try:
             scene.render.engine = engine
             break
-        except TypeError:
+        except (TypeError, ValueError):
             continue
     else:
         # Eevee enum spelling can change; fall back only when necessary.
@@ -195,6 +195,8 @@ def configure_render(size):
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.render.film_transparent = False
+    if scene.world is None:
+        scene.world = bpy.data.worlds.new("Pastel daylight world")
     scene.world.use_nodes = True
     bg = next(n for n in scene.world.node_tree.nodes if n.type == "BACKGROUND")
     bg.inputs["Color"].default_value = (0.88, 0.81, 0.78, 1)

@@ -1,6 +1,10 @@
 # True Cat Years
 An open-source, mobile-first **cat years to human years calculator** using a maturity-adjusted analogy anchored to the longest verified feline and human lives.
 
+## Blender production kit (separate from the live site)
+
+The original anime/Parisian cat redesign is now organised in [blender/](blender/README.md). Coding agents with Blender installed should start with [the art director brief](blender/AGENT_BRIEF.md), see the [four-stage cat turnaround](blender/references/character-turnaround.svg) and [Paris lighting reference](blender/references/paris-lighting.svg), then run the starter scene generator. The script makes an editable Blender BLOCKOUT and matched-camera preview renders; it is **not a polished 3D character yet**. The live Cloudflare Pages site remains unchanged.
+
 ## What makes it different?
 - 7× cat years assumes a fixed rate of ageing. Our baseline is the verified longevity-record percentage with a rapidly fading boost for early maturation.
 - The curve is anchored to **Creme Puff (38 years, 3 days)** and **Jeanne Calment (122 years, 164 days)**. We deliberately model 2 cat years as **17 human years** (a subjective teenage analogy, not a scientific conversion), while 15 and 20 cat years remain close to the longevity-record percentage.
