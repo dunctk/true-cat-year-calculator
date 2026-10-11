@@ -1,27 +1,33 @@
-/*
- * Background timelapse control: pause/play only the scenery, not the cat.
- * CSS supplies all visual frames and automatically disables animations for
- * users requesting reduced motion. Offscreen/background-tab scenes are paused.
+/**
+ * An age-scrubbed Parisian backdrop — no autoplay, timers, or RAF.
+ * CSS keyframes are paused permanently. Setting their negative delay chooses
+ * the exact illustrated moment as the user drags the age slider (either way).
  */
-(function(){
+(function(root){
  'use strict';
  const scene=document.querySelector('.scene-panel');
- const toggle=document.getElementById('timelapse-toggle');
- if(!scene||!toggle)return;
- let userPaused=false;
- const sync=()=>{
-  scene.classList.toggle('is-timelapse-paused',userPaused);
-  toggle.setAttribute('aria-pressed',String(userPaused));
-  toggle.setAttribute('aria-label',userPaused?'Play background timelapse':'Pause background timelapse');
-  toggle.title=userPaused?'Play background timelapse':'Pause background timelapse';
-  const symbol=toggle.querySelector('span');
-  if(symbol)symbol.textContent=userPaused?'▶':'❚❚';
- };
- toggle.addEventListener('click',()=>{userPaused=!userPaused;sync()});
- const offscreen=hidden=>scene.classList.toggle('is-timelapse-offscreen',hidden);
- document.addEventListener('visibilitychange',()=>offscreen(document.hidden));
- if('IntersectionObserver' in window){
-  new IntersectionObserver(entries=>offscreen(!entries[0].isIntersecting),{threshold:0}).observe(scene);
+ const daypart=document.getElementById('scene-daypart');
+ const DURATION_SECONDS=42;
+ const MAX_AGE=root.TrueCatYearsModel?.CAT_MAX || 38+3/365.2425;
+ if(!scene)return;
+ const clamp=v=>Math.min(1,Math.max(0,v));
+ function labelFor(progress){
+   if(progress<.17)return 'Morning';
+   if(progress<.44)return 'Afternoon';
+   if(progress<.64)return 'Golden hour';
+   if(progress<.78)return 'Dusk';
+   return 'Night';
  }
- sync();
-})();
+ function setAge(value){
+   const numeric=Number(value);
+   if(!Number.isFinite(numeric))return;
+   const fraction=clamp(numeric/MAX_AGE);
+   // At 100%, iteration-count=1 and fill-mode=both hold the NIGHT frame.
+   scene.style.setProperty('--tl-delay',(-DURATION_SECONDS*fraction).toFixed(5)+'s');
+   if(daypart)daypart.textContent=labelFor(fraction);
+ }
+ root.TrueCatYearsTimelapse=Object.freeze({setAge});
+ // Match the default calculator state before app.js runs. app.js then handles
+ // share links, year/month input, presets, reset, and every slider input.
+ setAge(15);
+})(globalThis);
