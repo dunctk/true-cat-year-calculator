@@ -232,9 +232,8 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
   95%{opacity:.25}99%,100%{opacity:0}
 }
 @keyframes tl-clouds{
-  0%{transform:translate(-26px,0)}
+  0%,100%{transform:translate(-26px,0)}
   50%{transform:translate(28px,-4px)}
-  100%{transform:translate(65px,2px)}
 }
 .scene-status-wrap{display:flex;align-items:center;gap:7px}
 .timelapse-toggle{
