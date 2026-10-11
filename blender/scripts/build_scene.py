@@ -125,13 +125,16 @@ def create_shape_keys(obj, kitten_delta, senior_delta):
 
 
 def uv_ellipsoid(name, location, radius, material, collection, parent):
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=24, ring_count=12, location=location)
+    # Mesh primitive starts at the origin; positions are specified in the
+    # parent-local space. A parent inverse would wrongly place face parts at
+    # world z=0 instead of on HEAD_RIG at z~1.67.
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=24, ring_count=12, location=(0,0,0))
     obj = bpy.context.object
     obj.name = name
     object_to_collection(obj, collection)
     if parent:
         obj.parent = parent
-        obj.matrix_parent_inverse = parent.matrix_world.inverted()
+    obj.location = location
     obj.scale = radius
     obj.data.materials.append(material)
     for face in obj.data.polygons:
@@ -191,7 +194,6 @@ def configure_render(size):
     scene.render.resolution_y = size
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
-    scene.render.film_transparent = False
     scene.render.film_transparent = False
     scene.world.use_nodes = True
     bg = next(n for n in scene.world.node_tree.nodes if n.type == "BACKGROUND")
