@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="740" viewBox="0 0 1500 740">
+<rect width="1500" height="740" fill="#fbf4e6"/>
+<text x="60" y="71" font-family="Georgia,serif" font-size="45" fill="#374d5a" font-style="italic">A Parisian day, accelerated.</text>
+<text x="62" y="101" font-family="Arial" font-size="14" fill="#a87687" letter-spacing="4">SCRUBBED BY CAT AGE · SAME CAMERA / SAME SET · NO AUTOPLAY</text>
+<g transform="translate(25 140)">
+<defs><linearGradient id="phase0" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b1cbe5"/><stop offset="1" stop-color="#f8dcbf"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase0)"/>
+<circle cx="74" cy="120" r="27" fill="#fff0cc" opacity=".85"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#aeb1c5"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f0e3d7"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#85869b" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#6e6e7f" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">SUNRISE</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">soft sky + warm bounce</text>
+<rect x="11" y="502" width="32" height="18" fill="#b1cbe5"/><rect x="49" y="502" width="32" height="18" fill="#f8dcbf"/><rect x="87" y="502" width="32" height="18" fill="#fff0cc"/><rect x="125" y="502" width="32" height="18" fill="#aeb1c5"/>
+</g>
+<g transform="translate(270 140)">
+<defs><linearGradient id="phase1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#97c4de"/><stop offset="1" stop-color="#f6e8ce"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase1)"/>
+<circle cx="102" cy="120" r="27" fill="#faf2db" opacity=".85"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#c0b8bd"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f0e3d7"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#85869b" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#6e6e7f" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">DAYLIGHT</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">soft sky + warm bounce</text>
+<rect x="11" y="502" width="32" height="18" fill="#97c4de"/><rect x="49" y="502" width="32" height="18" fill="#f6e8ce"/><rect x="87" y="502" width="32" height="18" fill="#faf2db"/><rect x="125" y="502" width="32" height="18" fill="#c0b8bd"/>
+</g>
+<g transform="translate(515 140)">
+<defs><linearGradient id="phase2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#edc0b0"/><stop offset="1" stop-color="#f5a874"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase2)"/>
+<circle cx="130" cy="120" r="27" fill="#ffe0a3" opacity=".85"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#aa90a3"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f0e3d7"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#85869b" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#6e6e7f" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">GOLDEN HOUR</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">amber rim + cool shadow</text>
+<rect x="11" y="502" width="32" height="18" fill="#edc0b0"/><rect x="49" y="502" width="32" height="18" fill="#f5a874"/><rect x="87" y="502" width="32" height="18" fill="#ffe0a3"/><rect x="125" y="502" width="32" height="18" fill="#aa90a3"/>
+</g>
+<g transform="translate(760 140)">
+<defs><linearGradient id="phase3" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a389c6"/><stop offset="1" stop-color="#f39b95"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase3)"/>
+<circle cx="158" cy="169" r="27" fill="#ffdbaf" opacity=".85"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#8a839b"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f0e3d7"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#85869b" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#6e6e7f" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">SUNSET</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">amber rim + cool shadow</text>
+<rect x="11" y="502" width="32" height="18" fill="#a389c6"/><rect x="49" y="502" width="32" height="18" fill="#f39b95"/><rect x="87" y="502" width="32" height="18" fill="#ffdbaf"/><rect x="125" y="502" width="32" height="18" fill="#8a839b"/>
+</g>
+<g transform="translate(1005 140)">
+<defs><linearGradient id="phase4" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#576a94"/><stop offset="1" stop-color="#b77d99"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase4)"/>
+<circle cx="172" cy="113" r="22" fill="#e3daed"/><path d="M166 90Q144 112 167 135Q147 136 139 115Q131 89 157 85Z" fill="#576a94"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#656a83"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f1cd8f"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#6e7295" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#d9c5ad" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">DUSK</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">blue fill + warm windows</text>
+<rect x="11" y="502" width="32" height="18" fill="#576a94"/><rect x="49" y="502" width="32" height="18" fill="#b77d99"/><rect x="87" y="502" width="32" height="18" fill="#e3daed"/><rect x="125" y="502" width="32" height="18" fill="#656a83"/>
+</g>
+<g transform="translate(1250 140)">
+<defs><linearGradient id="phase5" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#243458"/><stop offset="1" stop-color="#475179"/></linearGradient></defs>
+<rect width="230" height="420" rx="10" fill="url(#phase5)"/>
+<circle cx="172" cy="113" r="22" fill="#f3efd4"/><path d="M166 90Q144 112 167 135Q147 136 139 115Q131 89 157 85Z" fill="#243458"/>
+<path d="M0 266L30 236L68 263V200L111 175L147 203V257L180 218L230 256V333H0Z" fill="#424a69"/>
+<path d="M14 290H30V313H14ZM54 286H70V310H54ZM91 228H107V250H91ZM125 229H141V251H125ZM180 276H196V299H180Z" fill="#f1cd8f"/>
+<path d="M144 314L165 149L188 314M151 261H181M140 316H192" fill="none" stroke="#6e7295" stroke-width="4"/>
+<path d="M0 327H230M10 405H220M23 328V405M83 328V405M143 328V405M204 328V405" fill="none" stroke="#d9c5ad" stroke-width="6"/>
+<path d="M0 420Q118 399 230 420V435H0Z" fill="#db9da9"/>
+<text x="10" y="460" font-family="Georgia,serif" font-size="22" fill="#354d5a">NIGHT</text>
+<text x="10" y="486" font-family="Arial" font-size="11" fill="#80747b">blue fill + warm windows</text>
+<rect x="11" y="502" width="32" height="18" fill="#243458"/><rect x="49" y="502" width="32" height="18" fill="#475179"/><rect x="87" y="502" width="32" height="18" fill="#f3efd4"/><rect x="125" y="502" width="32" height="18" fill="#424a69"/>
+</g>
+<text x="45" y="704" font-family="Georgia,serif" font-size="19" fill="#776977">Reference for environment-aware cat lighting: the cat remains crisply focused and the painted Paris background softly blurred.</text>
+</svg>

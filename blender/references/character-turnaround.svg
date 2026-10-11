@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<defs><pattern id="paper" width="24" height="25" patternUnits="userSpaceOnUse"><circle cx="7" cy="6" r=".8" fill="#bc9ca1" opacity=".32"/></pattern></defs>
+<rect width="1400" height="820" fill="#fcf4e7"/><rect width="1400" height="820" fill="url(#paper)"/>
+<text x="64" y="84" font-family="Georgia,serif" font-size="49" font-style="italic" fill="#354d5a">True Cat Years</text>
+<text x="67" y="114" font-family="Arial,sans-serif" font-size="14" letter-spacing="5" fill="#b5788e">ORIGINAL PARISIAN ANIME / SCULPTING REFERENCE</text>
+<path d="M65 143H1335" stroke="#d9bca2" stroke-width="2"/>
+<g>
+ <rect x="28" y="170" width="315" height="435" rx="18" fill="#fff9ee" stroke="#dbbaa6"/>
+ <path d="M55 528H315" stroke="#c9aeb2" stroke-width="2" stroke-dasharray="4 9"/>
+ <g transform="translate(160 525) scale(0.63)" stroke-linecap="round" stroke-linejoin="round">
+<!-- One continuous stylised cat silhouette and elegantly tapered tail -->
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#40505e" stroke-width="27"/>
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#e7d8c7" stroke-width="21"/>
+<path d="M-90 -142C-113 -101 -114 -52 -88 -11Q-75 3 -47 3H65Q91 -3 98 -25C110 -67 85 -135 59 -154C35 -184 -43 -191 -90 -142Z" fill="#efe3d4" stroke="#4e5f67" stroke-width="4"/>
+<path d="M-54 -122Q-39 -97 -42 -20M44 -114Q34 -71 41 -17" fill="none" stroke="#c6bcae" stroke-width="3"/>
+<path d="M-67 -52Q-77 -19 -69 -1H-27Q-23 -25 -25 -72ZM35 -72Q32 -29 40 0H83Q92 -19 70 -51Z" fill="#f8efe4" stroke="#5b6870" stroke-width="4"/>
+<path d="M-94 -249L-89 -350L-43 -317Q-11 -327 26 -312L80 -348L90 -239C108 -194 92 -150 60 -132Q8 -103 -57 -135C-98 -156 -110 -208 -94 -249Z" fill="#f6e9da" stroke="#495a64" stroke-width="4.8"/>
+<path d="M-85 -337L-76 -280L-51 -310ZM75 -336L45 -306L79 -276Z" fill="#d99baa"/>
+<path d="M-57 -233Q-31 -246 -17 -230M27 -229Q44 -243 67 -230" fill="none" stroke="#69647c" stroke-width="3"/>
+<path d="M-58 -211Q-37 -233 -14 -211Q-37 -188 -58 -211ZM25 -211Q49 -234 68 -211Q50 -188 25 -211Z" fill="#eef2e8" stroke="#495a64" stroke-width="3"/>
+<ellipse cx="-35" cy="-210" rx="12.96" ry="17.28" fill="#86b5a7"/><ellipse cx="47" cy="-210" rx="12.96" ry="17.28" fill="#86b5a7"/>
+<ellipse cx="-35" cy="-210" rx="4" ry="13" fill="#304351"/><ellipse cx="47" cy="-210" rx="4" ry="13" fill="#304351"/>
+<circle cx="-40" cy="-217" r="5" fill="#fff8eb"/><circle cx="42" cy="-217" r="5" fill="#fff8eb"/>
+<path d="M-39 -170Q-14 -158 0 -167Q21 -154 44 -173" fill="none" stroke="#f9f2e7" stroke-width="21"/>
+<path d="M-8 -174H18L5 -160Z" fill="#d18b9c"/>
+<path d="M5 -159V-146M5 -147Q-9 -137 -20 -147M5 -147Q20 -136 31 -146" stroke="#695c66" fill="none" stroke-width="2"/>
+<g stroke="#fdf8ef" stroke-width="2"><path d="M-26 -168L-108 -178M-26 -163L-108 -158M31 -168L111 -179M31 -161L106 -154"/></g>
+<path d="M-67 -121Q-35 -111 6 -123Q44 -111 67 -123" fill="none" stroke="#bb7e92" stroke-width="11"/>
+<path d="M-8 -121Q-35 -153 -48 -122Q-34 -105 -5 -115Q25 -99 46 -123Q26 -154 -4 -122Z" fill="#c7859b" stroke="#8d6b78" stroke-width="2.5"/>
+<circle cx="0" cy="-120" r="10" fill="#d7ae72"/>
+
+</g>
+ <text x="55" y="641" font-family="Georgia,serif" font-size="30" fill="#374f5b">00 YEARS</text>
+ <text x="55" y="667" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="2" font-size="12" fill="#b3768a">KITTEN</text>
+ <text x="55" y="690" font-family="Georgia,serif" font-size="18" fill="#77737d">small + round</text>
+ </g>
+<g>
+ <rect x="371" y="170" width="315" height="435" rx="18" fill="#fff9ee" stroke="#dbbaa6"/>
+ <path d="M398 528H658" stroke="#c9aeb2" stroke-width="2" stroke-dasharray="4 9"/>
+ <g transform="translate(478 525) scale(0.91)" stroke-linecap="round" stroke-linejoin="round">
+<!-- One continuous stylised cat silhouette and elegantly tapered tail -->
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#40505e" stroke-width="27"/>
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#e7d8c7" stroke-width="21"/>
+<path d="M-90 -142C-113 -101 -114 -52 -88 -11Q-75 3 -47 3H65Q91 -3 98 -25C110 -67 85 -135 59 -154C35 -184 -43 -191 -90 -142Z" fill="#efe3d4" stroke="#4e5f67" stroke-width="4"/>
+<path d="M-54 -122Q-39 -97 -42 -20M44 -114Q34 -71 41 -17" fill="none" stroke="#c6bcae" stroke-width="3"/>
+<path d="M-67 -52Q-77 -19 -69 -1H-27Q-23 -25 -25 -72ZM35 -72Q32 -29 40 0H83Q92 -19 70 -51Z" fill="#f8efe4" stroke="#5b6870" stroke-width="4"/>
+<path d="M-94 -249L-89 -350L-43 -317Q-11 -327 26 -312L80 -348L90 -239C108 -194 92 -150 60 -132Q8 -103 -57 -135C-98 -156 -110 -208 -94 -249Z" fill="#f6e9da" stroke="#495a64" stroke-width="4.8"/>
+<path d="M-85 -337L-76 -280L-51 -310ZM75 -336L45 -306L79 -276Z" fill="#d99baa"/>
+<path d="M-57 -233Q-31 -246 -17 -230M27 -229Q44 -243 67 -230" fill="none" stroke="#69647c" stroke-width="3"/>
+<path d="M-58 -211Q-37 -233 -14 -211Q-37 -188 -58 -211ZM25 -211Q49 -234 68 -211Q50 -188 25 -211Z" fill="#eef2e8" stroke="#495a64" stroke-width="3"/>
+<ellipse cx="-35" cy="-210" rx="11.28" ry="15.04" fill="#86b5a7"/><ellipse cx="47" cy="-210" rx="11.28" ry="15.04" fill="#86b5a7"/>
+<ellipse cx="-35" cy="-210" rx="4" ry="13" fill="#304351"/><ellipse cx="47" cy="-210" rx="4" ry="13" fill="#304351"/>
+<circle cx="-40" cy="-217" r="5" fill="#fff8eb"/><circle cx="42" cy="-217" r="5" fill="#fff8eb"/>
+<path d="M-39 -170Q-14 -158 0 -167Q21 -154 44 -173" fill="none" stroke="#f9f2e7" stroke-width="21"/>
+<path d="M-8 -174H18L5 -160Z" fill="#d18b9c"/>
+<path d="M5 -159V-146M5 -147Q-9 -137 -20 -147M5 -147Q20 -136 31 -146" stroke="#695c66" fill="none" stroke-width="2"/>
+<g stroke="#fdf8ef" stroke-width="2"><path d="M-26 -168L-108 -178M-26 -163L-108 -158M31 -168L111 -179M31 -161L106 -154"/></g>
+<path d="M-67 -121Q-35 -111 6 -123Q44 -111 67 -123" fill="none" stroke="#bb7e92" stroke-width="11"/>
+<path d="M-8 -121Q-35 -153 -48 -122Q-34 -105 -5 -115Q25 -99 46 -123Q26 -154 -4 -122Z" fill="#c7859b" stroke="#8d6b78" stroke-width="2.5"/>
+<circle cx="0" cy="-120" r="10" fill="#d7ae72"/>
+
+</g>
+ <text x="398" y="641" font-family="Georgia,serif" font-size="30" fill="#374f5b">02 YEARS</text>
+ <text x="398" y="667" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="2" font-size="12" fill="#b3768a">ADOLESCENT</text>
+ <text x="398" y="690" font-family="Georgia,serif" font-size="18" fill="#77737d">taller + leaner</text>
+ </g>
+<g>
+ <rect x="714" y="170" width="315" height="435" rx="18" fill="#f3e6e3" stroke="#dbbaa6"/>
+ <path d="M741 528H1001" stroke="#c9aeb2" stroke-width="2" stroke-dasharray="4 9"/>
+ <g transform="translate(816 525) scale(1)" stroke-linecap="round" stroke-linejoin="round">
+<!-- One continuous stylised cat silhouette and elegantly tapered tail -->
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#40505e" stroke-width="27"/>
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#e7d8c7" stroke-width="21"/>
+<path d="M-90 -142C-113 -101 -114 -52 -88 -11Q-75 3 -47 3H65Q91 -3 98 -25C110 -67 85 -135 59 -154C35 -184 -43 -191 -90 -142Z" fill="#efe3d4" stroke="#4e5f67" stroke-width="4"/>
+<path d="M-54 -122Q-39 -97 -42 -20M44 -114Q34 -71 41 -17" fill="none" stroke="#c6bcae" stroke-width="3"/>
+<path d="M-67 -52Q-77 -19 -69 -1H-27Q-23 -25 -25 -72ZM35 -72Q32 -29 40 0H83Q92 -19 70 -51Z" fill="#f8efe4" stroke="#5b6870" stroke-width="4"/>
+<path d="M-94 -249L-89 -350L-43 -317Q-11 -327 26 -312L80 -348L90 -239C108 -194 92 -150 60 -132Q8 -103 -57 -135C-98 -156 -110 -208 -94 -249Z" fill="#f6e9da" stroke="#495a64" stroke-width="4.8"/>
+<path d="M-85 -337L-76 -280L-51 -310ZM75 -336L45 -306L79 -276Z" fill="#d99baa"/>
+<path d="M-57 -233Q-31 -246 -17 -230M27 -229Q44 -243 67 -230" fill="none" stroke="#69647c" stroke-width="3"/>
+<path d="M-58 -211Q-37 -233 -14 -211Q-37 -188 -58 -211ZM25 -211Q49 -234 68 -211Q50 -188 25 -211Z" fill="#eef2e8" stroke="#495a64" stroke-width="3"/>
+<ellipse cx="-35" cy="-210" rx="10.32" ry="13.76" fill="#86b5a7"/><ellipse cx="47" cy="-210" rx="10.32" ry="13.76" fill="#86b5a7"/>
+<ellipse cx="-35" cy="-210" rx="4" ry="13" fill="#304351"/><ellipse cx="47" cy="-210" rx="4" ry="13" fill="#304351"/>
+<circle cx="-40" cy="-217" r="5" fill="#fff8eb"/><circle cx="42" cy="-217" r="5" fill="#fff8eb"/>
+<path d="M-39 -170Q-14 -158 0 -167Q21 -154 44 -173" fill="none" stroke="#f9f2e7" stroke-width="21"/>
+<path d="M-8 -174H18L5 -160Z" fill="#d18b9c"/>
+<path d="M5 -159V-146M5 -147Q-9 -137 -20 -147M5 -147Q20 -136 31 -146" stroke="#695c66" fill="none" stroke-width="2"/>
+<g stroke="#fdf8ef" stroke-width="2"><path d="M-26 -168L-108 -178M-26 -163L-108 -158M31 -168L111 -179M31 -161L106 -154"/></g>
+<path d="M-67 -121Q-35 -111 6 -123Q44 -111 67 -123" fill="none" stroke="#bb7e92" stroke-width="11"/>
+<path d="M-8 -121Q-35 -153 -48 -122Q-34 -105 -5 -115Q25 -99 46 -123Q26 -154 -4 -122Z" fill="#c7859b" stroke="#8d6b78" stroke-width="2.5"/>
+<circle cx="0" cy="-120" r="10" fill="#d7ae72"/>
+
+</g>
+ <text x="741" y="641" font-family="Georgia,serif" font-size="30" fill="#374f5b">10 YEARS</text>
+ <text x="741" y="667" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="2" font-size="12" fill="#b3768a">ADULT HERO</text>
+ <text x="741" y="690" font-family="Georgia,serif" font-size="18" fill="#77737d">confident + elegant</text>
+ </g>
+<g>
+ <rect x="1057" y="170" width="315" height="435" rx="18" fill="#fff9ee" stroke="#dbbaa6"/>
+ <path d="M1084 528H1344" stroke="#c9aeb2" stroke-width="2" stroke-dasharray="4 9"/>
+ <g transform="translate(1158 525) scale(1)" stroke-linecap="round" stroke-linejoin="round">
+<!-- One continuous stylised cat silhouette and elegantly tapered tail -->
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#40505e" stroke-width="27"/>
+<path d="M88 -70C145 -68 152 -147 120 -171C93 -195 69 -147 88 -137" fill="none" stroke="#d1ccc7" stroke-width="21"/>
+<path d="M-90 -142C-113 -101 -114 -52 -88 -11Q-75 3 -47 3H65Q91 -3 98 -25C110 -67 85 -135 59 -154C35 -184 -43 -191 -90 -142Z" fill="#d9d8d5" stroke="#4e5f67" stroke-width="4"/>
+<path d="M-54 -122Q-39 -97 -42 -20M44 -114Q34 -71 41 -17" fill="none" stroke="#c6bcae" stroke-width="3"/>
+<path d="M-67 -52Q-77 -19 -69 -1H-27Q-23 -25 -25 -72ZM35 -72Q32 -29 40 0H83Q92 -19 70 -51Z" fill="#dedbd6" stroke="#5b6870" stroke-width="4"/>
+<path d="M-94 -249L-89 -350L-43 -317Q-11 -327 26 -312L80 -348L90 -239C108 -194 92 -150 60 -132Q8 -103 -57 -135C-98 -156 -110 -208 -94 -249Z" fill="#dce0df" stroke="#495a64" stroke-width="4.8"/>
+<path d="M-85 -337L-76 -280L-51 -310ZM75 -336L45 -306L79 -276Z" fill="#d99baa"/>
+<path d="M-57 -233Q-31 -246 -17 -230M27 -229Q44 -243 67 -230" fill="none" stroke="#69647c" stroke-width="3"/>
+<path d="M-58 -211Q-37 -233 -14 -211Q-37 -188 -58 -211ZM25 -211Q49 -234 68 -211Q50 -188 25 -211Z" fill="#eef2e8" stroke="#495a64" stroke-width="3"/>
+<ellipse cx="-35" cy="-210" rx="9.84" ry="13.12" fill="#86b5a7"/><ellipse cx="47" cy="-210" rx="9.84" ry="13.12" fill="#86b5a7"/>
+<ellipse cx="-35" cy="-210" rx="4" ry="13" fill="#304351"/><ellipse cx="47" cy="-210" rx="4" ry="13" fill="#304351"/>
+<circle cx="-40" cy="-217" r="5" fill="#fff8eb"/><circle cx="42" cy="-217" r="5" fill="#fff8eb"/>
+<path d="M-39 -170Q-14 -158 0 -167Q21 -154 44 -173" fill="none" stroke="#f9f2e7" stroke-width="21"/>
+<path d="M-8 -174H18L5 -160Z" fill="#d18b9c"/>
+<path d="M5 -159V-146M5 -147Q-9 -137 -20 -147M5 -147Q20 -136 31 -146" stroke="#695c66" fill="none" stroke-width="2"/>
+<g stroke="#fdf8ef" stroke-width="2"><path d="M-26 -168L-108 -178M-26 -163L-108 -158M31 -168L111 -179M31 -161L106 -154"/></g>
+<path d="M-67 -121Q-35 -111 6 -123Q44 -111 67 -123" fill="none" stroke="#bb7e92" stroke-width="11"/>
+<path d="M-8 -121Q-35 -153 -48 -122Q-34 -105 -5 -115Q25 -99 46 -123Q26 -154 -4 -122Z" fill="#c7859b" stroke="#8d6b78" stroke-width="2.5"/>
+<circle cx="0" cy="-120" r="10" fill="#d7ae72"/>
+<path d="M-100 -201L-83 -201M80 -200L97 -202" stroke="#f7f8f6" stroke-width="5"/>
+</g>
+ <text x="1084" y="641" font-family="Georgia,serif" font-size="30" fill="#374f5b">25 YEARS</text>
+ <text x="1084" y="667" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="2" font-size="12" fill="#b3768a">SENIOR</text>
+ <text x="1084" y="690" font-family="Georgia,serif" font-size="18" fill="#77737d">same cat + silver</text>
+ </g>
+<path d="M65 738H1335" stroke="#d9bca2" stroke-width="2"/>
+<text x="65" y="771" font-family="Arial,sans-serif" font-size="14" fill="#566777">ABSOLUTE GROWTH: 43% → 100% BY AGE 2.5  ·  SHARED GROUND  ·  CONTINUOUS MORPHS</text>
+<text x="65" y="799" font-family="Georgia,serif" font-size="16" fill="#9d7787">Illustrative style guide only — agent must sculpt beautiful continuous topology and judge 3D renders.</text>
+</svg>
