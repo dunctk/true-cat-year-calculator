@@ -54,6 +54,20 @@ $('mode-adjusted').addEventListener('click',()=>{mode='adjusted';render()});
 $('mode-linear').addEventListener('click',()=>{mode='linear';render()});
 $('reset-age').addEventListener('click',()=>{mode='adjusted';useAge(15)});
 $('copy-link').addEventListener('click',async()=>{const u=new URL(location.href);u.searchParams.set('age',fmt(age,4));u.searchParams.set('method',mode);const b=$('copy-link');try{await navigator.clipboard.writeText(u.toString());b.textContent='Link copied ✓';$('copy-status').textContent='Link copied to clipboard.'}catch(e){b.textContent='Copy unavailable';$('copy-status').textContent='Copy is unavailable; use the page URL.'}setTimeout(()=>{b.innerHTML='Copy shareable link <span aria-hidden="true">↗</span>'},2000)});
-const tbody=$('age-table');for(const y of [1,2,5,10,15,20,25,30,38]){const tr=document.createElement('tr');for(const v of [y,fmt(adjusted(y)),fmt(vet(y)),fmt(y*7)]){const td=document.createElement('td');td.textContent=v;tr.append(td)}tbody.append(tr)}
+// Keep the 3D character beside the slider on small screens. On desktop,
+ // return it to the second grid column; WebGL resizes with its container.
+ const mobile=matchMedia('(max-width:700px)');
+ const character=document.querySelector('.scene-panel');
+ const grid=document.querySelector('.experience-grid');
+ const ageFields=document.querySelector('.experience-control .age-fields');
+ const placeCharacter=()=>{
+   if(!character||!grid||!ageFields)return;
+   if(mobile.matches)ageFields.before(character);
+   else grid.append(character);
+ };
+ placeCharacter();
+ if(mobile.addEventListener)mobile.addEventListener('change',placeCharacter);
+ else if(mobile.addListener)mobile.addListener(placeCharacter);
+ const tbody=$('age-table');for(const y of [1,2,5,10,15,20,25,30,38]){const tr=document.createElement('tr');for(const v of [y,fmt(adjusted(y)),fmt(vet(y)),fmt(y*7)]){const td=document.createElement('td');td.textContent=v;tr.append(td)}tbody.append(tr)}
 render();
 })();

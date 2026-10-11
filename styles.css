@@ -55,3 +55,14 @@
 @media(max-width:950px){.experience-grid{grid-template-columns:1fr 1fr}.experience-control{padding:22px}.control-lower{grid-template-columns:1fr}.scene-panel{min-height:470px}.experience-intro{max-width:265px}.scene-top,.scene-foot{padding-left:14px;padding-right:14px}}
 @media(max-width:700px){.experience-section{padding:25px 0 52px}.experience-heading{display:block;margin-bottom:19px}.experience-heading h1{font-size:clamp(39px,9vw,58px);margin:9px 0 11px}.experience-intro{max-width:100%;font-size:12px}.experience-grid{display:flex;flex-direction:column;gap:13px}.experience-control{padding:19px 20px}.hero-result{margin:8px 0 12px}.hero-number strong{font-size:78px}.experience-control .age-fields{margin:10px 0 16px}.control-lower{grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;padding-top:12px}.scene-panel{min-height:360px}.cat-viewport{min-height:235px}.scene-top{padding-top:13px}.scene-note{margin-bottom:11px}.scene-foot{padding-top:0}}
 @media(max-width:375px){.experience-control{padding:16px}.experience-control .age-fields>div:first-child{flex:0 0 95px}.control-lower{grid-template-columns:1fr}.hero-number strong{font-size:68px}.scene-panel{min-height:330px}}
+
+/* Mobile: the live cat portrait follows the age readout, before the slider. */
+@media(max-width:700px){
+.experience-control>.scene-panel{min-height:240px;height:240px;margin:0 0 15px;border-radius:13px}
+.experience-control>.scene-panel .scene-top{padding:12px 14px 0;font-size:9px}
+.experience-control>.scene-panel .scene-status{font-size:8px;padding:5px 7px}
+.experience-control>.scene-panel .cat-viewport{min-height:165px;flex:1}
+.experience-control>.scene-panel .scene-foot{padding:0 14px 11px}
+.experience-control>.scene-panel .scene-note{display:none}
+}
+@media(max-width:400px){.experience-control>.scene-panel{height:216px;min-height:216px}.experience-control>.scene-panel .cat-viewport{min-height:140px}}
