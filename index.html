@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f8f4ea">
+<link rel="canonical" href="https://catyear.pages.dev/">
+<meta property="og:url" content="https://catyear.pages.dev/">
 <meta name="description" content="How old is your cat in human years? Explore a beautiful, research-linked cat years calculator anchored to the oldest verified cat and human, with a transparent formula and real feline longevity data.">
 <meta property="og:type" content="website"><meta property="og:title" content="True Cat Years — There's more to a cat's life."><meta property="og:description" content="An interactive, record-anchored cat age calculator. Explore the maths, compare the 7× myth, and discover what veterinary evidence really says.">
 <title>Cat Years to Human Years Calculator | True Cat Years</title>
@@ -78,13 +80,13 @@
   <div class="reason-grid">
     <article><span class="reason-number">01</span><h3>Seven isn't magic.</h3><p>Multiplying every cat year by seven assumes ageing happens at a constant speed. A one-year-old cat is already much more mature than a seven-year-old child.</p></article>
     <article><span class="reason-number">02</span><h3>Start with real records.</h3><p>We anchor the endpoints to Creme Puff's 38 years and 3 days and Jeanne Calment's 122 years and 164 days — both verified by Guinness World Records.</p></article>
-    <article><span class="reason-number">03</span><h3>Make room for growing up.</h3><p>We calibrate a smooth curve so two cat years correspond to roughly 24 human years, reflecting the familiar feline maturity chart rather than a straight line.</p></article>
+    <article><span class="reason-number">03</span><h3>Make room for growing up.</h3><p>We treat the world-record percentage as the baseline, then add an early-maturity adjustment that fades away. At age two, our illustrative analogy is 17 human years — closer to a teenager, not 24.</p></article>
   </div>
   <div class="formula-layout">
-    <div class="formula-card"><p class="mini-overline">THE MATURITY-ADJUSTED MODEL</p><div class="formula" aria-label="H equals H maximum times C divided by C maximum to the power p">H = H<sub>max</sub> × ( C / C<sub>max</sub> )<sup>p</sup></div><p>Where <strong>C</strong> is your cat's age, <strong>H<sub>max</sub> = 122.449</strong>, <strong>C<sub>max</sub> = 38.008</strong>, and <strong>p ≈ <span id="exponent">0.553</span></strong>.</p><p>The exponent is solved from <strong>H(2) = 24</strong>: p = ln(24 / H<sub>max</sub>) ÷ ln(2 / C<sub>max</sub>).</p><div class="formula-note">The record-percentage alternative is simply H = C × H<sub>max</sub> / C<sub>max</sub>.</div></div>
+    <div class="formula-card"><p class="mini-overline">THE GENTLE MATURITY-ADJUSTED MODEL</p><div class="formula formula-v2" aria-label="H equals r times C plus B times C times e to the power negative C divided by three, times one minus C over C maximum"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>C</strong> = cat age in years. <strong>C<sub>max</sub> = 38.008</strong> and <strong>H<sub>max</sub> = 122.449</strong> are the verified records. <strong>r = H<sub>max</sub>/C<sub>max</sub> ≈ <span id="ratio">3.22165</span></strong>.</p><p><strong>B ≈ <span id="boost">10.8519</span></strong> is calculated to make <strong>H(2) = 17</strong>. The extra term boosts younger ages but fades exponentially (with a 3-year decay scale), returning to the baseline by older ages and exactly matching the record at 38.008.</p><div class="formula-note">The teenage analogy and decay scale are explicitly chosen modelling assumptions, not measurements from a veterinary study. The pure record-percentage alternative is H = rC.</div></div>
     <div class="chart-card"><div class="chart-head"><h3>How the curves compare</h3><span>0–38 cat years</span></div><svg id="age-chart" viewBox="0 0 550 295" role="img" aria-label="Curve comparison between maturity-adjusted, linear world-record percentage, and seven times cat age"></svg><div class="chart-legend"><span><i class="lg-orange"></i>Our curve</span><span><i class="lg-green"></i>Record %</span><span><i class="lg-dotted"></i>7× rule</span></div></div>
   </div>
-  <p class="accuracy-caveat"><strong>Is this more accurate?</strong> It's more defensible than the naive 7× rule because it models faster early maturation and has explicit, verifiable endpoints. But it's <strong>not scientifically proven more accurate</strong> than veterinary age charts. Maximum observed lifespan is an extreme outlier, not a physiological measure of ageing, and a smooth power curve is still a modelling choice.</p>
+  <p class="accuracy-caveat"><strong>Is this more accurate?</strong> It's more defensible than the naive 7× rule because it models faster early maturation and has explicit, verifiable endpoints. But it's <strong>not scientifically proven more accurate</strong> than veterinary age charts. Maximum observed lifespan is an extreme outlier, not a physiological measure of ageing, and the size and speed of our early-maturity adjustment are modelling choices, not clinical measurements.</p>
 </section>
 <section class="evidence-section" id="the-evidence" aria-labelledby="evidence-heading"><div class="wrap">
   <div class="section-heading"><div><p class="kicker">03 / The evidence</p><h2 id="evidence-heading">Living longer is <em>another question.</em></h2></div><p>An age analogy is not a survival forecast. Here's what the data can — and can't — tell us.</p></div>
@@ -111,5 +113,6 @@
 <section class="closing wrap"><span aria-hidden="true">✳</span><div><h2>Every extra year is <em>its own little miracle.</em></h2><p>A calculator can offer perspective. Good veterinary care, close observation and quality of life matter more than the number.</p></div><a href="#calculator">Try another age ↑</a></section>
 </main>
 <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">✳</span><span>true<span class="brand-italic">cat</span>years<span class="brand-dot">.</span></span></a><p>Made with curiosity, not veterinary authority. Educational only; not medical advice. No tracking, cookies or data collection.</p><a href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">View source ↗</a></footer>
+<script src="./model.js" defer></script>
 <script src="./app.js" defer></script>
 </body></html>

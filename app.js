@@ -1,12 +1,10 @@
 (function(){
 'use strict';
-const CAT_MAX=38+3/365.2425,HUMAN_MAX=122+164/365.2425,EXP=Math.log(24/HUMAN_MAX)/Math.log(2/CAT_MAX);
+const {CAT_MAX,RATIO,BOOST,adjusted,linear}=globalThis.TrueCatYearsModel;
 const LIFE=[[7936,.039,11.74],[7627,.047,11.19],[7268,.041,10.72],[6968,.032,10.16],[6748,.036,9.48],[6506,.039,8.81],[6250,.039,8.15],[6005,.041,7.46],[5757,.049,6.76],[5474,.064,6.08],[5125,.069,5.46],[4770,.087,4.83],[4353,.109,4.24],[3878,.131,3.70],[3370,.170,3.17],[2797,.212,2.72],[2204,.246,2.31],[1662,.341,1.90],[1095,.404,1.63],[653,.492,1.40],[332,null,1.32]];
 const $=id=>document.getElementById(id);
 const clamp=n=>Math.max(0,Math.min(CAT_MAX,n));
 const fmt=(n,d=1)=>Number(n).toFixed(d);
-const adjusted=c=>HUMAN_MAX*Math.pow(c/CAT_MAX,EXP);
-const linear=c=>HUMAN_MAX*c/CAT_MAX;
 const vet=c=>c<=1?15*c:c<=2?15+9*(c-1):24+4*(c-2);
 const stage=c=>c<1?'Kitten':c<7?'Young adult':c<=10?'Mature adult':'Senior';
 const L=l=>LIFE[l];
@@ -22,10 +20,10 @@ setInputs();
 const human=mode==='adjusted'?adjusted(age):linear(age);
 $('result-years').textContent=fmt(human);$('record-share').textContent=fmt(age/CAT_MAX*100)+'%';$('stage').textContent=stage(age);$('progress-bar').style.width=fmt(age/CAT_MAX*100,2)+'%';
 $('compare-seven').textContent=fmt(age*7);$('compare-vet').textContent=fmt(vet(age));$('compare-ours').textContent=fmt(adjusted(age));
-$('exponent').textContent=fmt(EXP,6);
+$('ratio').textContent=fmt(RATIO,5);$('boost').textContent=fmt(BOOST,4);
 $('mode-adjusted').classList.toggle('active',mode==='adjusted');$('mode-linear').classList.toggle('active',mode==='linear');
 $('mode-adjusted').setAttribute('aria-pressed',String(mode==='adjusted'));$('mode-linear').setAttribute('aria-pressed',String(mode==='linear'));
-$('mode-description').textContent=mode==='adjusted'?'Fast early maturation meets the two verified world longevity records. An illustrative model, not a biological clock.':'An equal percentage of each species’ record lifespan. Simple, but it does not reflect rapid early feline development.';
+$('mode-description').textContent=mode==='adjusted'?'A teenage analogy at age two, then a fading early-maturity boost over the longevity-record baseline. Illustrative, not clinical.':'An equal percentage of each species’ record lifespan. Simple, but it does not reflect rapid early feline development.';
 document.querySelectorAll('[data-age]').forEach(b=>b.classList.toggle('active',Math.abs(Number(b.dataset.age)-age)<.04));
 if(age<=20){const i=Math.floor(age),q=LIFE[Math.min(20,i)];$('survival-share').textContent=fmt(100*surv(age))+'%';$('death-risk').textContent=q[1]===null?'—':fmt(100*q[1])+'%';$('years-left').textContent=fmt(q[2],2)}else{$('survival-share').textContent='—';$('death-risk').textContent='—';$('years-left').textContent='—'}
 drawCharts();

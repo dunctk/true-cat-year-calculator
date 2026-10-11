@@ -2,15 +2,26 @@
 An open-source, mobile-first **cat years to human years calculator** using a maturity-adjusted analogy anchored to the longest verified feline and human lives.
 
 ## What makes it different?
-- 7× cat years assumes a fixed rate of ageing. We model faster early development with a power curve.
-- The curve is anchored to **Creme Puff (38 years, 3 days)** and **Jeanne Calment (122 years, 164 days)** and constrained to map 2 cat years to 24 human years.
+- 7× cat years assumes a fixed rate of ageing. Our baseline is the verified longevity-record percentage with a rapidly fading boost for early maturation.
+- The curve is anchored to **Creme Puff (38 years, 3 days)** and **Jeanne Calment (122 years, 164 days)**. We deliberately model 2 cat years as **17 human years** (a subjective teenage analogy, not a scientific conversion), while 15 and 20 cat years remain close to the longevity-record percentage.
 - Toggle a direct percentage-of-record conversion, and compare the result with the familiar veterinary life-stage chart and the simplistic 7× rule.
 - A **separate** empirical survival chart (Teng et al., 2024) and kidney disease treatment evidence avoid conflating biological age with observed mortality.
 - Explicitly **not** a medically validated predictor of biological age or an individual cat's remaining lifespan.
 
 ## Equation
-H = Hmax × (C / Cmax)^p
-where Cmax = 38 + 3/365.2425, Hmax = 122 + 164/365.2425, and p = ln(24/Hmax)/ln(2/Cmax).
+H(C) = r*C + B*C*exp(-C/3)*(1-C/Cmax)
+
+- Cmax = 38 + 3/365.2425 (cat longevity record), Hmax = 122 + 164/365.2425 (human longevity record)
+- r = Hmax/Cmax ≈ 3.221646
+- B = (17 - 2*r) / (2*exp(-2/3)*(1-2/Cmax)) ≈ 10.8518563
+- Decay scale = 3 cat years, chosen for a modest, early-concentrated correction.
+- Thus H(0)=0, H(2)=17, H(15)≈49.0, H(20)≈64.6, and H(Cmax)=Hmax.
+
+The formula is a designed analogy with transparent assumptions, **not a validated biological-age model**. Cats aged 1–6 are classified as young adults in the [AAHA/AAFP guidelines](https://www.aaha.org/resources/2021-aaha-aafp-feline-life-stage-guidelines/feline-life-stage-definitions/); the guideline does not prescribe an age conversion to humans.
+
+## Tests
+
+Run `node --test tests/model.test.cjs` locally. No workflow, dependencies or Actions minutes.
 
 ## Hosting: Cloudflare Pages (no GitHub Actions)
 Pure HTML, CSS and vanilla JavaScript: **no build step, dependencies, or GitHub Actions**. The site is safe to serve from the repository root, from a GitHub Pages repository subpath, or via Cloudflare Pages.
@@ -20,14 +31,16 @@ To publish without using GitHub Actions:
 2. Choose GitHub and select **dunctk/true-cat-year-calculator**, branch **main**.
 3. Set **Framework preset: None**, **Build command: empty**, **Build output directory: /** (repository root, or leave the documented default for static HTML in your dashboard).
 4. Deploy. Every push to main updates the site with Cloudflare's Git integration, without GitHub Actions minutes.
-5. Optionally attach a custom domain and update SEO canonical/OG URLs once the actual public address is known.
+5. The live production URL is [https://catyear.pages.dev/](https://catyear.pages.dev/) and the site's canonical URL and Open Graph metadata point there.
 
 Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root). GitHub Pages still triggers its own Actions-powered deployment workflow, so Cloudflare is recommended when avoiding Actions minutes is important.
 
 ## Files
 - index.html — accessible content and citations
 - styles.css — responsive visual design
-- app.js — age conversion, accessible controls, SVG charts and URL sharing
+- model.js — pure, independently testable age-conversion model
+- app.js — accessible controls, SVG charts and URL sharing
+- tests/model.test.cjs — zero-dependency Node tests of anchors and monotonicity
 - favicon.svg — brand favicon
 - .nojekyll — prevents Jekyll processing if served via GitHub Pages
 
