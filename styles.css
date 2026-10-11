@@ -66,3 +66,65 @@
 .experience-control>.scene-panel .scene-note{display:none}
 }
 @media(max-width:400px){.experience-control>.scene-panel{height:216px;min-height:216px}.experience-control>.scene-panel .cat-viewport{min-height:140px}}
+
+
+/* True Cat Years · original Parisian anime / illustrated storybook identity */
+:root{--cream:#fbf2e4;--ink:#344754;--muted:#73747a;--orange:#bd7b91;--orange-dark:#a76b80;--sage:#e3e6e2;--sage-dark:#72888a;--white:#fffaf3;--line:#dfc9ba;--serif:"Baskerville","Iowan Old Style","Palatino Linotype",Georgia,serif}
+body{background:var(--cream);color:var(--ink)}
+.site-header{height:79px;background:linear-gradient(96deg,#fffbf0,#f7e9de);border-bottom:1px solid #dcc4b4}
+.brand{font-family:var(--serif);font-size:28px;font-weight:500;letter-spacing:-.035em}.brand-italic{color:#b5768a;font-weight:400}.brand-dot{color:#c8a26f}
+.brand-mark{background:#354b58;color:#fff5e2;font-size:23px}
+nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github{border-color:#c7a374;background:#fff8ec8c}
+.kicker,.mini-overline{color:#ad7285;letter-spacing:.16em}.kicker-rule{background:#c9a475}
+.experience-section{background:linear-gradient(122deg,#fff5e7,#f3e7e2 61%,#e4e3e8);padding:27px 0 60px}
+.experience-heading{align-items:center;gap:19px;margin-bottom:23px}
+.experience-heading h1{font-size:clamp(46px,5.85vw,84px);line-height:.95;font-weight:500;letter-spacing:-.061em;margin:8px 0 0;max-width:900px}
+.experience-heading h1 em{font-weight:400;color:#b97d8e}
+.experience-intro{font-family:var(--serif);font-size:18px;line-height:1.48;color:#786f77;max-width:307px}
+.experience-grid{grid-template-columns:1fr 1.08fr;gap:16px}
+.experience-control{border:2px solid #cfb496;outline:1px solid #e4d0b4;outline-offset:-9px;border-radius:23px;background:linear-gradient(150deg,#fffcf4,#fff0e5);box-shadow:0 12px 27px #574b4c13;padding:24px 29px}
+.experience-control .panel-index{font-family:var(--serif);font-size:15px;color:#987b86}.experience-control .panel-index span+span{font:700 9px var(--sans);letter-spacing:.16em;color:#af9299}
+.hero-result{border-bottom-color:#e8d0c0;margin:6px 0 11px}
+.hero-number strong{font:500 clamp(73px,8vw,110px)/1 var(--serif);letter-spacing:-.074em;color:#344754}
+.hero-number span{font-family:var(--serif);font-size:18px;color:#786c7b}
+.hero-sub{font-family:var(--serif);font-size:13px;color:#897986}
+.stage-pill{background:#f6e3e6;border:1px solid #e1bac4;color:#9c6980}
+.age-fields input,.age-fields select{background:#fffaf3;border-color:#e3c9bc;color:#344754}
+.experience-control input[type=range]{accent-color:#be788e}
+.experience-control .range-ends{color:#977f88}
+.experience-control .presets button{background:#fffaee;border-color:#e5c9ba;color:#8e7180;border-radius:50px}
+.experience-control .presets button:hover,.experience-control .presets button.active{background:#b97c90;border-color:#b97c90;color:white}
+.control-lower{border-top-color:#e6cec4}
+.control-lower .switcher{background:#f4e5df}
+.control-lower .switcher button{color:#786f80}
+.control-lower .switcher .active{background:#fffcf3;color:#344754}
+.record-meter .progress{background:#e9d8de}.record-meter .progress span{background:#c17c91}
+.record-meter-label strong{color:#a46b7f}
+.experience-control .method-explain{font-family:var(--serif);font-size:12px;color:#8f7b80}
+.experience-control .action-main{background:#344754;border-radius:60px}.experience-control .action-main:hover{background:#557081}
+.experience-control .action-alt{color:#8e6b7a;border-color:#e0bec0;border-radius:60px}
+.scene-panel{position:relative;isolation:isolate;min-height:490px;border-radius:23px;border:2px solid #d7ad9b;outline:1px solid #fce7c9;outline-offset:-9px;background:#f5dece url("./paris-balcony.svg") center center/cover no-repeat;box-shadow:0 16px 29px #624d601b}
+.scene-panel:after{content:"";pointer-events:none;position:absolute;inset:11px;border:1px solid #fff4df9e;border-radius:15px;z-index:1}
+.scene-top,.scene-foot{font-family:var(--serif);font-size:14px;font-weight:700;letter-spacing:.09em;color:#5d5c70;text-shadow:0 1px 9px #fff8ec}
+.scene-status{background:#fff8e6bf;border-color:#cda5ac;color:#96718a}
+.scene-top{padding:19px 22px 0}.scene-foot{padding:0 22px 8px}
+.scene-foot span+span{font-size:17px;color:#6d596e}
+.scene-note{font-family:var(--serif);font-size:11px;line-height:1.35;color:#6d6977;text-shadow:0 1px 8px #fff3eb;max-width:480px}
+.cat-viewport{min-height:310px}.cat-viewport:before{background:radial-gradient(ellipse at 50% 58%,#fff3da2b,transparent 65%)}
+.life-story-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px;border:1px solid #dfc4b6;border-radius:14px;overflow:hidden;background:linear-gradient(90deg,#fff9eb,#f7e5db)}
+.life-stage{display:flex;justify-content:center;align-items:center;gap:12px;padding:15px 9px;border-right:1px solid #e3caba}.life-stage:last-child{border:0}
+.life-icon{font:400 29px var(--serif);color:#bb7994}.life-stage strong{display:block;font:600 18px var(--serif);color:#344754}.life-stage small{display:block;font:15px var(--serif);color:#b87787}
+.comparison-band{border-color:#dfc5b5;background:#fff9ed}.comparison-band>div{border-color:#ead2c6}.comparison-band .compare-feature{background:#f8e5e7}.comparison-band strong{color:#344754}
+.method-section,.table-section,.sources-section{background:#fbf2e4}
+.section-heading h2,.sources-section h2{font-family:var(--serif);font-weight:500;color:#344754}.section-heading h2 em,.sources-section h2 em{color:#b97a8f}
+.reason-grid article{border-color:#cbb3b7}.reason-grid h3{color:#425469}.reason-number{color:#ae7387}
+.formula-card{background:#fff5e8;border:1px solid #dac3b4}.chart-card,.survival-card{background:#fffaf3;border-color:#dfcaba}
+.accuracy-caveat{background:#fff5eb;border-left-color:#ba7891}
+.evidence-section{background:linear-gradient(125deg,#e6e9eb,#f3e2e4)}
+.kidney-card{background:#fff3e8;border-color:#e8c9bc}
+.table-shell{background:#fffaf3;border-color:#dfc8b9}th{background:#f4e2e3}td:nth-child(2){color:#a76b80}
+.closing{background:linear-gradient(115deg,#405568,#6c6b81);color:#fff7ed}.closing h2 em,.closing>span{color:#efc1c7}
+.site-footer{border-top:1px solid #dfc7bb}.site-footer .brand{font-size:23px}
+@media(max-width:950px){.experience-heading h1{font-size:clamp(45px,6.2vw,69px)}.experience-intro{font-size:16px}.experience-control{padding:21px}}
+@media(max-width:700px){.site-header{height:70px}.brand{font-size:23px}.experience-heading h1{font-size:clamp(47px,10vw,64px)}.experience-intro{max-width:410px;font-size:15px}.experience-control{padding:20px}.experience-control>.scene-panel{height:248px;min-height:248px;margin:7px 0 13px}.experience-control>.scene-panel .cat-viewport{min-height:174px}.life-story-strip{grid-template-columns:1fr 1fr}.life-stage{justify-content:flex-start;border-bottom:1px solid #e3caba}.life-stage:nth-child(even){border-right:0}.life-stage:nth-child(n+3){border-bottom:0}.life-stage strong{font-size:16px}.life-stage small{font-size:13px}.life-icon{font-size:23px}}
+@media(max-width:380px){.experience-control>.scene-panel{height:226px;min-height:226px}.experience-control>.scene-panel .cat-viewport{min-height:149px}.life-stage{padding:10px 8px;gap:5px}}

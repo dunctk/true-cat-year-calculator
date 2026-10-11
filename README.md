@@ -64,3 +64,7 @@ The calculator and its slider are now in the opening viewport. The accompanying 
 ### Cat growth design
 
 In the stylised 3D portrait, total character size grows smoothly from 43% (newborn) to full adult size by 2.5 cat years, while relative head, body, leg and muzzle proportions also mature. Paws remain grounded through the scale change. The numerical years conversion remains unchanged. Senior greying is subtle and illustrative rather than a health or diagnostic claim. Run the pure-model checks with `node --test tests/cat-growth.test.cjs`.
+
+## Parisian anime storybook identity
+
+The site uses an original illustrated Paris balcony, warm ivory paper, Paris blue, dusty-rose controls, antique-gold details, and oversized editorial serif typography. It is visually inspired by mid-century Parisian animation and Japanese anime backgrounds without copying characters or artwork. The calculator remains above the fold, stays interactive and remains dependency-free. The WebGL character receives corresponding cel-shaded artwork in `cat-scene.js`.
