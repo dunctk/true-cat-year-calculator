@@ -128,3 +128,10 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
 @media(max-width:950px){.experience-heading h1{font-size:clamp(45px,6.2vw,69px)}.experience-intro{font-size:16px}.experience-control{padding:21px}}
 @media(max-width:700px){.site-header{height:70px}.brand{font-size:23px}.experience-heading h1{font-size:clamp(47px,10vw,64px)}.experience-intro{max-width:410px;font-size:15px}.experience-control{padding:20px}.experience-control>.scene-panel{height:248px;min-height:248px;margin:7px 0 13px}.experience-control>.scene-panel .cat-viewport{min-height:174px}.life-story-strip{grid-template-columns:1fr 1fr}.life-stage{justify-content:flex-start;border-bottom:1px solid #e3caba}.life-stage:nth-child(even){border-right:0}.life-stage:nth-child(n+3){border-bottom:0}.life-stage strong{font-size:16px}.life-stage small{font-size:13px}.life-icon{font-size:23px}}
 @media(max-width:380px){.experience-control>.scene-panel{height:226px;min-height:226px}.experience-control>.scene-panel .cat-viewport{min-height:149px}.life-stage{padding:10px 8px;gap:5px}}
+
+/* Subtle original anime sparkle detailing in the painted scene. */
+.scene-panel{overflow:hidden}
+.scene-panel .cat-fallback svg{width:min(88%,340px);height:95%;filter:drop-shadow(0 12px 9px rgba(72,66,90,.19))}
+.scene-panel .cat-viewport{z-index:1}
+.scene-panel:before{content:"✧";position:absolute;z-index:1;top:17%;right:17%;font:32px var(--serif);color:#fff7de;opacity:.85;text-shadow:0 0 17px #fff}
+@media(max-width:700px){.scene-panel:before{font-size:23px}}
