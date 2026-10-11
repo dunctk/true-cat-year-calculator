@@ -28,6 +28,19 @@ blender --background --python blender/scripts/build_scene.py -- --output-dir ble
 
 See [reference guidance and image prompts](references/README.md). Keep all assets local, no downloads or paid APIs. Blender outputs are initially gitignored: after approving the source and renders, explicitly force-add selected scene.blend, cat.glb and preview files if desired.
 
+## Re-render and export an improved Blender scene
+
+Once your coding agent improves and saves scene.blend, **do not re-run build_scene.py** (it resets the scene). Instead, operate on the updated BLEND:
+
+~~~bash
+blender --background blender/output/scene.blend --python blender/scripts/render_checkpoints.py -- --output-dir blender/renders
+blender --background blender/output/scene.blend --python blender/scripts/validate_scene.py
+blender --background blender/output/scene.blend --python blender/scripts/export_glb.py -- --out blender/exports/cat.glb
+~~~
+
+The GLB export is a pipeline smoke test until the premium character has been visually approved. Named shape keys on CatHead and CatBody become morph targets. The export selects only the character collection, excluding the preview stage, camera and lights. For a final artist-modified model, inspect morph and material fidelity in a glTF viewer before browser integration.
+
+
 ## Integration contract
 
 - Do NOT automatically replace the current cat-scene.js renderer on main.
@@ -38,6 +51,8 @@ See [reference guidance and image prompts](references/README.md). Keep all asset
 ## Repo-local assets
 
 - scripts/build_scene.py — low-poly coherent-surface blockout scene generator
+- scripts/render_checkpoints.py — render ages from a saved, edited BLEND without resetting sculpt edits
+- scripts/export_glb.py — export only the character and morph targets as GLB
 - scripts/validate_scene.py — source-scene and age-continuity checks run by Blender
 - references/character-turnaround.svg — silhouette / proportion art board
 - references/paris-lighting.svg — day-night colour and lighting art board
