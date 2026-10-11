@@ -68,3 +68,7 @@ In the stylised 3D portrait, total character size grows smoothly from 43% (newbo
 ## Parisian anime storybook identity
 
 The site uses an original illustrated Paris balcony, warm ivory paper, Paris blue, dusty-rose controls, antique-gold details, and oversized editorial serif typography. It is visually inspired by mid-century Parisian animation and Japanese anime backgrounds without copying characters or artwork. The calculator remains above the fold, stays interactive and remains dependency-free. The WebGL character receives corresponding cel-shaded artwork in `cat-scene.js`.
+
+## WebGL character refinement
+
+The original October anime restyle looked uncanny because of glued-on spheres, bulging eye layers and black ear-cones. The current lightweight native WebGL character has triangular 3D ears, much smaller embedded almond eyes, a short feline muzzle, subtle mouth and whiskers, a tapered curved tail and a sitting silhouette with calmer proportions. The shader uses *matte* pastel cel shading (no shiny plastic highlights). The existing `cat-growth.js` remains the only source for overall age-to-size changes; feet stay grounded and animation respects reduced-motion. The picture remains artistic rather than medical.

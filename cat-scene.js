@@ -18,10 +18,11 @@ const smooth=(a,b,x)=>{let t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
 const color=h=>[0,2,4].map(i=>parseInt(h.slice(i+1,i+3),16)/255);
 const blend=(a,b,t)=>a.map((v,i)=>lerp(v,b[i],t));
 // The original anime-storybook cat keeps the same 3D geometry and growth model.
-const fur=color('#efdfd1'),silver=color('#b5b9bd'),light=color('#fff1e4');
-const greyLight=color('#e0e2de'),deep=color('#756f82'),nose=color('#d58e9f');
-const iris=color('#85b9ac'),pupil=color('#293b50'),white=color('#fffdf0');
-const ribbon=color('#c17d99'),ribbonDark=color('#a96f8c'),gold=color('#e7bd84');
+// Quiet, ink-and-watercolour anime tones. Avoid high-contrast robotic eyeballs.
+const fur=color('#ead8c5'),silver=color('#aeb7b8'),light=color('#fff2e3');
+const greyLight=color('#e0e2de'),deep=color('#7c7688'),nose=color('#d68b9e');
+const iris=color('#8cbaa9'),pupil=color('#2f4550'),white=color('#fff9ea');
+const ribbon=color('#b67894'),ribbonDark=color('#a96f8c'),gold=color('#d8b37b');
 let gl;
 try{gl=canvas.getContext('webgl',{alpha:true,antialias:true,powerPreference:'low-power'});}catch(e){return}
 if(!gl)return;
@@ -32,7 +33,7 @@ function shader(type,source){
 let program;
 try{
  let v=shader(gl.VERTEX_SHADER,'attribute vec3 aPos;attribute vec3 aNorm;uniform mat4 uP;uniform mat4 uV;uniform mat4 uM;varying vec3 vN;void main(){vN=normalize(mat3(uM)*aNorm);gl_Position=uP*uV*uM*vec4(aPos,1.0);}');
- let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=max(dot(n,normalize(vec3(-0.45,0.94,1.1))),0.0);float band=0.68+0.32*smoothstep(0.24,0.54,d);float bounce=0.1*max(dot(n,normalize(vec3(0.7,0.5,-0.6))),0.0);float ink=1.0-0.25*(1.0-smoothstep(0.11,0.42,abs(n.z)));vec3 result=uColor*(band+bounce)*ink;float highlight=pow(max(dot(n,normalize(vec3(-0.5,0.8,0.65))),0.0),7.0);result+=vec3(0.08,0.06,0.06)*highlight;gl_FragColor=vec4(result,1.0);}');
+ let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=dot(n,normalize(vec3(-0.60,0.95,1.15)));float shade=0.78+0.17*smoothstep(-0.08,0.50,d)+0.05*smoothstep(0.50,0.93,d);gl_FragColor=vec4(uColor*shade,1.0);}');
  program=gl.createProgram();gl.attachShader(program,v);gl.attachShader(program,f);gl.linkProgram(program);
  if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('link');
  gl.deleteShader(v);gl.deleteShader(f);
@@ -54,21 +55,48 @@ function sphere(){
  for(let i=0;i<rings;i++)for(let j=0;j<sides;j++){let a=i*(sides+1)+j,b=a+sides+1;ind.push(a,a+1,b,a+1,b+1,b)}
  return makeMesh(v,n,ind);
 }
-function cone(){
- let v=[],n=[],ind=[],s=24;
- for(let i=0;i<=s;i++){let t=Math.PI*2*i/s,x=Math.cos(t),z=Math.sin(t);v.push(x,-.5,z,0,.5,0);n.push(x*.72,.7,z*.72,x*.72,.7,z*.72)}
- for(let i=0;i<s;i++)ind.push(2*i,2*i+1,2*i+2);
- return makeMesh(v,n,ind);
+// Ears are triangular prism meshes, not pointed cones.
+function triangleEar(){
+  const v=[-.19,-.12,.045,.19,-.12,.045,-.03,.43,0,-.17,-.12,-.12,.17,-.12,-.12,-.03,.43,-.11];
+  const n=[0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1];
+  return makeMesh(v,n,[0,1,2,5,4,3,0,3,4,0,4,1,1,4,5,1,5,2,2,5,3,2,3,0]);
 }
-function tailMesh(){
- const points=[[0,0,0,.19],[-.27,.05,0,.19],[-.53,.26,0,.18],[-.77,.51,0,.16],[-.92,.77,0,.14],[-.95,1.03,0,.12],[-.82,1.2,0,.1],[-.62,1.24,0,.07],[-.51,1.12,0,.015]];
- let v=[],n=[],ind=[],s=10;
- for(let i=0;i<points.length;i++){let p=points[i],a=points[Math.max(i-1,0)],b=points[Math.min(i+1,points.length-1)],dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;
- for(let j=0;j<=s;j++){let t=2*Math.PI*j/s,nx=-dy/l*Math.cos(t),ny=dx/l*Math.cos(t),nz=Math.sin(t);v.push(p[0]+p[3]*nx,p[1]+p[3]*ny,p[2]+p[3]*nz);n.push(nx,ny,nz)}}
- for(let i=0;i<points.length-1;i++)for(let j=0;j<s;j++){let a=i*(s+1)+j,b=a+s+1;ind.push(a,a+1,b,a+1,b+1,b)}
- return makeMesh(v,n,ind);
+function innerEar(){
+  return makeMesh([-.12,-.085,.067,.12,-.085,.067,-.028,.293,.073],[0,0,1,0,0,1,0,0,1],[0,1,2]);
 }
-const ball=sphere(),ear=cone(),tail=tailMesh();
+function triangleNose(){
+  return makeMesh([-.066,0,0,.066,0,0,0,-.074,.002],[0,0,1,0,0,1,0,0,1],[0,1,2]);
+}
+function smoothPath(points,sections=6){
+  const out=[];
+  for(let i=0;i<points.length-1;i++){
+    const a=points[Math.max(0,i-1)],b=points[i],c=points[i+1],d=points[Math.min(points.length-1,i+2)];
+    for(let j=0;j<sections;j++){
+      const t=j/sections,t2=t*t,t3=t2*t;
+      out.push(b.map((v,k)=>.5*((2*v)+(-a[k]+c[k])*t+(2*a[k]-5*v+4*c[k]-d[k])*t2+(-a[k]+3*v-3*c[k]+d[k])*t3)));
+    }
+  }
+  out.push(points[points.length-1]);
+  return out;
+}
+function tube(points,side=9){
+ const verts=[],norms=[],inds=[];
+ for(let i=0;i<points.length;i++){
+  const p=points[i],a=points[Math.max(i-1,0)],b=points[Math.min(i+1,points.length-1)],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1;
+  for(let j=0;j<=side;j++){
+   const t=2*Math.PI*j/side,nx=-dy/len*Math.cos(t),ny=dx/len*Math.cos(t),nz=Math.sin(t);
+   verts.push(p[0]+p[3]*nx,p[1]+p[3]*ny,p[2]+p[3]*nz);norms.push(nx,ny,nz);
+  }
+ }
+ for(let i=0;i<points.length-1;i++)for(let j=0;j<side;j++){
+   const a=i*(side+1)+j,b=a+side+1;inds.push(a,a+1,b,b,a+1,b+1);
+ }
+ return makeMesh(verts,norms,inds);
+}
+const ball=sphere(),ear=triangleEar(),earPink=innerEar(),noseShape=triangleNose();
+const tail=tube(smoothPath([[-.43,-1.20,-.30,.14],[-.74,-1.21,-.36,.135],[-.99,-1.03,-.35,.115],[-1.10,-.68,-.34,.10],[-1.05,-.34,-.33,.09],[-.88,-.23,-.34,.075],[-.76,-.31,-.36,.008]]));
+const whisker=tube(smoothPath([[0,0,0,.010],[.12,.01,0,.008],[.28,.055,-.015,.005],[.42,.13,-.035,.002]],4),6);
+const mouthCurve=tube([[0,0,0,.007],[.046,-.024,.005,.006],[.085,-.015,0,.002]],6);
 const T=(x,y,z)=>[1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1];
 const S=(x,y,z)=>[x,0,0,0,0,y,0,0,0,0,z,0,0,0,0,1];
 const Y=a=>[Math.cos(a),0,-Math.sin(a),0,0,1,0,0,Math.sin(a),0,Math.cos(a),0,0,0,0,1];
@@ -95,99 +123,74 @@ function resize(){
  gl.uniformMatrix4fv(uniform.v,false,new Float32Array(T(0,-.03,-6.7)));
 }
 function paint(time){
- resize();
- gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+ resize();gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
  const p=root.TrueCatYearsGrowth.pose(age);
- const {kitten,senior,elder,overallScale,headScale,eyeScale,earScale}=p;
- const coat=blend(fur,silver,p.coatSilver),pale=blend(light,greyLight,senior*.55+elder*.20);
- const dark=blend(deep,color('#8b8c99'),senior*.27);
- const breathe=reduce.matches?0:Math.sin(time*.00135)*.008;
- const headY=.91-.18*kitten-.065*senior+breathe;
- const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6400)-3900)/150),2)*.92;
- const eyesOpen=1-blink,zH=.31;
- const rotation=Y(yaw+(reduce.matches?0:Math.sin(time*.0006)*.012));
- // Shadow remains in ground coordinates; only the character is scaled.
+ const kitten=p.kitten,senior=p.senior,ratio=p.overallScale;
+ const coat=blend(fur,silver,p.coatSilver*.8),warm=blend(color('#f5e9d9'),silver,p.coatSilver*.38),pale=blend(light,silver,p.coatSilver*.3);
+ const ink=blend(deep,silver,senior*.26);
+ const breathe=reduce.matches?0:Math.sin(time*.0014)*.006;
+ const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6700)-3420)/115),2);
+ const headScale=1+.18*kitten-.01*senior,headY=.72-.12*kitten-.04*senior;
+ const rotation=Y(yaw+(reduce.matches?0:Math.sin(time*.00055)*.008));
+ // Shadow is independent from the root growth scale.
  rootM=rotation;
- orb(0,-1.58,-.22,Math.max(.48,1.1*overallScale),.023,.61*overallScale,[.67,.70,.64]);
- rootM=mul(rotation,mul(T(0,p.groundOffset,0),S(overallScale,overallScale,overallScale)));
- draw(tail,-.69,-1.29,-.23,.93,.90,.92,dark,.06+(reduce.matches?0:Math.sin(time*.0013)*.025));
- // Rounded body is intentionally a continuous silhouette rather than
- // a collection of separate toy spheres.
- const bodyTop=-.59-.10*kitten;
- const bodyHalf=1.00*p.bodyHeight;
- orb(0,bodyTop,.025,.72*p.bodyWidth,bodyHalf+breathe,.59*p.bodyWidth,coat);
- orb(0,bodyTop-.02,.492,.45*p.bodyWidth,.67*p.bodyHeight,.113,pale);
- // Tucked haunches and slender legs which lengthen through adolescence.
+ orb(0,-1.545,-.32,Math.max(.45,.93*ratio),.02,.45*ratio,color('#d5bbc0'));
+ // Preserve the existing life-stage growth system and grounded feet.
+ rootM=mul(rotation,mul(T(0,p.groundOffset,0),S(ratio,ratio,ratio)));
+ // Tapered curved tail behind the silhouette (not a stiff hooked stick).
+ draw(tail,0,0,0,1,1,1,blend(coat,ink,.09),0,reduce.matches?0:Math.sin(time*.001)*.045);
+ // Quiet, unified sitting-cat silhouette with tucked hips and narrow forelegs.
+ orb(0,-.62,0,.55*p.bodyWidth,.87*p.bodyHeight+breathe,.47*p.bodyWidth,coat);
+ orb(0,-.63,.30,.39*p.bodyWidth,.70*p.bodyHeight,.22,warm);
  for(const sign of [-1,1]){
-   orb(sign*.52*p.bodyWidth,-1.04,-.06,.35*p.bodyWidth,.43*p.bodyHeight,.37*p.bodyWidth,coat);
-   const legCenter=-1.46+.45*p.legLength;
-   orb(sign*.395,legCenter,.417,.18,.45*p.legLength,.195,coat);
-   orb(sign*.41,-1.445,.582,.253,.082,.255,coat);
-   // Tiny separation lines imply toes; eliminate the six button-like bumps.
-   orb(sign*.41-.075,-1.492,.777,.015,.018,.016,dark);
-   orb(sign*.41+.075,-1.492,.777,.015,.018,.016,dark);
+   orb(sign*.435,-1.075,-.11,.27,.37,.29,coat);
+   const h=.42*p.legLength;
+   orb(sign*.335,-1.41+h,.385,.145,h,.17,coat);
+   orb(sign*.335,-1.46,.535,.20,.094,.225,coat);
+   // Just two toe hints; no disconnected button toes.
+   orb(sign*.335-.067,-1.505,.716,.006,.015,.015,ink);
+   orb(sign*.335+.067,-1.505,.716,.006,.015,.015,ink);
  }
- // Head allometry: a kitten's relatively rounder head becomes an adult
- // feline's slimmer muzzle, while the WHOLE cat grows independently.
- orb(0,headY,zH,.75*headScale,.632*headScale,.575*headScale,coat);
- orb(0,headY-.055,zH+.46*headScale,.42*headScale,.42*headScale,.048,blend(coat,pale,.16));
- // Restrained tabby forehead details follow the skull surface.
- for(const sign of [-1,1])orb(sign*.18*headScale,headY+.433*headScale,zH+.405*headScale,.037,.12,.017,dark,0,-sign*.22);
- // A pale forehead with very faint inky pencil marks instead of a heavy tabby mask.
- orb(0,headY+.445*headScale,zH+.423*headScale,.032,.094,.012,blend(dark,coat,.40));
- // Tilted tapered ears, with recessed pink inner shapes.
+ orb(0,.05,.05,.315,.43,.295,coat);
+ // A smaller head with a feline muzzle; no oversized round robot mask.
+ const headZ=.265;
+ orb(0,headY,headZ,.555*headScale,.495*headScale,.440*headScale,coat);
+ // Bespoke triangular ears, painted inner panels.
  for(const sign of [-1,1]){
-   const ex=sign*.478*headScale,ey=headY+.65*headScale+.16*earScale;
-   draw(ear,ex,ey,zH-.085,.176*headScale*earScale,.446*headScale*earScale,.118,coat,0,-sign*.13);
-   draw(ear,ex,ey-.012,zH+.015,.097*headScale*earScale,.302*headScale*earScale,.031,blend(nose,pale,senior*.26),0,-sign*.13);
+   const x=sign*.350*headScale,y=headY+.427*headScale;
+   draw(ear,x,y,headZ-.08,.85*headScale,.86*headScale,.85*headScale,coat,0,sign*-.15);
+   draw(earPink,x,y,headZ-.012,.85*headScale,.79*headScale,.85*headScale,color('#dba6ae'),0,sign*-.15);
  }
- // Calm, almond-shaped eyes: dark eyelid rim and shallow layered iris,
- // rather than the previous protruding white/green orb stacks.
+ // Embedded almond eyes, no protruding bulbs, eyeliner or uncanny smile.
+ const open=1-.98*blink;
  for(const sign of [-1,1]){
-   const ex=sign*.281*headScale,ey=headY+.095*headScale,ez=zH+.494*headScale;
-   const s=eyeScale;
-   orb(ex,ey,ez,.151*s,.153*s*eyesOpen,.031,dark);
-   orb(ex,ey,ez+.024,.134*s,.137*s*eyesOpen,.030,pale);
-   orb(ex,ey,ez+.052,.105*s,.12*s*eyesOpen,.028,iris);
-   orb(ex,ey,ez+.076,.025*s,.100*s*eyesOpen,.019,pupil);
-   orb(ex-.034*s,ey+.037*s*eyesOpen,ez+.093,.025,.030*eyesOpen+.001,.01,white);
-   orb(ex+.028*s,ey-.042*s*eyesOpen,ez+.09,.009,.012*eyesOpen+.001,.005,white);
-   // Sweeping dark lashes and a finely inked upper eyelid; signature anime expression.
-   orb(ex,ey+.140*s*eyesOpen,ez+.040,.146*s,.016,.018,deep,0,sign*.08);
-   orb(ex+sign*.120*s,ey+.152*s*eyesOpen,ez+.03,.049,.012,.013,deep,0,sign*.37);
-   // A little pink cheek tint, becoming less prominent with maturity.
-   if(kitten>.08)orb(sign*.510*headScale,headY-.156*headScale,zH+.34*headScale,.085*kitten,.046*kitten,.027,blend(nose,pale,.43));
-   if(senior>.02)orb(sign*.598*headScale,headY-.13,zH+.298*headScale,.087*senior,.074*senior,.031,greyLight);
+   const ex=sign*.217*headScale,ey=headY+.008*headScale,ez=headZ+.440*headScale;
+   orb(ex,ey,ez,.113*headScale,.105*headScale*open,.018,ink,0,sign*-.07);
+   orb(ex,ey,ez+.012,.101*headScale,.090*headScale*open,.015,light,0,sign*-.07);
+   orb(ex-sign*.011,ey-.003,ez+.027,.069*headScale,.086*headScale*open,.009,iris);
+   orb(ex-sign*.011,ey-.003,ez+.038,.027*headScale,.070*headScale*open,.007,pupil);
+   orb(ex-sign*.033,ey+.023*open,ez+.045,.018,.022*open+.001,.005,white);
  }
- // A smaller, less protruding muzzle follows facial maturity, with a
- // subtle inverted triangular nose and no cartoon ball cheeks.
- const faceZ=zH+(.495*p.muzzleDepth)*headScale;
- const muzzleW=.207*headScale,muzzleDepth=.091*p.muzzleDepth;
- orb(-.124*headScale,headY-.246*headScale,faceZ,muzzleW,.108*headScale,muzzleDepth,pale);
- orb(.124*headScale,headY-.246*headScale,faceZ,muzzleW,.108*headScale,muzzleDepth,pale);
- draw(ear,0,headY-.227*headScale,faceZ+.097*p.muzzleDepth,.066,.072,.026,nose,0,Math.PI);
- orb(-.072*headScale,headY-.336*headScale,faceZ+.092,.056,.006,.008,dark,0,-.18);
- orb(.072*headScale,headY-.336*headScale,faceZ+.092,.056,.006,.008,dark,0,.18);
- // Individually angled, barely-there whiskers (not a rigid fan).
- for(const sign of [-1,1])for(let i=-1;i<=1;i++){
-   const len=.255+(.04*(i+1)),offset=sign*(.432+.018*(i+1));
-   orb(offset,headY-.274*headScale+i*.082,faceZ+.09,len,.0028,.004,blend(white,greyLight,senior*.3),0,sign*(i*.11+.045));
- }
- // Elegant tapered cheek tufts soften the silhouette instead of toy-like balls.
+ // Short flat cheeks, actual triangular nose and only the hint of a mouth.
+ const muzzleZ=headZ+.390*headScale;
+ orb(-.108*headScale,headY-.209*headScale,muzzleZ,.16*headScale,.082*headScale,.055,pale);
+ orb(.108*headScale,headY-.209*headScale,muzzleZ,.16*headScale,.082*headScale,.055,pale);
+ draw(noseShape,0,headY-.170*headScale,muzzleZ+.065,headScale,headScale,headScale,nose);
+ orb(0,headY-.253*headScale,muzzleZ+.063,.008,.052,.007,ink);
  for(const sign of [-1,1]){
-   orb(sign*.61*headScale,headY-.259,zH+.19*headScale,.122,.053,.044,coat,0,sign*.24);
-   orb(sign*.64*headScale,headY-.313,zH+.16*headScale,.082,.041,.03,coat,0,sign*.36);
+   draw(mouthCurve,sign*.01,headY-.295*headScale,muzzleZ+.073,sign,.9,1,ink,0,sign*-.08);
+   for(let i=0;i<2;i++){
+     draw(whisker,sign*.19,headY-.195-i*.073,muzzleZ+.018,sign*(.72+i*.05),.65,1,blend(light,ink,.4),0,-sign*(.20+i*.15));
+   }
  }
- // Rosy silk neck bow: two soft loops, narrow ribbon tails, gold bell.
- // All components remain inside the scaled 3D root.
- const bowY=.085-.025*kitten;
- orb(0,bowY-.03,.60,.435,.07,.085,ribbonDark);
- for(const sign of [-1,1]){
-   orb(sign*.152,bowY,.735,.163,.090,.055,ribbon,0,sign*.42);
-   orb(sign*.099,bowY-.122,.717,.057,.130,.026,ribbonDark,0,sign*.20);
+ // Very small silk bow, integrated into neck.
+ orb(0,.16,.340,.31,.047,.060,ribbon);
+ for(const sign of [-1,1])orb(sign*.100,.13,.407,.108,.063,.028,ribbon,0,sign*.17);
+ orb(0,.115,.444,.035,.036,.025,gold);
+ // Gentle silver cheek patches only for late life, without implying disease.
+ if(senior>.02)for(const sign of [-1,1]){
+   orb(sign*.42*headScale,headY-.194,headZ+.220*headScale,.062*senior,.055*senior,.018,blend(warm,silver,.5));
  }
- orb(0,bowY,.787,.069,.069,.049,gold);
- orb(0,bowY-.018,.832,.014,.015,.009,white);
 }
 function tick(t){
  raf=0;if(failed||document.hidden||!visible)return;
