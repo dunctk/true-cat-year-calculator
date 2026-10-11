@@ -46,7 +46,7 @@
       <div class="result-actions"><button type="button" id="copy-link" class="action-main">Share your cat's age ↗</button><button type="button" id="reset-age" class="action-alt">Reset</button></div>
       <p id="copy-status" class="sr-only" role="status"></p>
     </div>
-    <div class="scene-panel" aria-label="Cat character in a Parisian backdrop that changes from morning to night as the age slider moves">
+    <div class="scene-panel" aria-label="Cat character in a Parisian day-and-night timelapse controlled by the age slider">
       <!-- The slider scrubs these scenery layers; nothing plays on its own. The cat remains independently rendered in WebGL above them. -->
       <div class="paris-timelapse" aria-hidden="true">
         <div class="tl-warmth"></div>
@@ -91,7 +91,7 @@
           </g>
         </svg>
       </div>
-      <div class="scene-top"><span>✿ LA VIE EN ROSE</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Afternoon</span><span class="scene-status">INTERACTIVE 3D</span></span></div>
+      <div class="scene-top"><span>✿ LA VIE EN ROSE</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Golden hour</span><span class="scene-status">INTERACTIVE 3D</span></span></div>
       <div class="cat-viewport" id="cat-viewport">
         <canvas id="cat-canvas" aria-hidden="true"></canvas>
         <div id="cat-fallback" class="cat-fallback" aria-hidden="true"><svg viewBox="0 0 390 450" class="cat-art" xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +117,7 @@
 </svg></div>
       </div>
       <div class="scene-foot"><span>FROM CHATON TO CHIC</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
-      <p class="scene-note">The Paris sky changes with your cat’s age. The illustration is not a medical assessment.</p>
+      <p class="scene-note">Drag the age slider to fast-forward Parisian days and nights. Artistic illustration only.</p>
     </div>
   </div>
   <div class="life-story-strip" aria-label="Cat life stages"><div class="life-stage"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>0–1 year</small></span></div><div class="life-stage"><span class="life-icon">♧</span><span><strong>Young adult</strong><small>1–6 years</small></span></div><div class="life-stage"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–14 years</small></span></div><div class="life-stage"><span class="life-icon">❀</span><span><strong>Senior</strong><small>15+ years</small></span></div></div><div class="comparison-band"><div><span class="mini-overline">THE SAME CAT, THREE ANSWERS</span><p>Why the method matters</p></div><div><strong id="compare-seven">105</strong><small>The old 7× rule</small></div><div><strong id="compare-vet">76</strong><small>Common veterinary chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our longevity-based model</small></div></div>

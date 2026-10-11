@@ -1,33 +1,43 @@
 /**
- * An age-scrubbed Parisian backdrop — no autoplay, timers, or RAF.
- * CSS keyframes are paused permanently. Setting their negative delay chooses
- * the exact illustrated moment as the user drags the age slider (either way).
+ * True Cat Years: interactive fast-forward Paris timelapse.
+ *
+ * Each two CAT YEARS advances the illustration through one complete
+ * day → sunset → night → dawn cycle. Ages scrub the scene directly; when the
+ * user stops moving a control, time stops. There are no timers, autoplay,
+ * running animations or network resources.
  */
 (function(root){
  'use strict';
  const scene=document.querySelector('.scene-panel');
  const daypart=document.getElementById('scene-daypart');
- const DURATION_SECONDS=42;
  const MAX_AGE=root.TrueCatYearsModel?.CAT_MAX || 38+3/365.2425;
+ const SECONDS_IN_STORYBOARD=42; // CSS sampling domain, NOT elapsed time.
+ const YEARS_PER_ILLUSTRATED_DAY=2;
  if(!scene)return;
- const clamp=v=>Math.min(1,Math.max(0,v));
- function labelFor(progress){
-   if(progress<.17)return 'Morning';
-   if(progress<.44)return 'Afternoon';
-   if(progress<.64)return 'Golden hour';
-   if(progress<.78)return 'Dusk';
-   return 'Night';
+ function frameForAge(value){
+   const age=Number(value);
+   if(!Number.isFinite(age))return null;
+   const clamped=Math.min(MAX_AGE,Math.max(0,age));
+   const elapsedDays=clamped/YEARS_PER_ILLUSTRATED_DAY;
+   const progress=elapsedDays-Math.floor(elapsedDays);
+   return Object.freeze({age:clamped,progress,days:elapsedDays,
+     delay:(-SECONDS_IN_STORYBOARD*progress).toFixed(5)+'s'});
+ }
+ function daypartFor(progress){
+   if(progress<.14 || progress>=.94)return 'Sunrise';
+   if(progress<.40)return 'Daylight';
+   if(progress<.60)return 'Golden hour';
+   if(progress<.72)return 'Sunset';
+   return 'Starry night';
  }
  function setAge(value){
-   const numeric=Number(value);
-   if(!Number.isFinite(numeric))return;
-   const fraction=clamp(numeric/MAX_AGE);
-   // At 100%, iteration-count=1 and fill-mode=both hold the NIGHT frame.
-   scene.style.setProperty('--tl-delay',(-DURATION_SECONDS*fraction).toFixed(5)+'s');
-   if(daypart)daypart.textContent=labelFor(fraction);
+   const frame=frameForAge(value);
+   if(!frame)return;
+   scene.style.setProperty('--tl-delay',frame.delay);
+   if(daypart)daypart.textContent=daypartFor(frame.progress);
  }
- root.TrueCatYearsTimelapse=Object.freeze({setAge});
- // Match the default calculator state before app.js runs. app.js then handles
- // share links, year/month input, presets, reset, and every slider input.
+ root.TrueCatYearsTimelapse=Object.freeze({setAge,frameForAge,daypartFor});
+ // Start in the same state as the initial calculator display. app.js will
+ // immediately sync the state to ?age=... and all subsequent user inputs.
  setAge(15);
 })(globalThis);

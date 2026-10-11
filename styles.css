@@ -165,23 +165,21 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
 
 
 
-/* AGE-SCRUBBED PARIS SKY
-   0 cat years = sunrise; record cat = night.
-   Every animation is permanently PAUSED: negative animation-delay sets the
-   illustrated frame directly from the age slider. No timer / autoplay. */
-.scene-panel{--tl-duration:42s;--tl-delay:-16.574s}
+/* FAST-FORWARD PARIS — ONE DAY/NIGHT PER TWO CAT YEARS
+   The storyboard is sampled via --tl-delay. Animation is ALWAYS paused.
+   Both 0% and 100% match, so the age slider can spin through day/night
+   cycles smoothly, forward or backward, without resets or autoplay. */
+.scene-panel{--tl-duration:42s;--tl-delay:-21s}
 .paris-timelapse{
- position:absolute;inset:-6px;z-index:0;overflow:hidden;pointer-events:none;
- filter:blur(2.5px);transform:scale(1.015);
+ position:absolute;inset:-6px;z-index:0;overflow:hidden;
+ pointer-events:none;filter:blur(2.5px);transform:scale(1.015);
 }
 .paris-timelapse .tl-warmth,
 .paris-timelapse .tl-sunset,
-.paris-timelapse .tl-nightfall{
- position:absolute;inset:0;pointer-events:none;opacity:0;
-}
-.tl-warmth{background:linear-gradient(115deg,rgba(255,247,211,.18) 14%,rgba(255,202,149,.26) 75%)}
-.tl-sunset{background:linear-gradient(180deg,rgba(250,132,129,.33),rgba(246,145,156,.37) 60%,rgba(241,156,99,.15))}
-.tl-nightfall{background:linear-gradient(180deg,rgba(22,29,67,.82),rgba(42,38,82,.69) 62%,rgba(32,36,72,.74))}
+.paris-timelapse .tl-nightfall{position:absolute;inset:0;pointer-events:none;opacity:0}
+.tl-warmth{background:linear-gradient(115deg,rgba(255,245,206,.12) 12%,rgba(255,211,169,.28) 77%)}
+.tl-sunset{background:linear-gradient(180deg,rgba(245,133,130,.33),rgba(239,139,156,.37) 60%,rgba(235,142,94,.15))}
+.tl-nightfall{background:linear-gradient(180deg,rgba(21,28,68,.84),rgba(43,39,83,.74) 62%,rgba(29,39,77,.82))}
 .tl-animation-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .tl-clouds,.tl-sun,.tl-moon,.tl-stars,.tl-windows .tl-window-early,.tl-windows .tl-window-late{transform-box:view-box}
 .paris-timelapse .tl-warmth,
@@ -196,59 +194,69 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
  animation-duration:var(--tl-duration);
  animation-timing-function:linear;
  animation-delay:var(--tl-delay);
- animation-play-state:paused;
+ animation-play-state:paused!important;
  animation-iteration-count:1;
  animation-fill-mode:both;
 }
 .tl-warmth{animation-name:tl-warmth}
 .tl-sunset{animation-name:tl-sunset}
 .tl-nightfall{animation-name:tl-night}
-.tl-clouds{opacity:.52;animation-name:tl-clouds}
+.tl-clouds{animation-name:tl-clouds}
 .tl-sun{animation-name:tl-sun-path}
 .tl-moon{animation-name:tl-moon-path}
 .tl-stars{animation-name:tl-stars-in}
 .tl-window-early{animation-name:tl-lights}
 .tl-window-late{animation-name:tl-lights-late}
+/* Don't autoplay twinkling; the stars themselves are scrubbed as well. */
 .tl-stars-a,.tl-stars-b{opacity:1}
 @keyframes tl-warmth{
- 0%{opacity:.12}20%{opacity:.22}37%{opacity:.16}
- 53%{opacity:.42}66%{opacity:.7}79%{opacity:.03}100%{opacity:0}
+ 0%,100%{opacity:.12}13%{opacity:.38}32%{opacity:.21}
+ 50%{opacity:.55}66%{opacity:.12}83%{opacity:0}94%{opacity:.035}
 }
 @keyframes tl-sunset{
- 0%,39%{opacity:0}53%{opacity:.35}
- 65%{opacity:.85}75%{opacity:.42}86%,100%{opacity:0}
+ 0%,100%{opacity:0}39%{opacity:0}53%{opacity:.47}
+ 62%{opacity:.84}73%{opacity:.23}78%{opacity:0}
 }
 @keyframes tl-night{
- 0%,51%{opacity:0}64%{opacity:.08}73%{opacity:.30}
- 85%{opacity:.75}100%{opacity:.9}
+ 0%,100%{opacity:0}58%{opacity:0}67%{opacity:.17}
+ 78%{opacity:.80}86%{opacity:.91}91%{opacity:.77}95%{opacity:.30}
 }
 @keyframes tl-sun-path{
- 0%{opacity:.68;transform:translate(-105px,119px)}
- 21%{opacity:.86;transform:translate(-30px,42px)}
- 38%{opacity:.85;transform:translate(80px,-40px)}
- 59%{opacity:.93;transform:translate(244px,38px)}
- 73%{opacity:0;transform:translate(370px,195px)}
- 100%{opacity:0;transform:translate(370px,195px)}
+ 0%,100%{opacity:.52;transform:translate(-130px,111px)}
+ 13%{opacity:.82;transform:translate(-50px,37px)}
+ 31%{opacity:.91;transform:translate(68px,-37px)}
+ 49%{opacity:.86;transform:translate(202px,13px)}
+ 65%{opacity:.90;transform:translate(339px,149px)}
+ 75%,94%{opacity:0;transform:translate(390px,195px)}
+ 96%{opacity:.14;transform:translate(-145px,134px)}
 }
 @keyframes tl-moon-path{
- 0%,62%{opacity:0;transform:translate(350px,160px)}
- 73%{opacity:.15;transform:translate(304px,88px)}
- 86%{opacity:.72;transform:translate(215px,-16px)}
- 100%{opacity:.92;transform:translate(120px,-78px)}
+ 0%,100%{opacity:0;transform:translate(330px,168px)}
+ 64%{opacity:0;transform:translate(330px,168px)}
+ 73%{opacity:.46;transform:translate(280px,78px)}
+ 86%{opacity:.93;transform:translate(178px,-63px)}
+ 94%{opacity:.40;transform:translate(88px,3px)}
+ 98%{opacity:0;transform:translate(52px,93px)}
 }
 @keyframes tl-stars-in{
- 0%,67%{opacity:0}82%{opacity:.48}100%{opacity:.95}
+ 0%,100%{opacity:0}66%{opacity:0}
+ 78%{opacity:.60}85%{opacity:.96}
+ 91%{opacity:.76}97%{opacity:0}
 }
 @keyframes tl-lights{
- 0%,62%{opacity:0}76%{opacity:.43}88%,100%{opacity:.92}
+ 0%,100%{opacity:0}66%{opacity:0}
+ 76%{opacity:.67}85%{opacity:.95}92%{opacity:.50}98%{opacity:0}
 }
 @keyframes tl-lights-late{
- 0%,69%{opacity:0}82%{opacity:.38}100%{opacity:.78}
+ 0%,100%{opacity:0}72%{opacity:0}
+ 81%{opacity:.51}89%{opacity:.87}95%{opacity:.22}98%{opacity:0}
 }
 @keyframes tl-clouds{
- 0%{transform:translate(-27px,4px)}
- 50%{transform:translate(22px,-4px)}
- 100%{transform:translate(64px,-1px)}
+ 0%,100%{opacity:.52;transform:translate(-28px,3px)}
+ 28%{opacity:.53;transform:translate(-2px,-5px)}
+ 52%{opacity:.34;transform:translate(27px,3px)}
+ 81%{opacity:.14;transform:translate(49px,-7px)}
+ 94%{opacity:.27;transform:translate(55px,-3px)}
 }
 .scene-status-wrap{display:flex;align-items:center;gap:7px}
 .scene-daypart{
@@ -259,5 +267,3 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
  white-space:nowrap;
 }
 @media(max-width:700px){.scene-daypart{font-size:8px;padding:5px 7px}}
-/* People requesting reduced motion still see the age they explicitly select.
-   Nothing animates between frames; the CSS timeline is always paused. */
