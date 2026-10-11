@@ -72,3 +72,7 @@ The site uses an original illustrated Paris balcony, warm ivory paper, Paris blu
 ## WebGL character refinement
 
 The original October anime restyle looked uncanny because of glued-on spheres, bulging eye layers and black ear-cones. The current lightweight native WebGL character has triangular 3D ears, much smaller embedded almond eyes, a short feline muzzle, subtle mouth and whiskers, a tapered curved tail and a sitting silhouette with calmer proportions. The shader uses *matte* pastel cel shading (no shiny plastic highlights). The existing `cat-growth.js` remains the only source for overall age-to-size changes; feet stay grounded and animation respects reduced-motion. The picture remains artistic rather than medical.
+
+## Paris background timelapse
+
+The illustrated balcony now includes a **42-second seamless day-to-night cycle** built with lightweight CSS keyframes and an inline SVG overlay that shares the scene viewBox with the static background. Sunlight crosses the skyline, the sunset warms the rooftops, an evening tint falls, apartment windows light up, and the moon/stars appear before dawn. The existing 2.5px scenery-only blur remains; the WebGL cat and labels are unaffected. A tiny pause/play button, offscreen/tab pausing, and `prefers-reduced-motion` support are included. No video files, networking, GitHub Actions minutes or new dependencies.

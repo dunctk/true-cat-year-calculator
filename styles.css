@@ -162,3 +162,97 @@ nav{font-family:var(--serif);font-size:14px;letter-spacing:.03em}nav .nav-github
 }
 .scene-panel .cat-viewport{position:relative;z-index:1}
 .scene-panel .scene-top,.scene-panel .scene-foot,.scene-panel .scene-note{position:relative;z-index:2}
+
+
+/* PARIS TIMELAPSE — daylight / golden hour / dusk / night / dawn in 42s.
+   This compositor-friendly paint layer remains behind WebGL, with the same
+   depth-of-field blur as the illustrated SVG background. */
+.scene-panel {--tl-duration:42s}
+.paris-timelapse{
+  position:absolute;inset:-6px;z-index:0;overflow:hidden;
+  pointer-events:none;filter:blur(2.5px);transform:scale(1.015);
+}
+.paris-timelapse .tl-warmth,
+.paris-timelapse .tl-sunset,
+.paris-timelapse .tl-nightfall{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  will-change:opacity;
+}
+.tl-warmth{background:linear-gradient(115deg,rgba(255,247,211,.18) 14%,rgba(255,202,149,.26) 75%);animation:tl-warmth var(--tl-duration) linear infinite}
+.tl-sunset{background:linear-gradient(180deg,rgba(250,132,129,.33),rgba(246,145,156,.37) 60%,rgba(241,156,99,.15));animation:tl-sunset var(--tl-duration) linear infinite}
+.tl-nightfall{background:linear-gradient(180deg,rgba(22,29,67,.82),rgba(42,38,82,.69) 62%,rgba(32,36,72,.74));animation:tl-night var(--tl-duration) linear infinite}
+.tl-animation-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tl-clouds,.tl-sun,.tl-moon,.tl-stars,.tl-windows .tl-window-early,.tl-windows .tl-window-late{transform-box:view-box;opacity:0}
+.tl-clouds{opacity:.52;animation:tl-clouds var(--tl-duration) ease-in-out infinite}
+.tl-sun{animation:tl-sun-path var(--tl-duration) linear infinite}
+.tl-moon{animation:tl-moon-path var(--tl-duration) linear infinite}
+.tl-stars{animation:tl-stars-in var(--tl-duration) linear infinite}
+.tl-stars-a{animation:tl-twinkle 3.8s ease-in-out infinite}
+.tl-stars-b{animation:tl-twinkle 4.6s ease-in-out -1.8s infinite}
+.tl-windows .tl-window-early{animation:tl-lights var(--tl-duration) linear infinite}
+.tl-windows .tl-window-late{animation:tl-lights-late var(--tl-duration) linear infinite}
+@keyframes tl-warmth{
+  0%,8%{opacity:.04}26%{opacity:.13}42%{opacity:.20}52%{opacity:.55}
+  65%,89%{opacity:0}100%{opacity:.04}
+}
+@keyframes tl-sunset{
+  0%,31%{opacity:0}43%{opacity:.29}54%{opacity:.72}
+  65%{opacity:.20}71%,91%{opacity:0}100%{opacity:0}
+}
+@keyframes tl-night{
+  0%,42%{opacity:0}52%{opacity:.13}63%{opacity:.57}
+  73%,84%{opacity:.85}91%{opacity:.53}98%,100%{opacity:0}
+}
+@keyframes tl-sun-path{
+  0%{opacity:.14;transform:translate(-105px,132px)}
+  16%{opacity:.65;transform:translate(-40px,55px)}
+  35%{opacity:.67;transform:translate(85px,-23px)}
+  48%{opacity:.78;transform:translate(221px,31px)}
+  60%{opacity:.84;transform:translate(352px,143px)}
+  67%,100%{opacity:0;transform:translate(395px,210px)}
+}
+@keyframes tl-moon-path{
+  0%,57%{opacity:0;transform:translate(348px,170px)}
+  68%{opacity:.72;transform:translate(305px,25px)}
+  83%{opacity:.90;transform:translate(188px,-60px)}
+  92%{opacity:.60;transform:translate(84px,-11px)}
+  99%,100%{opacity:0;transform:translate(36px,85px)}
+}
+@keyframes tl-stars-in{
+  0%,60%{opacity:0}71%{opacity:.74}
+  83%{opacity:.92}92%{opacity:.42}99%,100%{opacity:0}
+}
+@keyframes tl-twinkle{0%,100%{opacity:.60}50%{opacity:1}}
+@keyframes tl-lights{
+  0%,54%{opacity:0}64%{opacity:.36}72%,85%{opacity:.92}
+  91%{opacity:.43}99%,100%{opacity:0}
+}
+@keyframes tl-lights-late{
+  0%,61%{opacity:0}70%{opacity:.34}78%,87%{opacity:.78}
+  95%{opacity:.25}99%,100%{opacity:0}
+}
+@keyframes tl-clouds{
+  0%{transform:translate(-26px,0)}
+  50%{transform:translate(28px,-4px)}
+  100%{transform:translate(65px,2px)}
+}
+.scene-status-wrap{display:flex;align-items:center;gap:7px}
+.timelapse-toggle{
+  display:grid;place-items:center;flex:0 0 30px;height:30px;
+  border:1px solid #d4a8a9;border-radius:99px;
+  color:#825d77;background:rgba(255,248,237,.84);
+  font-size:11px;line-height:1;padding:0;
+  cursor:pointer;position:relative;z-index:3;
+}
+.timelapse-toggle:hover{background:#fffaf0}
+.timelapse-toggle:focus-visible{outline:3px solid #344754;outline-offset:2px}
+.scene-panel.is-timelapse-paused .paris-timelapse *,
+.scene-panel.is-timelapse-offscreen .paris-timelapse *,
+.scene-panel.is-timelapse-paused .paris-timelapse,
+.scene-panel.is-timelapse-offscreen .paris-timelapse{
+  animation-play-state:paused!important;
+}
+@media(prefers-reduced-motion:reduce){
+ .paris-timelapse{display:none}
+ .timelapse-toggle{display:none}
+}
