@@ -63,7 +63,7 @@ test('Spanish calculator renders comma decimals without breaking CSS or language
  const {el,langLink}=runApp('es','/');
  assert.equal(el('result-years').textContent,'49,0');
  assert.equal(el('ratio').textContent,'3,22165');
- assert.match(el('progress-bar').style.width,/^39\\.\d+%$/);
+ assert.match(el('progress-bar').style.width,/^39\.\d+%$/);
  const url=new URL(langLink.href);
  assert.equal(url.pathname,'/');
  assert.equal(url.searchParams.get('method'),'adjusted');
