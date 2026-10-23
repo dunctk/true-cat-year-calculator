@@ -27,7 +27,7 @@ $('compare-seven').textContent=fmt(age*7);$('compare-vet').textContent=fmt(vet(a
 $('ratio').textContent=fmt(RATIO,5);$('boost').textContent=fmt(BOOST,4);
 $('mode-adjusted').classList.toggle('active',mode==='adjusted');$('mode-linear').classList.toggle('active',mode==='linear');
 $('mode-adjusted').setAttribute('aria-pressed',String(mode==='adjusted'));$('mode-linear').setAttribute('aria-pressed',String(mode==='linear'));
-$('mode-description').textContent=mode==='adjusted'?'A teenage analogy at age two, then a fading early-maturity boost over the longevity-record baseline. Illustrative, not clinical.':'An equal percentage of each species’ record lifespan. Simple, but it does not reflect rapid early feline development.';
+$('mode-description').textContent=mode==='adjusted'?'Record-anchored, with a boost for early maturity. Not clinical.':'Equal shares of each longevity record. Ignores early maturation.';
 document.querySelectorAll('.presets [data-age]').forEach(b=>b.classList.toggle('active',Math.abs(Number(b.dataset.age)-age)<.04));
 document.querySelectorAll('.life-story-strip .life-stage').forEach((b,i)=>{
   const active=[age<1,age>=1&&age<7,age>=7&&age<=10,age>10][i];
@@ -42,11 +42,11 @@ function baseGrid(el,maxX,maxY,xVals,yVals){const w=550,h=295,l=43,r=14,t=14,b=3
 function points(fn,maxX,steps,x,y){let d='';for(let i=0;i<=steps;i++){const a=i*maxX/steps;d+=(i?'L':'M')+x(a).toFixed(2)+','+y(fn(a)).toFixed(2)}return d}
 function drawCharts(){
  const el=$('age-chart'),g=baseGrid(el,38.1,270,[0,10,20,30,38],[0,60,120,180,240]);
- const curves=[[c=>7*c,'#b7aac6',2,'5 5'],[linear,'#77a9ad',2.6,'6 5'],[adjusted,'#b65e96',4,'']];
+ const curves=[[c=>7*c,'#b7bfc0',2,'5 5'],[linear,'#4c9893',2.6,'6 5'],[adjusted,'#d39a53',4,'']];
  for(const [fn,color,width,dash] of curves){const p=draw('path',{d:points(fn,CAT_MAX,180,g.x,g.y),stroke:color,'stroke-width':width,fill:'none','stroke-linecap':'round'});if(dash)p.setAttribute('stroke-dasharray',dash);el.append(p)}
  const v=mode==='adjusted'?adjusted(age):linear(age);
- el.append(draw('line',{x1:g.x(age),x2:g.x(age),y1:g.y(v),y2:g.y(0),stroke:'#aa83ae','stroke-dasharray':'3 5'}));
- el.append(draw('circle',{cx:g.x(age),cy:g.y(v),r:6,fill:'#b65e96',stroke:'#fffdf7','stroke-width':2}));
+ el.append(draw('line',{x1:g.x(age),x2:g.x(age),y1:g.y(v),y2:g.y(0),stroke:'#829a9c','stroke-dasharray':'3 5'}));
+ el.append(draw('circle',{cx:g.x(age),cy:g.y(v),r:6,fill:'#d39a53',stroke:'#fffdf7','stroke-width':2}));
  const chart=$('survival-chart'),c=baseGrid(chart,20,100,[0,5,10,15,20],[0,25,50,75,100]);
  const d=points(n=>100*surv(n),20,100,c.x,c.y);
  chart.append(draw('path',{d:d+'L'+c.x(20)+','+c.y(0)+'L'+c.x(0)+','+c.y(0)+'Z',fill:'#e2eeec'}));
@@ -60,7 +60,7 @@ document.querySelectorAll('[data-age]').forEach(b=>b.addEventListener('click',()
 $('mode-adjusted').addEventListener('click',()=>{mode='adjusted';render()});
 $('mode-linear').addEventListener('click',()=>{mode='linear';render()});
 $('reset-age').addEventListener('click',()=>{mode='adjusted';useAge(15)});
-$('copy-link').addEventListener('click',async()=>{const u=new URL(location.href);u.searchParams.set('age',fmt(age,4));u.searchParams.set('method',mode);if(document.getElementById('portrait-3d')?.getAttribute('aria-pressed')==='true')u.searchParams.set('view','3d');else u.searchParams.delete('view');const b=$('copy-link');try{await navigator.clipboard.writeText(u.toString());b.textContent='Link copied ✓';$('copy-status').textContent='Link copied to clipboard.'}catch(e){b.textContent='Copy unavailable';$('copy-status').textContent='Copy is unavailable; use the page URL.'}setTimeout(()=>{b.innerHTML='Copy shareable link <span aria-hidden="true">↗</span>'},2000)});
+$('copy-link').addEventListener('click',async()=>{const u=new URL(location.href);u.searchParams.set('age',fmt(age,4));u.searchParams.set('method',mode);if(document.getElementById('portrait-3d')?.getAttribute('aria-pressed')==='true')u.searchParams.set('view','3d');else u.searchParams.delete('view');const b=$('copy-link');try{await navigator.clipboard.writeText(u.toString());b.textContent='Link copied ✓';$('copy-status').textContent='Link copied to clipboard.'}catch(e){b.textContent='Copy unavailable';$('copy-status').textContent='Copy is unavailable; use the page URL.'}setTimeout(()=>{b.innerHTML='Share <span aria-hidden="true">↗</span>'},2000)});
 // Keep the 3D character beside the slider on small screens. On desktop,
  // return it to the second grid column; WebGL resizes with its container.
  const mobile=matchMedia('(max-width:700px)');
