@@ -19,10 +19,10 @@ const color=h=>[0,2,4].map(i=>parseInt(h.slice(i+1,i+3),16)/255);
 const blend=(a,b,t)=>a.map((v,i)=>lerp(v,b[i],t));
 // Hand-painted anime palette: matte cel-shaded fur and jewel-toned eyes.
 // Keep the features flush with the face rather than adding spherical eyeballs.
-const fur=color('#f2dfd3'),silver=color('#b1b7c6'),light=color('#fff1e8');
-const deep=color('#635a79'),nose=color('#d786a5'),blush=color('#efadb8');
-const iris=color('#72c1b9'),pupil=color('#334862'),white=color('#fffaf3');
-const ribbon=color('#c978a2'),gold=color('#e8ba79');
+const fur=color('#d9e3dd'),silver=color('#96a9b1'),light=color('#f4f2e9');
+const deep=color('#273e4b'),nose=color('#b98a6d'),blush=color('#c9b6a5');
+const iris=color('#5ba89e'),pupil=color('#203e4b'),white=color('#f6f7ef');
+const ribbon=color('#315d69'),gold=color('#e1ac62');
 let gl;
 try{gl=canvas.getContext('webgl',{alpha:true,antialias:true,powerPreference:'low-power'});}catch(e){return}
 if(!gl)return;

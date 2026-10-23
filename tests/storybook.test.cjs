@@ -51,10 +51,10 @@ test('illustration is the default and WebGL sleeps',()=>{
 test('kitten and elder chapters and silhouette evolve with age',()=>{
   const f=load();
   f.root.TrueCatYearsStorybook.setAge(.5);
-  assert.match(f.els.get('story-chapter').textContent,/CHAPTER I/);
+  assert.match(f.els.get('story-chapter').textContent,/01 \/ KITTEN/);
   assert.match(f.els.get('anime-whole').getAttribute('transform'),/scale\(0\.5800\)/);
   f.root.TrueCatYearsStorybook.setAge(35);
-  assert.match(f.els.get('story-chapter').textContent,/CHAPTER V/);
+  assert.match(f.els.get('story-chapter').textContent,/05 \/ LONG-LIVED/);
   assert.equal(f.els.get('anime-silver').getAttribute('opacity'),'0.510');
 });
 
