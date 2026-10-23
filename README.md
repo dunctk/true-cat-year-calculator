@@ -9,7 +9,7 @@ The original anime/Parisian cat redesign is now organised in [blender/](blender/
 - 7× cat years assumes a fixed rate of ageing. Our baseline is the verified longevity-record percentage with a rapidly fading boost for early maturation.
 - The curve is anchored to **Creme Puff (38 years, 3 days)** and **Jeanne Calment (122 years, 164 days)**. We deliberately model 2 cat years as **17 human years** (a subjective teenage analogy, not a scientific conversion), while 15 and 20 cat years remain close to the longevity-record percentage.
 - Toggle a direct percentage-of-record conversion, and compare the result with the familiar veterinary life-stage chart and the simplistic 7× rule.
-- A **separate** empirical survival chart (Teng et al., 2024) and kidney disease treatment evidence avoid conflating biological age with observed mortality.
+- A **separate** empirical survival chart (Teng et al., 2024) avoids conflating biological age with observed mortality.
 - Explicitly **not** a medically validated predictor of biological age or an individual cat's remaining lifespan.
 
 ## Equation
@@ -26,6 +26,14 @@ The formula is a designed analogy with transparent assumptions, **not a validate
 ## Tests
 
 Run `node --test tests/*.test.cjs` locally. No workflow, dependencies or Actions minutes.
+
+## English and Spanish
+
+- English: [catyear.pages.dev/](https://catyear.pages.dev/), Spanish: [catyear.pages.dev/es/](https://catyear.pages.dev/es/).
+- `es/index.html` is a standalone, indexable translation; assets and age models are shared from the repository root. Both pages declare self-canonicals and reciprocal `hreflang` links, also listed in `sitemap.xml`.
+- UI calculations, data and chart logic stay identical. Shared scripts localize age-stage names, scene captions, day/night labels, copying/sharing messages and the table. Decimal commas are for display only: sliders, CSS widths and URL query parameters retain machine-readable decimal points.
+- The EN/ES switch preserves the currently selected age, conversion method and optional 3D view. No geolocation, redirect or language cookie is needed.
+- Run `node --test tests/*.test.cjs` to check both language pages and the calculation anchors.
 
 ## Hosting: Cloudflare Pages (no GitHub Actions)
 Pure HTML, CSS and vanilla JavaScript: **no build step, dependencies, or GitHub Actions**. The site is safe to serve from the repository root, from a GitHub Pages repository subpath, or via Cloudflare Pages.
