@@ -1,9 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 700" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="sky" x2=".15" y2="1"><stop stop-color="#b5c8e2"/><stop offset=".48" stop-color="#e8ced7"/><stop offset="1" stop-color="#ffe5c6"/></linearGradient><radialGradient id="sun"><stop stop-color="#ffeecf" stop-opacity=".8"/><stop offset="1" stop-color="#ffeecf" stop-opacity="0"/></radialGradient><linearGradient id="seat" x2="0" y2="1"><stop stop-color="#ebbab5"/><stop offset="1" stop-color="#c37f98"/></linearGradient><pattern id="paper" patternUnits="userSpaceOnUse" width="25" height="23"><circle cx="6" cy="4" r=".8" fill="#fff" opacity=".35"/><circle cx="14" cy="17" r=".6" fill="#755a72" opacity=".1"/></pattern></defs>
+<defs><linearGradient id="sky" x2=".15" y2="1"><stop stop-color="#a4b9e4"/><stop offset=".48" stop-color="#e9bfd9"/><stop offset="1" stop-color="#ffe8c3"/></linearGradient><radialGradient id="sun"><stop stop-color="#ffeecf" stop-opacity=".8"/><stop offset="1" stop-color="#ffeecf" stop-opacity="0"/></radialGradient><linearGradient id="seat" x2="0" y2="1"><stop stop-color="#ebbab5"/><stop offset="1" stop-color="#c37f98"/></linearGradient><pattern id="paper" patternUnits="userSpaceOnUse" width="25" height="23"><circle cx="6" cy="4" r=".8" fill="#fff" opacity=".35"/><circle cx="14" cy="17" r=".6" fill="#755a72" opacity=".1"/></pattern></defs>
 <rect width="760" height="700" fill="#fcf1df"/><path d="M75-4H687V563H75Z" fill="url(#sky)"/><circle cx="540" cy="126" r="210" fill="url(#sun)"/>
-<g fill="#f8f2e7" opacity=".36"><ellipse cx="195" cy="109" rx="110" ry="15"/><ellipse cx="590" cy="158" rx="80" ry="12"/></g>
-<g stroke="#8d95ab" stroke-width="3" stroke-linejoin="round"><path d="M79 401V296L125 269L168 298V402Z" fill="#bcb6c4"/><path d="M164 404V261L213 227L263 263V405Z" fill="#a9b0c2"/><path d="M259 411V326L306 288L352 324V411Z" fill="#b5afbf"/><path d="M351 410V281L399 254L443 289V410Z" fill="#c6b7c1"/><path d="M444 409V337L485 312L530 333V409Z" fill="#acafbf"/><path d="M531 409V290L575 260L625 288V409Z" fill="#c2b5bb"/><path d="M627 406V314L675 283V407Z" fill="#afb2bd"/></g>
+<g fill="#fff9f5" opacity=".55"><ellipse cx="195" cy="109" rx="110" ry="15"/><ellipse cx="590" cy="158" rx="80" ry="12"/></g>
+<!-- Layered lavender rooftops with ink outlines keep the painted anime background readable. -->
+<g stroke="#8285ac" stroke-width="3" stroke-linejoin="round"><path d="M79 401V296L125 269L168 298V402Z" fill="#bcb6c4"/><path d="M164 404V261L213 227L263 263V405Z" fill="#a9b0c2"/><path d="M259 411V326L306 288L352 324V411Z" fill="#b5afbf"/><path d="M351 410V281L399 254L443 289V410Z" fill="#c6b7c1"/><path d="M444 409V337L485 312L530 333V409Z" fill="#acafbf"/><path d="M531 409V290L575 260L625 288V409Z" fill="#c2b5bb"/><path d="M627 406V314L675 283V407Z" fill="#afb2bd"/></g>
 <g fill="#f9e9e0" opacity=".78"><path d="M94 317h17v34H94zm32 0h17v34h-17zm54-39h18v34h-18zm34 0h18v34h-18zm45 74h17v32h-17zm38 0h17v32h-17zm72-52h17v30h-17zm39 0h17v30h-17zm48 48h17v33h-17zm37 0h17v33h-17zm55-41h18v33h-18zm37 0h18v33h-18z"/></g>
+<!-- Chimneys, skylights and gently hand-drawn rooftop detail. -->
+<g stroke="#8b89a6" stroke-width="2.5" stroke-linejoin="round">
+  <path d="M191 245v-46h17v42M389 264v-51h14v53M553 276v-35h14v29" fill="#c99fb4"/>
+  <path d="M177 284l35-23 40 24M367 294l32-20 27 22" fill="none"/>
+  <path d="M191 199h17m181 14h14m150 28h14" stroke-width="5"/>
+</g>
+<!-- A few fixed painted petals and star glints; no autoplay or decorative motion. -->
+<g fill="#fff7e1" opacity=".76">
+  <path d="M126 181l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" transform="scale(.64) translate(85 94)"/>
+  <path d="M604 160l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+  <circle cx="468" cy="199" r="2.4"/><circle cx="320" cy="143" r="2"/>
+</g>
+<g fill="#f1b4c7" opacity=".85">
+  <path d="M134 372q11-13 17 1q-12 10-17-1z"/>
+  <path d="M643 252q7-11 13 0q-7 11-13 0z"/>
+  <path d="M477 226q7-9 12 0q-8 9-12 0z"/>
+  <path d="M292 218q9-11 14 0q-10 9-14 0z"/>
+</g>
 <!-- Paris landmark -->
 <g fill="none" stroke="#8d91a4" stroke-width="4" opacity=".62"><path d="M543 411L566 193L592 411M534 414H601M560 220H575M554 289H583M547 342H590M566 193V169M546 411Q565 382 591 411"/><path d="M553 306L585 342M583 307L550 341" stroke-width="2"/></g>
 <path d="M76 407Q395 386 686 409V563H76Z" fill="#e8cac2" opacity=".4"/>
@@ -15,5 +34,5 @@
 <g fill="#d991a4" stroke="#f6d5d2" stroke-width="2.5"><circle cx="88" cy="294" r="19"/><circle cx="32" cy="350" r="17"/><circle cx="174" cy="330" r="18"/><circle cx="661" cy="298" r="18"/><circle cx="733" cy="349" r="19"/><circle cx="588" cy="345" r="15"/></g>
 <g fill="#ffe6c5"><circle cx="88" cy="294" r="6"/><circle cx="32" cy="350" r="6"/><circle cx="174" cy="330" r="6"/><circle cx="661" cy="298" r="6"/><circle cx="733" cy="349" r="6"/><circle cx="588" cy="345" r="5"/></g>
 <path d="M-20 583Q180 553 386 587Q564 552 780 581V710H-20Z" fill="url(#seat)"/><path d="M-20 598Q202 577 380 613Q573 573 780 600" stroke="#f8d3cd" stroke-width="14" fill="none" opacity=".55"/>
-<path d="M0 0H760V700H0Z" fill="url(#paper)" opacity=".32"/>
+<path d="M0 0H760V700H0Z" fill="url(#paper)" opacity=".26"/>
 </svg>

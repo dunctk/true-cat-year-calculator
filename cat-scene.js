@@ -17,12 +17,12 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 const smooth=(a,b,x)=>{let t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
 const color=h=>[0,2,4].map(i=>parseInt(h.slice(i+1,i+3),16)/255);
 const blend=(a,b,t)=>a.map((v,i)=>lerp(v,b[i],t));
-// The original anime-storybook cat keeps the same 3D geometry and growth model.
-// Quiet, ink-and-watercolour anime tones. Avoid high-contrast robotic eyeballs.
-const fur=color('#ead8c5'),silver=color('#aeb7b8'),light=color('#fff2e3');
-const greyLight=color('#e0e2de'),deep=color('#7c7688'),nose=color('#d68b9e');
-const iris=color('#8cbaa9'),pupil=color('#2f4550'),white=color('#fff9ea');
-const ribbon=color('#b67894'),ribbonDark=color('#a96f8c'),gold=color('#d8b37b');
+// Hand-painted anime palette: matte cel-shaded fur and jewel-toned eyes.
+// Keep the features flush with the face rather than adding spherical eyeballs.
+const fur=color('#f2dfd3'),silver=color('#b1b7c6'),light=color('#fff1e8');
+const deep=color('#635a79'),nose=color('#d786a5'),blush=color('#efadb8');
+const iris=color('#72c1b9'),pupil=color('#334862'),white=color('#fffaf3');
+const ribbon=color('#c978a2'),gold=color('#e8ba79');
 let gl;
 try{gl=canvas.getContext('webgl',{alpha:true,antialias:true,powerPreference:'low-power'});}catch(e){return}
 if(!gl)return;
@@ -33,7 +33,7 @@ function shader(type,source){
 let program;
 try{
  let v=shader(gl.VERTEX_SHADER,'attribute vec3 aPos;attribute vec3 aNorm;uniform mat4 uP;uniform mat4 uV;uniform mat4 uM;varying vec3 vN;void main(){vN=normalize(mat3(uM)*aNorm);gl_Position=uP*uV*uM*vec4(aPos,1.0);}');
- let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=dot(n,normalize(vec3(-0.60,0.95,1.15)));float shade=0.78+0.17*smoothstep(-0.08,0.50,d)+0.05*smoothstep(0.50,0.93,d);gl_FragColor=vec4(uColor*shade,1.0);}');
+ let f=shader(gl.FRAGMENT_SHADER,'precision mediump float;uniform vec3 uColor;varying vec3 vN;void main(){vec3 n=normalize(vN);float d=dot(n,normalize(vec3(-0.60,0.95,1.15)));float shade=0.75+0.16*smoothstep(-0.08,0.03,d)+0.09*smoothstep(0.59,0.67,d);gl_FragColor=vec4(uColor*shade,1.0);}');
  program=gl.createProgram();gl.attachShader(program,v);gl.attachShader(program,f);gl.linkProgram(program);
  if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('link');
  gl.deleteShader(v);gl.deleteShader(f);
@@ -130,7 +130,7 @@ function paint(time){
  const ink=blend(deep,silver,senior*.26);
  const breathe=reduce.matches?0:Math.sin(time*.0014)*.006;
  const blink=reduce.matches?0:Math.pow(clamp(1-Math.abs((time%6700)-3420)/115),2);
- const headScale=1+.18*kitten-.01*senior,headY=.72-.12*kitten-.04*senior;
+ const headScale=p.headScale,eyeScale=p.eyeScale,headY=.72-.12*kitten-.04*senior;
  const rotation=Y(yaw+(reduce.matches?0:Math.sin(time*.00055)*.008));
  // Shadow is independent from the root growth scale.
  rootM=rotation;
@@ -152,7 +152,7 @@ function paint(time){
    orb(sign*.335+.067,-1.505,.716,.006,.015,.015,ink);
  }
  orb(0,.05,.05,.315,.43,.295,coat);
- // A smaller head with a feline muzzle; no oversized round robot mask.
+ // Anime silhouette: a larger kitten head, softly tapered cheeks and cat-shaped ears.
  const headZ=.265;
  orb(0,headY,headZ,.555*headScale,.495*headScale,.440*headScale,coat);
  // Bespoke triangular ears, painted inner panels.
@@ -161,17 +161,26 @@ function paint(time){
    draw(ear,x,y,headZ-.08,.85*headScale,.86*headScale,.85*headScale,coat,0,sign*-.15);
    draw(earPink,x,y,headZ-.012,.85*headScale,.79*headScale,.85*headScale,color('#dba6ae'),0,sign*-.15);
  }
- // Embedded almond eyes, no protruding bulbs, eyeliner or uncanny smile.
+ // Larger anime almond eyes with a painted upper lash, twin catchlights,
+ // and a flat iris/pupil stack that hugs the head's surface.
  const open=1-.98*blink;
  for(const sign of [-1,1]){
-   const ex=sign*.217*headScale,ey=headY+.008*headScale,ez=headZ+.440*headScale;
-   orb(ex,ey,ez,.113*headScale,.105*headScale*open,.018,ink,0,sign*-.07);
-   orb(ex,ey,ez+.012,.101*headScale,.090*headScale*open,.015,light,0,sign*-.07);
-   orb(ex-sign*.011,ey-.003,ez+.027,.069*headScale,.086*headScale*open,.009,iris);
-   orb(ex-sign*.011,ey-.003,ez+.038,.027*headScale,.070*headScale*open,.007,pupil);
-   orb(ex-sign*.033,ey+.023*open,ez+.045,.018,.022*open+.001,.005,white);
+   const ex=sign*.210*headScale,ey=headY+.019*headScale,ez=headZ+.431*headScale;
+   const e=headScale*eyeScale;
+   orb(ex,ey,ez,.132*e,.126*e*open,.014,ink,0,sign*-.095);
+   orb(ex,ey-.006*e,ez+.011,.117*e,.110*e*open,.012,white,0,sign*-.095);
+   orb(ex-sign*.014*e,ey-.009*e,ez+.022,.079*e,.099*e*open,.008,iris);
+   orb(ex-sign*.014*e,ey-.013*e,ez+.030,.030*e,.082*e*open,.006,pupil);
+   orb(ex-sign*.039*e,ey+.033*e*open,ez+.038,.019*e,.022*e*open+.001,.004,white);
+   orb(ex+sign*.021*e,ey-.039*e*open,ez+.038,.009*e,.011*e*open+.001,.003,white);
+   // The darker upper lid communicates expression without bulging eyes.
+   orb(ex,ey+.109*e*open,ez+.006,.111*e,.013*e*open+.001,.009,ink,0,sign*-.095);
  }
- // Short flat cheeks, actual triangular nose and only the hint of a mouth.
+ // Warm watercolor cheek blush (more visible on kittens) and delicate muzzle.
+ const blushAmount=.45+.48*kitten;
+ for(const sign of [-1,1]){
+   orb(sign*.392*headScale,headY-.151*headScale,headZ+.316*headScale,.078*headScale,.036*headScale,.008,blend(coat,blush,blushAmount),0,sign*.13);
+ }
  const muzzleZ=headZ+.390*headScale;
  orb(-.108*headScale,headY-.209*headScale,muzzleZ,.16*headScale,.082*headScale,.055,pale);
  orb(.108*headScale,headY-.209*headScale,muzzleZ,.16*headScale,.082*headScale,.055,pale);
@@ -183,7 +192,7 @@ function paint(time){
      draw(whisker,sign*.19,headY-.195-i*.073,muzzleZ+.018,sign*(.72+i*.05),.65,1,blend(light,ink,.4),0,-sign*(.20+i*.15));
    }
  }
- // Very small silk bow, integrated into neck.
+ // Rose ribbon keeps the anime storybook character recognisable through every age.
  orb(0,.16,.340,.31,.047,.060,ribbon);
  for(const sign of [-1,1])orb(sign*.100,.13,.407,.108,.063,.028,ribbon,0,sign*.17);
  orb(0,.115,.444,.035,.036,.025,gold);
