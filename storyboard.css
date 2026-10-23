@@ -284,3 +284,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
  #anime-eyes,#anime-tail{animation:none!important}
  .portrait-switch button,.experience-control .presets button{transition:none}
 }
+
+/* Localized navigation and Spanish text fitting */
+.site-header nav .lang-link{
+ display:inline-flex;align-items:center;justify-content:center;
+ border:1px solid #688987;border-radius:6px;
+ font:800 12px/1 var(--sans);
+ padding:8px 10px;min-width:38px;
+ background:#e5ede8;color:#294d55;
+}
+.site-header nav .lang-link:hover{background:#d0e2d9;color:#1a5a60}
+[lang="es"] .experience-heading h1{font-size:clamp(42px,5.1vw,70px)}
+[lang="es"] .experience-control .switcher button{font-size:10px}
+[lang="es"] .scene-disclaimer{font-size:9px}
+@media(max-width:700px){
+ .site-header nav a.lang-link:not(.nav-github){display:inline-flex}
+ [lang="es"] .experience-heading h1{font-size:clamp(37px,8.2vw,58px)}
+ [lang="es"] .experience-control>.scene-panel .scene-note{font-size:10px}
+ [lang="es"] .scene-top .scene-title{font-size:8px}
+ .site-header nav{gap:9px}
+ .site-header nav .lang-link{padding:8px;min-width:32px}
+}
+@media(max-width:385px){
+ [lang="es"] .experience-heading h1{font-size:36px}
+ [lang="es"] .experience-control .switcher button{font-size:9px}
+ [lang="es"] .scene-top .scene-title{font-size:8px}
+}

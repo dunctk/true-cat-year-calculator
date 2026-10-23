@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172a35">
+<link rel="canonical" href="https://catyear.pages.dev/es/">
+<link rel="alternate" hreflang="en" href="https://catyear.pages.dev/">
+<link rel="alternate" hreflang="es" href="https://catyear.pages.dev/es/">
+<link rel="alternate" hreflang="x-default" href="https://catyear.pages.dev/">
+<meta property="og:url" content="https://catyear.pages.dev/es/"><meta property="og:locale" content="es_ES">
+<meta name="description" content="¿Cuántos años humanos tiene tu gato? Calculadora de edad felina basada en récords de longevidad, con métodos comparados y datos científicos.">
+<meta property="og:type" content="website"><meta property="og:title" content="¿Cuántos años humanos tiene tu gato? | True Cat Years"><meta property="og:description" content="Calculadora ilustrada de años de gato a años humanos, con comparaciones claras.">
+<title>Calculadora de años de gato a años humanos | True Cat Years</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../storyboard.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de años de gato a años humanos — True Cat Years","applicationCategory":"HealthApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Calculadora ilustrativa de edad felina basada en los récords de longevidad, con comparación de métodos y datos de supervivencia reales.","author":{"@type":"Person","name":"Duncan Trevithick"},"url":"https://catyear.pages.dev/es/","inLanguage":"es"}</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Ir a la calculadora</a>
+<header class="site-header wrap">
+<a href="../" class="brand" aria-label="Inicio de True Cat Years"><span class="brand-mark" aria-hidden="true">猫</span><span>true <span class="brand-italic">cat</span> years<span class="brand-dot">.</span></span></a>
+<nav aria-label="Navegación principal"><a href="#calculator">Calculadora</a><a href="#how-it-works">El método</a><a href="#the-evidence">Los datos</a><a class="lang-link" href="/" lang="en" hreflang="en" data-language-link aria-label="Cambiar a inglés">EN</a><a class="nav-github" href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">Código abierto ↗</a></nav>
+</header>
+<main>
+
+<section class="calculator-section experience-section" id="calculator" aria-labelledby="calc-heading">
+<div class="wrap">
+  <div class="experience-heading">
+    <div><p class="kicker"><span class="kicker-rule"></span>CALCULADORA DE EDAD FELINA</p>
+      <h1 id="calc-heading">Años de gato.<br><em>Años humanos.</em></h1></div>
+    <p class="experience-intro">Ajusta la edad y compara los métodos.</p>
+  </div>
+  <div class="calc-grid experience-grid">
+    <div class="control-panel experience-control">
+      <div class="panel-index"><span>EDAD DEL GATO</span><span>AÑOS + MESES</span></div>
+      <div class="hero-result">
+        <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49,0</strong><span>años<br>humanos</span></div>
+        <div class="hero-sub"><span>Equivalencia orientativa</span><span id="stage" class="stage-pill">Sénior</span></div>
+      </div>
+      <div class="age-fields"><div><label for="years">Años</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Meses</label><select id="months" aria-label="Meses adicionales"><option value="0">0 meses</option><option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option><option value="4">4 meses</option><option value="5">5 meses</option><option value="6">6 meses</option><option value="7">7 meses</option><option value="8">8 meses</option><option value="9">9 meses</option><option value="10">10 meses</option><option value="11">11 meses</option></select></div></div>
+      <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Edad del gato en años">
+      <div class="range-ends"><span>Nacimiento</span><span>38 · récord</span></div>
+      <div class="quick-label">EDADES RÁPIDAS</div>
+      <div class="presets"><button type="button" data-age="0.5">6 meses</button><button type="button" data-age="2">2 años</button><button type="button" data-age="5">5 años</button><button type="button" data-age="10">10 años</button><button type="button" data-age="15">15 años</button><button type="button" data-age="20">20 años</button><button type="button" data-age="38.0082">Récord ↗</button></div>
+      <div class="control-lower">
+        <div><p class="control-subhead">Método de conversión</p><div class="switcher" role="group" aria-label="Modelo de conversión de edad"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Ajustado</button><button id="mode-linear" type="button" aria-pressed="false">% del récord</button></div></div>
+        <div class="record-meter"><div class="record-meter-label"><span>Del récord de longevidad</span><strong id="record-share">39,5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
+      </div>
+      <p class="method-explain" id="mode-description">Comparación ilustrativa basada en récords. No es un diagnóstico.</p>
+      <div class="result-actions"><button type="button" id="copy-link" class="action-main">Compartir ↗</button><button type="button" id="reset-age" class="action-alt">Restablecer</button></div>
+      <p id="copy-status" class="sr-only" role="status"></p>
+    </div>
+    <div class="scene-panel" aria-label="Gato ilustrado con paisaje parisino que cambia entre el día y la noche al ajustar la edad">
+      <!-- The slider scrubs these scenery layers; nothing plays on its own. The cat remains independently rendered in WebGL above them. -->
+      <div class="paris-timelapse" aria-hidden="true">
+        <div class="tl-warmth"></div>
+        <div class="tl-sunset"></div>
+        <div class="tl-nightfall"></div>
+        <svg class="tl-animation-art" viewBox="0 0 760 700" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true">
+          <defs>
+            <radialGradient id="tl-sun-glow"><stop offset="0" stop-color="#fff2c7" stop-opacity=".82"/><stop offset=".25" stop-color="#ffdeaa" stop-opacity=".37"/><stop offset="1" stop-color="#ffe1af" stop-opacity="0"/></radialGradient>
+            <radialGradient id="tl-moon-glow"><stop offset="0" stop-color="#e5e5ff" stop-opacity=".46"/><stop offset=".27" stop-color="#dce3ff" stop-opacity=".18"/><stop offset="1" stop-color="#dce3ff" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="tl-clouds">
+            <path d="M113 140q44-20 91-5t92 0q35-12 70 3" stroke="#fff9f1" stroke-width="19" stroke-linecap="round" opacity=".25" fill="none"/>
+            <path d="M467 111q34-14 69-2t74 1q32-10 53 0" stroke="#fff2e6" stroke-width="11" stroke-linecap="round" opacity=".22" fill="none"/>
+          </g>
+          <g class="tl-sun">
+            <circle cx="255" cy="143" r="175" fill="url(#tl-sun-glow)"/>
+            <circle cx="255" cy="143" r="19" fill="#fff0bc" opacity=".94"/>
+          </g>
+          <g class="tl-stars">
+            <g class="tl-stars-a" fill="#fff9e7">
+              <circle cx="139" cy="91" r="2.2"/><circle cx="204" cy="62" r="1.5"/>
+              <circle cx="289" cy="115" r="2.2"/><circle cx="350" cy="70" r="1.3"/>
+              <circle cx="417" cy="110" r="2.0"/><circle cx="502" cy="60" r="1.5"/>
+              <circle cx="589" cy="102" r="2.1"/><circle cx="643" cy="161" r="1.4"/>
+            </g>
+            <g class="tl-stars-b" fill="#fff5d9">
+              <circle cx="169" cy="184" r="1.4"/><circle cx="246" cy="163" r="1.8"/>
+              <circle cx="326" cy="194" r="1.2"/><circle cx="382" cy="158" r="2.1"/>
+              <circle cx="465" cy="216" r="1.5"/><circle cx="548" cy="175" r="1.8"/>
+              <circle cx="623" cy="225" r="1.2"/>
+            </g>
+          </g>
+          <g class="tl-moon">
+            <circle cx="210" cy="151" r="106" fill="url(#tl-moon-glow)"/>
+            <circle cx="210" cy="151" r="16" fill="#f9f1d9"/>
+            <circle cx="203" cy="146" r="16" fill="#d2d2e7"/>
+          </g>
+          <!-- These lit windows share viewBox coordinates with paris-balcony.svg. -->
+          <g class="tl-windows">
+            <path class="tl-window-early" d="M94 317h17v34H94zm54 0h17v34h-17zm52-39h18v34h-18zm59 74h17v32h-17zm109-52h17v30h-17zm87 48h17v33h-17zm92-41h18v33h-18z" fill="#ffe7a2"/>
+            <path class="tl-window-late" d="M126 317h17v34h-17zm54-39h18v34h-18zm34 0h18v34h-18zm83 74h17v32h-17zm111-52h17v30h-17zm85 48h17v33h-17zm37 0h17v33h-17zm55-41h18v33h-18z" fill="#ffe0a1"/>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-top"><span class="scene-title">猫 · ESTUDIO DE EDAD</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Hora dorada</span><div class="portrait-switch" role="group" aria-label="Estilo de ilustración">
+        <button type="button" id="portrait-anime" class="active" aria-pressed="true">Ilustración</button>
+        <button type="button" id="portrait-3d" aria-pressed="false">3D</button>
+      </div></span></div>
+      <div class="cat-viewport storybook-mode" id="cat-viewport">
+        <canvas id="cat-canvas" aria-hidden="true"></canvas>
+        <div id="cat-fallback" class="cat-fallback" aria-hidden="true">
+        <svg id="anime-portrait" class="anime-portrait" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+          <defs>
+            <linearGradient id="fur-paint" x1=".1" x2=".9" y1="0" y2="1"><stop stop-color="#f6f4e9"/><stop offset=".56" stop-color="#dae5df"/><stop offset="1" stop-color="#a5bac1"/></linearGradient>
+            <linearGradient id="ear-paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#668d94"/><stop offset="1" stop-color="#c1d0ca"/></linearGradient>
+            <linearGradient id="eye-gem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#c4e6d5"/><stop offset=".52" stop-color="#599d97"/><stop offset="1" stop-color="#205967"/></linearGradient>
+            
+            
+            <filter id="cat-shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <ellipse cx="263" cy="461" rx="127" ry="17" fill="#29414c" opacity=".17" filter="url(#cat-shadow)"/>
+          <g id="anime-whole">
+            <!-- A curved tail painted behind the body, with a pale highlight and dark ink. -->
+            <g id="anime-tail">
+              <path d="M349 393C411 417 456 362 434 309C424 284 396 281 388 304" fill="none" stroke="#243b48" stroke-width="39" stroke-linecap="round"/>
+              <path d="M349 393C411 417 456 362 434 309C424 284 396 281 388 304" fill="none" stroke="#a8bcc3" stroke-width="30" stroke-linecap="round"/>
+              <path d="M408 376C431 362 440 334 434 315" fill="none" stroke="#f6f1e5" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+              <path d="M387 306Q398 290 412 292" fill="none" stroke="#a9c8c4" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <g id="anime-body">
+              <path d="M222 282C179 269 157 319 159 378C160 429 197 451 259 453C320 453 364 436 367 379C370 323 337 270 301 279Z" fill="url(#fur-paint)" stroke="#243b48" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M171 365Q174 427 225 441Q196 400 205 329Q176 330 171 365Z" fill="#a7bec1" opacity=".7"/>
+              <path d="M232 298C204 330 200 399 227 443C244 451 283 451 303 443C330 388 307 321 284 297Z" fill="#f8f5e9" opacity=".92"/>
+              <path d="M211 335q-24 19-25 57M309 333q25 23 27 56" stroke="#6e9097" stroke-width="5" stroke-linecap="round" fill="none" opacity=".55"/>
+              <path d="M195 417C186 437 193 453 213 458H248C258 446 248 425 230 419Z" fill="#f5f3e8" stroke="#243b48" stroke-width="5"/>
+              <path d="M282 419C264 429 260 446 273 458H306C326 454 334 437 320 417Z" fill="#f5f3e8" stroke="#243b48" stroke-width="5"/>
+              <path d="M211 445v10M226 446v10M292 445v10M307 444v11" fill="none" stroke="#7c979d" stroke-width="3" stroke-linecap="round"/>
+              <path d="M193 352q-16 17-12 36M332 349q18 19 13 38" stroke="#6d8993" stroke-width="3" fill="none" opacity=".38"/>
+            </g>
+            <g id="anime-head">
+              <!-- Angular anime ears. -->
+              <path d="M161 175L169 85Q173 58 196 77L240 117M282 112L333 71Q357 54 360 90L364 178" fill="#e1e8de" stroke="#243b48" stroke-width="7" stroke-linejoin="round"/>
+              <path d="M178 103L184 153L219 132Z" fill="url(#ear-paint)"/>
+              <path d="M344 101L306 133L349 157Z" fill="url(#ear-paint)"/>
+              <path d="M182 107l9 35M342 108l-20 24" stroke="#f8f3e8" stroke-width="5" stroke-linecap="round" opacity=".73"/>
+              <!-- Inked, angular anime silhouette. -->
+              <path d="M263 102C324 100 371 140 381 192C394 250 361 300 313 312C282 333 240 332 207 312C157 298 125 249 138 190C150 132 202 100 263 102Z" fill="url(#fur-paint)" stroke="#243b48" stroke-width="7" stroke-linejoin="round"/>
+              <!-- Soft cel-shadow planes: inked but not muddy. -->
+              <path d="M158 219C156 265 187 294 213 302C203 278 193 249 201 227Z" fill="#8daeb4" opacity=".74"/>
+              <path d="M323 132C351 154 364 183 361 206C355 176 339 157 323 151Z" fill="#f5f2e8" opacity=".85"/>
+              <path d="M211 115Q237 101 257 110Q283 99 311 119" fill="none" stroke="#f4f3e9" stroke-width="9" stroke-linecap="round" opacity=".66"/>
+              <!-- Hand-drawn forelock and three tiny fur tufts. -->
+              <path d="M221 110Q238 138 253 131Q265 122 272 105M274 106Q284 129 295 125" fill="none" stroke="#8baaaa" stroke-width="5" stroke-linecap="round"/>
+              <g id="anime-silver" opacity="0">
+                <path d="M190 171Q198 143 219 131L211 166Z" fill="#afc2c6" opacity=".8"/>
+                <path d="M314 128Q341 144 347 164L326 158Z" fill="#afc2c6" opacity=".75"/>
+                <path d="M182 251Q199 275 218 279L204 287Z" fill="#afc2c6" opacity=".55"/>
+                <path d="M343 251Q329 271 310 281L324 288Z" fill="#afc2c6" opacity=".6"/>
+              </g>
+              <g id="anime-eyes">
+                <!-- Focused anime eyes. -->
+                <g id="anime-eye-left">
+                  <path d="M176 211Q190 167 224 170Q251 174 251 211Q248 250 214 257Q181 249 176 211Z" fill="#fcfaf2" stroke="#243b48" stroke-width="5"/>
+                  <ellipse cx="218" cy="218" rx="20" ry="32" fill="url(#eye-gem)"/>
+                  <ellipse cx="220" cy="220" rx="8" ry="26" fill="#214953"/>
+                  <ellipse cx="207" cy="196" rx="9" ry="13" fill="#fff"/>
+                  <ellipse cx="231" cy="230" rx="4.6" ry="6.5" fill="#f0f8ed" opacity=".94"/>
+                  <path d="M177 202Q208 165 244 189" fill="none" stroke="#243b48" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M180 198L168 186" fill="none" stroke="#243b48" stroke-width="5" stroke-linecap="round"/>
+                </g>
+                <g id="anime-eye-right">
+                  <path d="M273 211Q278 174 303 170Q339 167 350 211Q348 249 315 257Q281 250 273 211Z" fill="#fcfaf2" stroke="#243b48" stroke-width="5"/>
+                  <ellipse cx="308" cy="218" rx="20" ry="32" fill="url(#eye-gem)"/>
+                  <ellipse cx="309" cy="220" rx="8" ry="26" fill="#214953"/>
+                  <ellipse cx="299" cy="196" rx="9" ry="13" fill="#fff"/>
+                  <ellipse cx="323" cy="230" rx="4.6" ry="6.5" fill="#f0f8ed" opacity=".94"/>
+                  <path d="M278 189Q317 165 348 202" fill="none" stroke="#243b48" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M345 198L357 186" fill="none" stroke="#243b48" stroke-width="5" stroke-linecap="round"/>
+                </g>
+              </g>
+              
+              
+              <!-- Tiny muzzle: not a human smile. -->
+              <path d="M247 263Q258 270 268 263Q274 273 263 280Q253 280 247 263Z" fill="#d09c78" stroke="#365364" stroke-width="2.5"/>
+              <path d="M263 280v7M263 287q-11 12-22 0M263 287q11 12 22 0" fill="none" stroke="#455962" stroke-width="3" stroke-linecap="round"/>
+              <g fill="#819d9d"><circle cx="208" cy="267" r="2.6"/><circle cx="216" cy="272" r="2.2"/><circle cx="319" cy="269" r="2.5"/><circle cx="311" cy="273" r="2.1"/></g>
+              <g fill="none" stroke="#f8f8e9" stroke-width="3" stroke-linecap="round">
+                <path d="M224 276Q186 267 151 258M220 286Q186 288 159 304M301 276Q342 264 376 253M303 287Q337 290 368 303"/>
+              </g>
+            </g>
+            <!-- Minimal collar and metal tag. -->
+            <g id="anime-collar">
+  <path d="M217 307Q262 322 308 307" stroke="#325663" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <rect x="248" y="313" width="27" height="20" rx="4" fill="#e4ad61" stroke="#263944" stroke-width="3"/>
+  <path d="M254 323h15" stroke="#263944" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+          </g>
+        </svg>
+      </div>
+      </div>
+      <div class="scene-foot"><span id="story-chapter">04 / SÉNIOR</span><span id="portrait-stage" aria-live="polite">Gato sénior</span></div>
+      <p id="scene-story" class="scene-note">Sénior · 10–19 años</p><p class="scene-disclaimer">Ilustración orientativa · No predice la salud</p>
+    </div>
+  </div>
+  <div class="comparison-band"><div><span class="mini-overline">COMPARAR</span></div><div><strong id="compare-seven">105</strong><small>Regla de multiplicar por 7</small></div><div><strong id="compare-vet">76</strong><small>Tabla veterinaria habitual</small></div><div class="compare-feature"><strong id="compare-ours">49,0</strong><small>Nuestro modelo</small></div></div>
+</div>
+</section>
+<section class="method-section wrap" id="how-it-works" aria-labelledby="method-heading">
+  <div class="section-heading"><div><p class="kicker">EL MÉTODO</p><h2 id="method-heading">Cómo <em>funciona.</em></h2></div><p></p></div>
+  <div class="formula-layout">
+    <div class="formula-card"><p class="mini-overline">CONVERSIÓN DE EDAD</p><div class="formula formula-v2" aria-label="H es igual a r por C más B por C por e elevado a menos C dividido entre tres, multiplicado por uno menos C dividido entre C máxima"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>r = <span id="ratio">3,22165</span></strong> se calcula a partir de récords mundiales de longevidad. <strong>B = <span id="boost">10,8519</span></strong> representa la maduración temprana.</p><div class="formula-note">Es una analogía, no un modelo médico validado. La alternativa es H = rC.</div></div>
+    <div class="chart-card"><div class="chart-head"><h3>Comparación de curvas</h3><span>0–38 años de gato</span></div><svg id="age-chart" viewBox="0 0 550 295" role="img" aria-label="Comparación de las curvas del modelo ajustado, porcentaje del récord y siete veces la edad del gato"></svg><div class="chart-legend"><span><i class="lg-orange"></i>Nuestro modelo</span><span><i class="lg-green"></i>% del récord</span><span><i class="lg-dotted"></i>Regla ×7</span></div></div>
+  </div>
+  <p class="accuracy-caveat"><strong>Importante:</strong> Esta equivalencia no mide la edad biológica ni predice la esperanza de vida. Los récords son casos excepcionales.</p>
+</section>
+<section class="evidence-section" id="the-evidence" aria-labelledby="evidence-heading"><div class="wrap">
+  <div class="section-heading"><div><p class="kicker">LOS DATOS</p><h2 id="evidence-heading">La edad no es <em>un pronóstico.</em></h2></div><p>La supervivencia observada no equivale a una conversión de edad.</p></div>
+  <div class="evidence-grid">
+    <div class="survival-card"><div class="chart-head"><h3>¿Cuántos gatos llegan a cada edad?</h3><span>Estudio británico VetCompass · 2019</span></div><svg id="survival-chart" viewBox="0 0 550 285" role="img" aria-label="Supervivencia poblacional estimada desde el nacimiento hasta los 20 años a partir de un estudio veterinario británico"></svg><div class="survival-metrics"><div><strong id="survival-share">35,2%</strong><span>Porcentaje estimado que alcanza esta edad</span></div><div><strong id="death-risk">21,2%</strong><span>Riesgo de fallecer en el siguiente tramo de edad</span></div><div><strong id="years-left">2,72</strong><span>Años de vida restantes de media a esta edad</span></div></div><p class="small-print">Basado en una tabla de supervivencia publicada de 7936 gatos fallecidos. Son datos poblacionales hasta los 20 años, no una predicción para tu gato. El riesgo supone que ya ha alcanzado la edad indicada.</p></div>
+    
+  </div>
+</div></section>
+<section class="table-section wrap" aria-labelledby="table-heading">
+  <div class="section-heading"><div><p class="kicker">CONSULTA RÁPIDA</p><h2 id="table-heading">Tabla de <em>edades.</em></h2></div><p></p></div>
+  <div class="table-shell"><table><thead><tr><th>Edad del gato</th><th>Nuestro modelo (años humanos)</th><th>Tabla veterinaria*</th><th>Regla ×7</th></tr></thead><tbody id="age-table"></tbody></table></div>
+  <p class="small-print">*La tabla veterinaria habitual asigna aproximadamente 15 años humanos al primer año del gato y 24 al segundo; después suma unos cuatro por cada año felino. Es una comparación orientativa, no una predicción clínica. Por encima de los 20 años se extrapola solo para poder compararla.</p>
+</section>
+<section class="sources-section wrap" aria-labelledby="sources-heading">
+  <div><p class="kicker">FUENTES</p><h2 id="sources-heading">Fuentes <em>y datos.</em></h2><p class="sources-lede">Referencias utilizadas en la calculadora.</p></div>
+  <ol class="source-list">
+    <li><a href="https://www.guinnessworldrecords.com/world-records/oldest-cat-ever" target="_blank" rel="noopener noreferrer"><strong>Guinness World Records · Gato más longevo</strong><span>Creme Puff — 38 años y 3 días <b>↗</b></span></a></li>
+    <li><a href="https://www.guinnessworldrecords.com/world-records/oldest-person" target="_blank" rel="noopener noreferrer"><strong>Guinness World Records · Persona más longeva</strong><span>Jeanne Calment — 122 años y 164 días <b>↗</b></span></a></li>
+    <li><a href="https://www.aaha.org/resources/2021-aaha-aafp-feline-life-stage-guidelines/feline-life-stage-definitions/" target="_blank" rel="noopener noreferrer"><strong>AAHA/AAFP · Etapas vitales del gato (2021)</strong><span>Etapas vitales y cuidados según la edad <b>↗</b></span></a></li>
+    <li><a href="https://doi.org/10.1177/1098612X241234556" target="_blank" rel="noopener noreferrer"><strong>Teng y cols. · Tablas de supervivencia felina en Reino Unido (2024)</strong><span>Mortalidad, supervivencia y esperanza de vida · VetCompass <b>↗</b></span></a></li>
+    
+  </ol>
+</section>
+<section class="closing wrap"><span aria-hidden="true">✳</span><div><h2>Cada año <em>cuenta.</em></h2><p>La salud y la calidad de vida importan más que cualquier equivalencia.</p></div><a href="#calculator">Probar otra edad ↑</a></section>
+</main>
+<footer class="site-footer wrap"><a class="brand" href="../"><span class="brand-mark">♛</span><span>true <span class="brand-italic">cat</span> years<span class="brand-dot">.</span></span></a><p>Una herramienta educativa, no un consejo veterinario. Sin seguimiento, cookies ni recopilación de datos.</p><a href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">Ver código ↗</a></footer>
+<script src="../model.js" defer></script>
+<script src="../cat-growth.js" defer></script>
+<script src="../cat-scene.js" defer></script>
+<script src="../timelapse.js" defer></script>
+<script src="../storybook.js" defer></script>
+<script src="../app.js" defer></script>
+</body></html>
