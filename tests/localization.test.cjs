@@ -73,6 +73,21 @@ test('Spanish calculator renders comma decimals without breaking CSS or language
  assert.equal(el('mode-description').textContent.startsWith('Compara'),true);
  assert.equal(new URL(langLink.href).searchParams.get('method'),'linear');
 });
+test('language switch preserves latest age, method and 3D selection',()=>{
+ const f=runApp('en','/es/');
+ f.el('portrait-3d').setAttribute('aria-pressed','true');
+ f.el('age-slider').value='2';
+ f.el('age-slider').listeners.input();
+ const selected=new URL(f.langLink.href);
+ assert.equal(selected.searchParams.get('age'),'2.0000');
+ assert.equal(selected.searchParams.get('view'),'3d');
+ f.el('portrait-3d').setAttribute('aria-pressed','false');
+ f.el('age-slider').value='5';
+ f.el('age-slider').listeners.input();
+ const switched=new URL(f.langLink.href);
+ assert.equal(switched.searchParams.get('age'),'5.0000');
+ assert.equal(switched.searchParams.has('view'),false);
+});
 test('English calculator remains unchanged in numeric formatting',()=>{
  const {el,langLink}=runApp('en','/es/');
  assert.equal(el('result-years').textContent,'49.0');
