@@ -10,7 +10,7 @@ const CAT_MAX=root.TrueCatYearsModel.CAT_MAX;
 const params=new URLSearchParams(location.search);
 let target=params.has('age')?Number(params.get('age')):15;
 target=Number.isFinite(target)?Math.max(0,Math.min(CAT_MAX,target)):15;
-let age=target,yaw=.13,yawTarget=.13,raf=0,visible=true,failed=false,dragging=false,lastX=0;
+let age=target,yaw=.13,yawTarget=.13,raf=0,visible=true,active=false,failed=false,dragging=false,lastX=0;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
@@ -202,14 +202,20 @@ function paint(time){
  }
 }
 function tick(t){
- raf=0;if(failed||document.hidden||!visible)return;
+ raf=0;if(failed||document.hidden||!visible||!active)return;
  if(reduce.matches){age=target;yaw=yawTarget;}else{age=lerp(age,target,.11);if(Math.abs(target-age)<.005)age=target;yaw=lerp(yaw,yawTarget,.12)}
  try{paint(t)}catch(e){failed=true;viewport.classList.remove('webgl-ready');return}
  if(!reduce.matches)raf=requestAnimationFrame(tick);
 }
-function request(){if(!raf&&!document.hidden&&visible&&!failed)raf=requestAnimationFrame(tick)}
+function request(){if(!raf&&!document.hidden&&visible&&active&&!failed)raf=requestAnimationFrame(tick)}
 function setAge(value){const n=Number(value);if(!Number.isFinite(n))return;target=clamp(n,0,CAT_MAX);if(reduce.matches)age=target;request()}
-root.TrueCatYearsCat={setAge};
+function setActive(value){
+  active=Boolean(value);
+  if(!active){if(raf)cancelAnimationFrame(raf);raf=0;return;}
+  age=target;
+  request();
+}
+root.TrueCatYearsCat={setAge,setActive};
 canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;dragging=true;lastX=e.clientX;canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!dragging)return;yawTarget=clamp(yawTarget+(e.clientX-lastX)*.009,-.55,.55);lastX=e.clientX;request()});
 for(const evt of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(evt,()=>{dragging=false});

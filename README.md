@@ -3,7 +3,7 @@ An open-source, mobile-first **cat years to human years calculator** using a mat
 
 ## Blender production kit (separate from the live site)
 
-The original anime/Parisian cat redesign is now organised in [blender/](blender/README.md). Coding agents with Blender installed should start with [the art director brief](blender/AGENT_BRIEF.md), see the [four-stage cat turnaround](blender/references/character-turnaround.svg) and [Paris lighting reference](blender/references/paris-lighting.svg), then run the starter scene generator. The script makes an editable Blender BLOCKOUT and matched-camera preview renders; it is **not a polished 3D character yet**. The live Cloudflare Pages site remains unchanged.
+The original anime/Parisian cat redesign is now organised in [blender/](blender/README.md). Coding agents with Blender installed should start with [the art director brief](blender/AGENT_BRIEF.md), see the [four-stage cat turnaround](blender/references/character-turnaround.svg) and [Paris lighting reference](blender/references/paris-lighting.svg), then run the starter scene generator. The script makes an editable Blender BLOCKOUT and matched-camera preview renders; it is **not a polished 3D character yet**. These Blender studies are an optional offline production kit; the deployed site uses independent, lightweight original vector artwork.
 
 ## What makes it different?
 - 7× cat years assumes a fixed rate of ageing. Our baseline is the verified longevity-record percentage with a rapidly fading boost for early maturation.
@@ -25,7 +25,7 @@ The formula is a designed analogy with transparent assumptions, **not a validate
 
 ## Tests
 
-Run `node --test tests/model.test.cjs` locally. No workflow, dependencies or Actions minutes.
+Run `node --test tests/*.test.cjs` locally. No workflow, dependencies or Actions minutes.
 
 ## Hosting: Cloudflare Pages (no GitHub Actions)
 Pure HTML, CSS and vanilla JavaScript: **no build step, dependencies, or GitHub Actions**. The site is safe to serve from the repository root, from a GitHub Pages repository subpath, or via Cloudflare Pages.
@@ -41,11 +41,13 @@ Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → mai
 
 ## Files
 - index.html — accessible content and citations
-- styles.css — responsive visual design
+- styles.css — foundational responsive design
+- storyboard.css — anime storybook art direction, layouts, portrait-mode controls and accessible motion handling
+- storybook.js — SVG portrait growth, chapter captions and optional 3D-mode switch
 - model.js — pure, independently testable age-conversion model
 - app.js — accessible controls, SVG charts, URL sharing and age→cat scene updates
 - cat-growth.js — pure, testable kitten-to-adult growth and proportion model
-- cat-scene.js — standalone procedural WebGL cat, ground-planted full-body growth, progressive ageing, reduced-motion & 2D fallback
+- cat-scene.js — optional native WebGL portrait with frame loop suspended when the illustrated version is selected
 - tests/model.test.cjs — zero-dependency Node tests of anchors and monotonicity
 - favicon.svg — brand favicon
 - .nojekyll — prevents Jekyll processing if served via GitHub Pages
@@ -61,9 +63,13 @@ Alternatively, GitHub Pages: Settings → Pages → Deploy from a branch → mai
 Fully client-side. No cookies, analytics, API calls, fonts or third-party JS. Run on any static server or simply open index.html. All medical and longevity values are sourced or explicitly identified as illustrative.
 
 Licensed under the repository's LICENSE.
-## Interactive 3D portrait
+## Original anime illustrated portrait (default) and optional WebGL
 
-The calculator and its slider are now in the opening viewport. The accompanying character is rendered with **native WebGL 1.0**, without Three.js, network fonts, external assets or build tools. Its mesh proportions, eyes, ear/whisker details, warm fur tint and later-life silver fur transition smoothly as age changes. Animated breathing and an occasional blink stop when motion reduction is requested or the scene leaves the viewport. A bundled SVG appears if WebGL is unavailable. This is an *illustration*, not a claim that individual cats physically age in this pattern.
+The first viewport opens with an original, hand-authored **inline SVG anime cat**: rich ink outlines, reflective eyes, blush, a warm cel-shaded coat and a ribbon with a gold charm. The age controls change the cat's pose proportions, subtle senior silver accents, the chapter number and the narrative caption. There is no network-loaded artwork, library or external font. The SVG is also a reliable fallback without GPU acceleration.
+
+Visitors can opt into the original **native WebGL 1.0 3D character** using the Illustration / 3D switch. The 3D option is disabled if rendering is unsupported. The WebGL animation loop is paused whenever the illustrated mode is active; switching back resumes it. Shareable links preserve `age`, `method`, and the optional `view=3d`. Both portraits remain illustrations, **not** biological-age measurements or predictions.
+
+The scene's Parisian time-of-day remains deterministically tied to the age slider. Portrait blinks and subtle tail movement respect `prefers-reduced-motion`. The life-stage tiles are keyboard-accessible buttons that jump to representative ages.
 
 ### Cat growth design
 
@@ -71,7 +77,7 @@ In the stylised 3D portrait, total character size grows smoothly from 43% (newbo
 
 ## Parisian anime storybook identity
 
-The site uses an original illustrated Paris balcony, warm ivory paper, Paris blue, dusty-rose controls, antique-gold details, and oversized editorial serif typography. It is visually inspired by mid-century Parisian animation and Japanese anime backgrounds without copying characters or artwork. The calculator remains above the fold, stays interactive and remains dependency-free. The WebGL character receives corresponding cel-shaded artwork in `cat-scene.js`.
+The site uses an original illustrated Paris balcony, warm ivory paper, lavender shadows, rose controls, antique-gold details, and oversized editorial serif typography. It is visually inspired by mid-century Parisian animation and Japanese anime backgrounds without copying characters or artwork. The calculator remains above the fold, stays interactive and remains dependency-free. The inline anime portrait takes priority by default, while the WebGL character retains cel-shaded artwork in `cat-scene.js`.
 
 ## WebGL character refinement
 

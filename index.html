@@ -8,7 +8,7 @@
 <meta name="description" content="How old is your cat in human years? Explore a beautiful, research-linked cat years calculator anchored to the oldest verified cat and human, with a transparent formula and real feline longevity data.">
 <meta property="og:type" content="website"><meta property="og:title" content="How old is your cat, really? | True Cat Years"><meta property="og:description" content="An anime-inspired Parisian cat that grows with your age slider. A gentler, transparent way to count cat years.">
 <title>Cat Years to Human Years Calculator | True Cat Years</title>
-<link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./storyboard.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"True Cat Years Calculator","applicationCategory":"HealthApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"An illustrative cat-to-human age calculator anchored to verified world longevity records, with a distinct veterinary-life-stage comparison and empirical cat survival data.","author":{"@type":"Person","name":"Duncan Trevithick"}}</script>
 </head>
 <body>
@@ -23,15 +23,15 @@
 <div class="wrap">
   <div class="experience-heading">
     <div><p class="kicker"><span class="kicker-rule"></span>UNE PETITE CURIOSITÉ · THE CAT YEARS CALCULATOR</p>
-      <h1 id="calc-heading">How old is your cat,<br><em>really?</em></h1></div>
-    <p class="experience-intro">Every cat has a story. Discover yours with a little Parisian magic, world-record maths and an animated companion who grows along the way.</p>
+      <h1 id="calc-heading">Cat years.<br><em>Human years.</em></h1></div>
+    <p class="experience-intro">Every cat has a story. Explore the years through an original anime portrait, a Parisian day-and-night world and an age analogy with its assumptions in plain sight.</p>
   </div>
   <div class="calc-grid experience-grid">
     <div class="control-panel experience-control">
       <div class="panel-index"><span>YOUR CAT'S AGE</span><span>IN CAT YEARS</span></div>
       <div class="hero-result">
         <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49.0</strong><span>human<br>years</span></div>
-        <div class="hero-sub"><span>Our illustrative age analogy</span><span id="stage" class="stage-pill">Senior</span></div>
+        <div class="hero-sub"><span>Human years · our illustrative analogy</span><span id="stage" class="stage-pill">Senior</span></div>
       </div>
       <div class="age-fields"><div><label for="years">Years</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Months</label><select id="months" aria-label="Additional months"><option value="0">0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div></div>
       <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Cat age in years">
@@ -91,38 +91,115 @@
           </g>
         </svg>
       </div>
-      <div class="scene-top"><span class="scene-title">✦ <span lang="ja">猫の時間</span> · CAT CHRONICLES</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Golden hour</span><span class="scene-status">INTERACTIVE 3D</span></span></div>
-      <div class="cat-viewport" id="cat-viewport">
+      <div class="scene-top"><span class="scene-title">✦ <span lang="ja">猫の時間</span> · CAT CHRONICLES</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Golden hour</span><div class="portrait-switch" role="group" aria-label="Portrait style">
+        <button type="button" id="portrait-anime" class="active" aria-pressed="true">Illustration</button>
+        <button type="button" id="portrait-3d" aria-pressed="false">3D</button>
+      </div></span></div>
+      <div class="cat-viewport storybook-mode" id="cat-viewport">
         <canvas id="cat-canvas" aria-hidden="true"></canvas>
-        <div id="cat-fallback" class="cat-fallback" aria-hidden="true"><svg viewBox="0 0 390 450" class="cat-art" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="191" cy="424" rx="117" ry="16" fill="#6a647b" opacity=".13"/>
-<path d="M265 375Q353 398 344 291Q333 260 313 273" stroke="#7a7485" stroke-width="43" fill="none" stroke-linecap="round"/>
-<path d="M263 375Q353 398 344 291Q333 260 313 273" stroke="#e6d8d4" stroke-width="36" fill="none" stroke-linecap="round"/>
-<path d="M136 199Q109 249 124 358Q129 412 192 414Q272 409 278 350Q289 268 248 202Z" fill="#ebdeda" stroke="#797382" stroke-width="5"/>
-<path d="M153 345L147 415H180L185 352M214 352L212 415H245L239 349" fill="#f8eee4" stroke="#797382" stroke-width="5" stroke-linejoin="round"/>
-<path d="M105 160L120 68L176 107Q197 95 220 105L280 67L281 160Q300 211 274 254Q246 292 193 292Q136 290 110 255Q83 209 105 160Z" fill="#f7ebdf" stroke="#797382" stroke-width="5" stroke-linejoin="round"/>
-<path d="M124 89L127 139L159 112ZM270 88L232 117L271 142Z" fill="#dca0ad"/>
-<ellipse cx="150" cy="200" rx="25" ry="28" fill="#fff9ef" stroke="#686778" stroke-width="4"/>
-<ellipse cx="234" cy="200" rx="25" ry="28" fill="#fff9ef" stroke="#686778" stroke-width="4"/>
-<ellipse cx="151" cy="201" rx="17" ry="24" fill="#88b8ac"/><ellipse cx="234" cy="201" rx="17" ry="24" fill="#88b8ac"/>
-<ellipse cx="153" cy="201" rx="6" ry="19" fill="#273e51"/><ellipse cx="232" cy="201" rx="6" ry="19" fill="#273e51"/>
-<circle cx="144" cy="183" r="7" fill="#fff"/><circle cx="226" cy="183" r="7" fill="#fff"/>
-<path d="M130 174Q148 156 170 173M215 173Q236 157 255 174" stroke="#5c586d" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-<path d="M130 170l-8-8M253 170l8-8" stroke="#5c586d" stroke-width="3" fill="none" stroke-linecap="round"/>
-<ellipse cx="133" cy="228" rx="21" ry="8" fill="#eea1b8" opacity=".38"/><ellipse cx="252" cy="228" rx="21" ry="8" fill="#eea1b8" opacity=".38"/>
-<path d="M175 244L207 243L192 257Z" fill="#d38d9f"/>
-<path d="M193 256Q178 270 164 257M192 256Q207 271 222 257" fill="none" stroke="#827380" stroke-width="2.6" stroke-linecap="round"/>
-<ellipse cx="121" cy="233" rx="18" ry="8" fill="#e2aab5" opacity=".56"/><ellipse cx="264" cy="233" rx="18" ry="8" fill="#e2aab5" opacity=".56"/>
-<g stroke="#fff7ec" stroke-width="2" fill="none"><path d="M156 249L80 232M156 257L81 266M229 248L309 232M229 258L310 265"/></g>
-<path d="M190 298Q152 269 150 302Q164 320 191 309Q221 320 232 301Q231 270 192 297Z" fill="#c5819d" stroke="#a16e89" stroke-width="3"/>
-<circle cx="191" cy="299" r="9" fill="#e6be88" stroke="#a88363" stroke-width="2"/>
-</svg></div>
+        <div id="cat-fallback" class="cat-fallback" aria-hidden="true">
+        <svg id="anime-portrait" class="anime-portrait" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+          <defs>
+            <linearGradient id="fur-paint" x1=".12" x2=".92" y1="0" y2="1"><stop stop-color="#fff9eb"/><stop offset=".55" stop-color="#fce6e5"/><stop offset="1" stop-color="#e2c9e6"/></linearGradient>
+            <linearGradient id="ear-paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9a1b9"/><stop offset="1" stop-color="#f9d5cb"/></linearGradient>
+            <linearGradient id="eye-gem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b1f4e5"/><stop offset=".48" stop-color="#5cb8b7"/><stop offset="1" stop-color="#377eab"/></linearGradient>
+            <linearGradient id="scarf-paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dc86a8"/><stop offset="1" stop-color="#a45d92"/></linearGradient>
+            <radialGradient id="cheek-paint"><stop stop-color="#ef94ad" stop-opacity=".67"/><stop offset="1" stop-color="#eea6b6" stop-opacity="0"/></radialGradient>
+            <filter id="cat-shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <ellipse cx="263" cy="461" rx="127" ry="17" fill="#594a73" opacity=".17" filter="url(#cat-shadow)"/>
+          <g id="anime-whole">
+            <!-- A curved tail painted behind the body, with a pale highlight and dark ink. -->
+            <g id="anime-tail">
+              <path d="M349 393C411 417 456 362 434 309C424 284 396 281 388 304" fill="none" stroke="#5d4d72" stroke-width="39" stroke-linecap="round"/>
+              <path d="M349 393C411 417 456 362 434 309C424 284 396 281 388 304" fill="none" stroke="#dec6e0" stroke-width="30" stroke-linecap="round"/>
+              <path d="M408 376C431 362 440 334 434 315" fill="none" stroke="#faf0e9" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+              <path d="M387 306Q398 290 412 292" fill="none" stroke="#f8d3da" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <g id="anime-body">
+              <path d="M222 282C179 269 157 319 159 378C160 429 197 451 259 453C320 453 364 436 367 379C370 323 337 270 301 279Z" fill="url(#fur-paint)" stroke="#5d4d72" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M171 365Q174 427 225 441Q196 400 205 329Q176 330 171 365Z" fill="#d6bfdc" opacity=".7"/>
+              <path d="M232 298C204 330 200 399 227 443C244 451 283 451 303 443C330 388 307 321 284 297Z" fill="#fffbef" opacity=".92"/>
+              <path d="M211 335q-24 19-25 57M309 333q25 23 27 56" stroke="#b99bbd" stroke-width="5" stroke-linecap="round" fill="none" opacity=".55"/>
+              <path d="M195 417C186 437 193 453 213 458H248C258 446 248 425 230 419Z" fill="#fff5e9" stroke="#5d4d72" stroke-width="5"/>
+              <path d="M282 419C264 429 260 446 273 458H306C326 454 334 437 320 417Z" fill="#fff5e9" stroke="#5d4d72" stroke-width="5"/>
+              <path d="M211 445v10M226 446v10M292 445v10M307 444v11" fill="none" stroke="#b49aac" stroke-width="3" stroke-linecap="round"/>
+              <path d="M193 352q-16 17-12 36M332 349q18 19 13 38" stroke="#8d79a3" stroke-width="3" fill="none" opacity=".38"/>
+            </g>
+            <g id="anime-head">
+              <!-- Big triangular ears, subtly asymmetrical like a drawn character. -->
+              <path d="M161 175L169 85Q173 58 196 77L240 117M282 112L333 71Q357 54 360 90L364 178" fill="#fae9e6" stroke="#594863" stroke-width="7" stroke-linejoin="round"/>
+              <path d="M178 103L184 153L219 132Z" fill="url(#ear-paint)"/>
+              <path d="M344 101L306 133L349 157Z" fill="url(#ear-paint)"/>
+              <path d="M182 107l9 35M342 108l-20 24" stroke="#fff5ed" stroke-width="5" stroke-linecap="round" opacity=".73"/>
+              <!-- Heart-shaped cheeks, a pointed feline chin and broad anime forehead. -->
+              <path d="M263 102C324 100 371 140 381 192C394 250 361 300 313 312C282 333 240 332 207 312C157 298 125 249 138 190C150 132 202 100 263 102Z" fill="url(#fur-paint)" stroke="#594863" stroke-width="7" stroke-linejoin="round"/>
+              <!-- Soft cel-shadow planes: inked but not muddy. -->
+              <path d="M158 219C156 265 187 294 213 302C203 278 193 249 201 227Z" fill="#d7c0df" opacity=".74"/>
+              <path d="M323 132C351 154 364 183 361 206C355 176 339 157 323 151Z" fill="#fff9ef" opacity=".85"/>
+              <path d="M211 115Q237 101 257 110Q283 99 311 119" fill="none" stroke="#fffaf0" stroke-width="9" stroke-linecap="round" opacity=".66"/>
+              <!-- Hand-drawn forelock and three tiny fur tufts. -->
+              <path d="M221 110Q238 138 253 131Q265 122 272 105M274 106Q284 129 295 125" fill="none" stroke="#ddbad8" stroke-width="5" stroke-linecap="round"/>
+              <g id="anime-silver" opacity="0">
+                <path d="M190 171Q198 143 219 131L211 166Z" fill="#b7bdd6" opacity=".8"/>
+                <path d="M314 128Q341 144 347 164L326 158Z" fill="#b7bdd6" opacity=".75"/>
+                <path d="M182 251Q199 275 218 279L204 287Z" fill="#b7bdd6" opacity=".55"/>
+                <path d="M343 251Q329 271 310 281L324 288Z" fill="#b7bdd6" opacity=".6"/>
+              </g>
+              <g id="anime-eyes">
+                <!-- Thick upper lash lines, twin highlight reflections, embedded glassy irises. -->
+                <g id="anime-eye-left">
+                  <path d="M176 211Q190 167 224 170Q251 174 251 211Q248 250 214 257Q181 249 176 211Z" fill="#fffaf4" stroke="#594863" stroke-width="5"/>
+                  <ellipse cx="218" cy="218" rx="20" ry="32" fill="url(#eye-gem)"/>
+                  <ellipse cx="220" cy="220" rx="8" ry="26" fill="#385271"/>
+                  <ellipse cx="207" cy="196" rx="9" ry="13" fill="#fff"/>
+                  <ellipse cx="231" cy="230" rx="4.6" ry="6.5" fill="#f9ffff" opacity=".94"/>
+                  <path d="M177 202Q208 165 244 189" fill="none" stroke="#594863" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M180 198L168 186" fill="none" stroke="#594863" stroke-width="5" stroke-linecap="round"/>
+                </g>
+                <g id="anime-eye-right">
+                  <path d="M273 211Q278 174 303 170Q339 167 350 211Q348 249 315 257Q281 250 273 211Z" fill="#fffaf4" stroke="#594863" stroke-width="5"/>
+                  <ellipse cx="308" cy="218" rx="20" ry="32" fill="url(#eye-gem)"/>
+                  <ellipse cx="309" cy="220" rx="8" ry="26" fill="#385271"/>
+                  <ellipse cx="299" cy="196" rx="9" ry="13" fill="#fff"/>
+                  <ellipse cx="323" cy="230" rx="4.6" ry="6.5" fill="#f9ffff" opacity=".94"/>
+                  <path d="M278 189Q317 165 348 202" fill="none" stroke="#594863" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M345 198L357 186" fill="none" stroke="#594863" stroke-width="5" stroke-linecap="round"/>
+                </g>
+              </g>
+              <ellipse cx="177" cy="261" rx="36" ry="20" fill="url(#cheek-paint)"/>
+              <ellipse cx="350" cy="261" rx="36" ry="20" fill="url(#cheek-paint)"/>
+              <!-- Tiny muzzle: not a human smile. -->
+              <path d="M247 263Q258 270 268 263Q274 273 263 280Q253 280 247 263Z" fill="#d989a3" stroke="#8d5e83" stroke-width="2.5"/>
+              <path d="M263 280v7M263 287q-11 12-22 0M263 287q11 12 22 0" fill="none" stroke="#776078" stroke-width="3" stroke-linecap="round"/>
+              <g fill="#ab8198"><circle cx="208" cy="267" r="2.6"/><circle cx="216" cy="272" r="2.2"/><circle cx="319" cy="269" r="2.5"/><circle cx="311" cy="273" r="2.1"/></g>
+              <g fill="none" stroke="#fff8f2" stroke-width="3" stroke-linecap="round">
+                <path d="M224 276Q186 267 151 258M220 286Q186 288 159 304M301 276Q342 264 376 253M303 287Q337 290 368 303"/>
+              </g>
+            </g>
+            <!-- Silk bow and enamel-gold star charm, sitting above the body. -->
+            <g id="anime-ribbon">
+              <path d="M258 308Q215 276 202 306Q207 330 254 319Q292 336 317 310Q314 277 265 307Z" fill="url(#scarf-paint)" stroke="#6c5176" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M227 304l27 11M296 303l-29 11" stroke="#f8c8db" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="261" cy="316" r="10" fill="#f5c88e" stroke="#886480" stroke-width="3"/>
+              <path d="M260 330v13" stroke="#8b6282" stroke-width="3"/>
+              <path d="M260 340l5 9 10 1-7 7 2 10-10-5-9 5 1-10-7-7 10-1Z" fill="#f2c77d" stroke="#8a6784" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M256 351l4-5" stroke="#fff6d7" stroke-width="2" stroke-linecap="round"/>
+            </g>
+          </g>
+        </svg>
       </div>
-      <div class="scene-foot"><span>✧ LITTLE CAT, BIG STORY</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
-      <p class="scene-note">Move the slider to turn the pages of a Parisian cat story. Illustration only, not a health prediction.</p>
+      </div>
+      <div class="scene-foot"><span id="story-chapter">CHAPTER IV · WISE COMPANION</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
+      <p id="scene-story" class="scene-note">Every little adventure becomes a treasured memory.</p><p class="scene-disclaimer">Illustrative character · Not a biological-age or health prediction</p>
     </div>
   </div>
-  <div class="life-story-strip" aria-label="Cat life stages"><div class="life-stage"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>0–1 year</small></span></div><div class="life-stage"><span class="life-icon">♧</span><span><strong>Young adult</strong><small>1–6 years</small></span></div><div class="life-stage"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–14 years</small></span></div><div class="life-stage"><span class="life-icon">❀</span><span><strong>Senior</strong><small>15+ years</small></span></div></div><div class="comparison-band"><div><span class="mini-overline">THE SAME CAT, THREE ANSWERS</span><p>Why the method matters</p></div><div><strong id="compare-seven">105</strong><small>The old 7× rule</small></div><div><strong id="compare-vet">76</strong><small>Common veterinary chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our longevity-based model</small></div></div>
+  <div class="life-story-strip" role="group" aria-label="Jump to a cat life stage">
+    <button type="button" class="life-stage" data-age="0.5" aria-pressed="false"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>Under 1 year</small></span></button>
+    <button type="button" class="life-stage" data-age="3" aria-pressed="false"><span class="life-icon">☼</span><span><strong>Young adult</strong><small>1–6 years</small></span></button>
+    <button type="button" class="life-stage" data-age="8" aria-pressed="false"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–10 years</small></span></button>
+    <button type="button" class="life-stage" data-age="15" aria-pressed="true"><span class="life-icon">❀</span><span><strong>Senior</strong><small>Over 10 years</small></span></button>
+  </div><div class="comparison-band"><div><span class="mini-overline">ONE CAT · THREE WAYS TO COUNT</span><p>The story behind the number</p></div><div><strong id="compare-seven">105</strong><small>7× shortcut</small></div><div><strong id="compare-vet">76</strong><small>Veterinary-style chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our record-anchored analogy</small></div></div>
 </div>
 </section>
 <section class="method-section wrap" id="how-it-works" aria-labelledby="method-heading">
@@ -167,5 +244,6 @@
 <script src="./cat-growth.js" defer></script>
 <script src="./cat-scene.js" defer></script>
 <script src="./timelapse.js" defer></script>
+<script src="./storybook.js" defer></script>
 <script src="./app.js" defer></script>
 </body></html>
