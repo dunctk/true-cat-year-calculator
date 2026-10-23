@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#fbf2e4">
+<meta name="theme-color" content="#172a35">
 <link rel="canonical" href="https://catyear.pages.dev/">
 <meta property="og:url" content="https://catyear.pages.dev/">
 <meta name="description" content="How old is your cat in human years? Explore a beautiful, research-linked cat years calculator anchored to the oldest verified cat and human, with a transparent formula and real feline longevity data.">
-<meta property="og:type" content="website"><meta property="og:title" content="How old is your cat, really? | True Cat Years"><meta property="og:description" content="An anime-inspired Parisian cat that grows with your age slider. A gentler, transparent way to count cat years.">
+<meta property="og:type" content="website"><meta property="og:title" content="How old is your cat, really? | True Cat Years"><meta property="og:description" content="An illustrated cat age calculator with a clear, record-based comparison.">
 <title>Cat Years to Human Years Calculator | True Cat Years</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./storyboard.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"True Cat Years Calculator","applicationCategory":"HealthApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"An illustrative cat-to-human age calculator anchored to verified world longevity records, with a distinct veterinary-life-stage comparison and empirical cat survival data.","author":{"@type":"Person","name":"Duncan Trevithick"}}</script>
@@ -14,7 +14,7 @@
 <body>
 <a class="skip" href="#calculator">Skip to calculator</a>
 <header class="site-header wrap">
-<a href="./" class="brand" aria-label="True Cat Years home"><span class="brand-mark" aria-hidden="true">♛</span><span>true <span class="brand-italic">cat</span> years<span class="brand-dot">.</span></span></a>
+<a href="./" class="brand" aria-label="True Cat Years home"><span class="brand-mark" aria-hidden="true">猫</span><span>true <span class="brand-italic">cat</span> years<span class="brand-dot">.</span></span></a>
 <nav aria-label="Primary navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">The method</a><a href="#the-evidence">The evidence</a><a class="nav-github" href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">Open source ↗</a></nav>
 </header>
 <main>
@@ -22,28 +22,28 @@
 <section class="calculator-section experience-section" id="calculator" aria-labelledby="calc-heading">
 <div class="wrap">
   <div class="experience-heading">
-    <div><p class="kicker"><span class="kicker-rule"></span>UNE PETITE CURIOSITÉ · THE CAT YEARS CALCULATOR</p>
+    <div><p class="kicker"><span class="kicker-rule"></span>CAT TO HUMAN AGE CALCULATOR</p>
       <h1 id="calc-heading">Cat years.<br><em>Human years.</em></h1></div>
-    <p class="experience-intro">Every cat has a story. Explore the years through an original anime portrait, a Parisian day-and-night world and an age analogy with its assumptions in plain sight.</p>
+    <p class="experience-intro">Adjust the age. Compare the methods.</p>
   </div>
   <div class="calc-grid experience-grid">
     <div class="control-panel experience-control">
-      <div class="panel-index"><span>YOUR CAT'S AGE</span><span>IN CAT YEARS</span></div>
+      <div class="panel-index"><span>CAT AGE</span><span>YEARS + MONTHS</span></div>
       <div class="hero-result">
         <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49.0</strong><span>human<br>years</span></div>
-        <div class="hero-sub"><span>Human years · our illustrative analogy</span><span id="stage" class="stage-pill">Senior</span></div>
+        <div class="hero-sub"><span>Illustrative age equivalent</span><span id="stage" class="stage-pill">Senior</span></div>
       </div>
       <div class="age-fields"><div><label for="years">Years</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Months</label><select id="months" aria-label="Additional months"><option value="0">0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div></div>
       <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Cat age in years">
-      <div class="range-ends"><span>Just born</span><span>38 years · record holder</span></div>
-      <div class="quick-label">TRY A MILESTONE</div>
+      <div class="range-ends"><span>Birth</span><span>38 · record</span></div>
+      <div class="quick-label">QUICK AGES</div>
       <div class="presets"><button type="button" data-age="0.5">6 mos</button><button type="button" data-age="2">2 yrs</button><button type="button" data-age="5">5 yrs</button><button type="button" data-age="10">10 yrs</button><button type="button" data-age="15">15 yrs</button><button type="button" data-age="20">20 yrs</button><button type="button" data-age="38.0082">Record ↗</button></div>
       <div class="control-lower">
-        <div><p class="control-subhead">Conversion method</p><div class="switcher" role="group" aria-label="Age conversion model"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Maturity-adjusted</button><button id="mode-linear" type="button" aria-pressed="false">Record percentage</button></div></div>
-        <div class="record-meter"><div class="record-meter-label"><span>Of the cat longevity record</span><strong id="record-share">39.5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
+        <div><p class="control-subhead">Conversion method</p><div class="switcher" role="group" aria-label="Age conversion model"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Adjusted</button><button id="mode-linear" type="button" aria-pressed="false">Record %</button></div></div>
+        <div class="record-meter"><div class="record-meter-label"><span>Of longevity record</span><strong id="record-share">39.5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
       </div>
-      <p class="method-explain" id="mode-description">A teenage analogy at age two, then a fading early-maturity boost over the longevity-record baseline. Illustrative, not clinical.</p>
-      <div class="result-actions"><button type="button" id="copy-link" class="action-main">Share your cat's age ↗</button><button type="button" id="reset-age" class="action-alt">Reset</button></div>
+      <p class="method-explain" id="mode-description">Record-based age analogy. Not a medical estimate.</p>
+      <div class="result-actions"><button type="button" id="copy-link" class="action-main">Share ↗</button><button type="button" id="reset-age" class="action-alt">Reset</button></div>
       <p id="copy-status" class="sr-only" role="status"></p>
     </div>
     <div class="scene-panel" aria-label="Cat character in a Parisian day-and-night timelapse controlled by the age slider">
@@ -91,7 +91,7 @@
           </g>
         </svg>
       </div>
-      <div class="scene-top"><span class="scene-title">✦ <span lang="ja">猫の時間</span> · CAT CHRONICLES</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Golden hour</span><div class="portrait-switch" role="group" aria-label="Portrait style">
+      <div class="scene-top"><span class="scene-title">猫 · AGE STUDY</span><span class="scene-status-wrap"><span class="scene-daypart" id="scene-daypart">Golden hour</span><div class="portrait-switch" role="group" aria-label="Portrait style">
         <button type="button" id="portrait-anime" class="active" aria-pressed="true">Illustration</button>
         <button type="button" id="portrait-3d" aria-pressed="false">3D</button>
       </div></span></div>
@@ -190,45 +190,35 @@
         </svg>
       </div>
       </div>
-      <div class="scene-foot"><span id="story-chapter">CHAPTER IV · WISE COMPANION</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
-      <p id="scene-story" class="scene-note">Every little adventure becomes a treasured memory.</p><p class="scene-disclaimer">Illustrative character · Not a biological-age or health prediction</p>
+      <div class="scene-foot"><span id="story-chapter">04 / SENIOR</span><span id="portrait-stage" aria-live="polite">Senior cat</span></div>
+      <p id="scene-story" class="scene-note">Senior · 10+ years</p><p class="scene-disclaimer">Illustration only · Not a health forecast</p>
     </div>
   </div>
-  <div class="life-story-strip" role="group" aria-label="Jump to a cat life stage">
-    <button type="button" class="life-stage" data-age="0.5" aria-pressed="false"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>Under 1 year</small></span></button>
-    <button type="button" class="life-stage" data-age="3" aria-pressed="false"><span class="life-icon">☼</span><span><strong>Young adult</strong><small>1–6 years</small></span></button>
-    <button type="button" class="life-stage" data-age="8" aria-pressed="false"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–10 years</small></span></button>
-    <button type="button" class="life-stage" data-age="15" aria-pressed="true"><span class="life-icon">❀</span><span><strong>Senior</strong><small>Over 10 years</small></span></button>
-  </div><div class="comparison-band"><div><span class="mini-overline">ONE CAT · THREE WAYS TO COUNT</span><p>The story behind the number</p></div><div><strong id="compare-seven">105</strong><small>7× shortcut</small></div><div><strong id="compare-vet">76</strong><small>Veterinary-style chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our record-anchored analogy</small></div></div>
+  <div class="comparison-band"><div><span class="mini-overline">COMPARE</span></div><div><strong id="compare-seven">105</strong><small>7× shortcut</small></div><div><strong id="compare-vet">76</strong><small>Veterinary-style chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>This model</small></div></div>
 </div>
 </section>
 <section class="method-section wrap" id="how-it-works" aria-labelledby="method-heading">
-  <div class="section-heading"><div><p class="kicker">CHAPITRE DEUX · THE THINKING</p><h2 id="method-heading">Good maths. <em>Honest limits.</em></h2></div><p>Not all age comparisons tell the same story.</p></div>
-  <div class="reason-grid">
-    <article><span class="reason-number">01</span><h3>Seven isn't magic.</h3><p>Multiplying every cat year by seven assumes ageing happens at a constant speed. A one-year-old cat is already much more mature than a seven-year-old child.</p></article>
-    <article><span class="reason-number">02</span><h3>Start with real records.</h3><p>We anchor the endpoints to Creme Puff's 38 years and 3 days and Jeanne Calment's 122 years and 164 days — both verified by Guinness World Records.</p></article>
-    <article><span class="reason-number">03</span><h3>Make room for growing up.</h3><p>We treat the world-record percentage as the baseline, then add an early-maturity adjustment that fades away. At age two, our illustrative analogy is 17 human years — closer to a teenager, not 24.</p></article>
-  </div>
+  <div class="section-heading"><div><p class="kicker">THE METHOD</p><h2 id="method-heading">How it <em>works.</em></h2></div><p></p></div>
   <div class="formula-layout">
-    <div class="formula-card"><p class="mini-overline">THE GENTLE MATURITY-ADJUSTED MODEL</p><div class="formula formula-v2" aria-label="H equals r times C plus B times C times e to the power negative C divided by three, times one minus C over C maximum"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>C</strong> = cat age in years. <strong>C<sub>max</sub> = 38.008</strong> and <strong>H<sub>max</sub> = 122.449</strong> are the verified records. <strong>r = H<sub>max</sub>/C<sub>max</sub> ≈ <span id="ratio">3.22165</span></strong>.</p><p><strong>B ≈ <span id="boost">10.8519</span></strong> is calculated to make <strong>H(2) = 17</strong>. The extra term boosts younger ages but fades exponentially (with a 3-year decay scale), returning to the baseline by older ages and exactly matching the record at 38.008.</p><div class="formula-note">The teenage analogy and decay scale are explicitly chosen modelling assumptions, not measurements from a veterinary study. The pure record-percentage alternative is H = rC.</div></div>
+    <div class="formula-card"><p class="mini-overline">AGE CONVERSION</p><div class="formula formula-v2" aria-label="H equals r times C plus B times C times e to the power negative C divided by three, times one minus C over C maximum"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>r = <span id="ratio">3.22165</span></strong> uses world longevity records. <strong>B = <span id="boost">10.8519</span></strong> represents early maturity.</p><div class="formula-note">Illustrative, not medically validated. The alternative uses H = rC.</div></div>
     <div class="chart-card"><div class="chart-head"><h3>How the curves compare</h3><span>0–38 cat years</span></div><svg id="age-chart" viewBox="0 0 550 295" role="img" aria-label="Curve comparison between maturity-adjusted, linear world-record percentage, and seven times cat age"></svg><div class="chart-legend"><span><i class="lg-orange"></i>Our curve</span><span><i class="lg-green"></i>Record %</span><span><i class="lg-dotted"></i>7× rule</span></div></div>
   </div>
-  <p class="accuracy-caveat"><strong>Is this more accurate?</strong> It's more defensible than the naive 7× rule because it models faster early maturation and has explicit, verifiable endpoints. But it's <strong>not scientifically proven more accurate</strong> than veterinary age charts. Maximum observed lifespan is an extreme outlier, not a physiological measure of ageing, and the size and speed of our early-maturity adjustment are modelling choices, not clinical measurements.</p>
+  <p class="accuracy-caveat"><strong>Important:</strong> This is an age analogy, not a biological-age test or lifespan prediction. Record lifespans are outliers.</p>
 </section>
 <section class="evidence-section" id="the-evidence" aria-labelledby="evidence-heading"><div class="wrap">
-  <div class="section-heading"><div><p class="kicker">CHAPITRE TROIS · THE EVIDENCE</p><h2 id="evidence-heading">Living longer is <em>another question.</em></h2></div><p>An age analogy is not a survival forecast. Here's what the data can — and can't — tell us.</p></div>
+  <div class="section-heading"><div><p class="kicker">THE EVIDENCE</p><h2 id="evidence-heading">Age is <em>not prognosis.</em></h2></div><p>Observed survival is separate from age conversion.</p></div>
   <div class="evidence-grid">
     <div class="survival-card"><div class="chart-head"><h3>How many cats reach each age?</h3><span>UK VetCompass study · 2019</span></div><svg id="survival-chart" viewBox="0 0 550 285" role="img" aria-label="Modelled population survival from newborn up to 20 cat years in a UK veterinary study"></svg><div class="survival-metrics"><div><strong id="survival-share">35.2%</strong><span>Modelled share reaching selected age</span></div><div><strong id="death-risk">21.2%</strong><span>Probability of dying in next age band</span></div><div><strong id="years-left">2.72</strong><span>Mean further years at this age</span></div></div><p class="small-print">Derived from the published cohort life table of 7,936 confirmed cat deaths. Shows population modelling through age 20, not your cat's personal survival odds. Risk is conditional on having reached the chosen age.</p></div>
-    <div class="kidney-card"><p class="mini-overline">WHY HEALTHCARE MATTERS</p><h3>Ageing isn't the only reason cats die.</h3><p>Chronic kidney disease is common in older cats. It's usually not curable, but supportive management and therapeutic renal diets can make a meaningful difference for some cats.</p><p>One study, cited by the ISFM consensus guidelines, reported median survival of:</p><div class="diet-bars"><div><div><span>Conventional diet</span><b>264 days</b></div><div class="bar-track"><span style="width:41.7%;background:#9cad9b"></span></div></div><div><div><span>Therapeutic renal diet</span><b>633 days</b></div><div class="bar-track"><span style="width:100%;background:#d97950"></span></div></div></div><p class="small-print">A comparison from one study — not a promise, a randomised care/no-care experiment, or proof that all feline deaths are preventable. Treatment choices depend on veterinary assessment, appetite, quality of life and individual circumstances.</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11148907/" target="_blank" rel="noopener noreferrer" class="text-link">Read the ISFM kidney guidelines ↗</a></div>
+    
   </div>
 </div></section>
 <section class="table-section wrap" aria-labelledby="table-heading">
-  <div class="section-heading"><div><p class="kicker">CHAPITRE QUATRE · THE QUICK REFERENCE</p><h2 id="table-heading">Cat years, <em>side by side.</em></h2></div><p>Examples from the record-anchored curve and the commonly used veterinary chart.</p></div>
+  <div class="section-heading"><div><p class="kicker">QUICK REFERENCE</p><h2 id="table-heading">Age <em>table.</em></h2></div><p></p></div>
   <div class="table-shell"><table><thead><tr><th>Cat age</th><th>Our model (human years)</th><th>Veterinary chart*</th><th>7× rule</th></tr></thead><tbody id="age-table"></tbody></table></div>
   <p class="small-print">*The commonly used veterinary age chart approximates 15 human years at cat age 1, 24 at age 2, then adds roughly four per cat year. It is an analogy, not a clinical prediction. Beyond age 20 it is extrapolated here only for comparison.</p>
 </section>
 <section class="sources-section wrap" aria-labelledby="sources-heading">
-  <div><p class="kicker">LE GRAND LIVRE · REFERENCES</p><h2 id="sources-heading">Nothing up <em>our sleeves.</em></h2><p class="sources-lede">Every anchor and treatment claim can be traced back to a published record or study.</p></div>
+  <div><p class="kicker">SOURCES</p><h2 id="sources-heading">Sources <em>& data.</em></h2><p class="sources-lede">Source material for this calculator.</p></div>
   <ol class="source-list">
     <li><a href="https://www.guinnessworldrecords.com/world-records/oldest-cat-ever" target="_blank" rel="noopener noreferrer"><strong>Guinness World Records · Oldest cat ever</strong><span>Creme Puff — 38 years, 3 days <b>↗</b></span></a></li>
     <li><a href="https://www.guinnessworldrecords.com/world-records/oldest-person" target="_blank" rel="noopener noreferrer"><strong>Guinness World Records · Oldest person ever</strong><span>Jeanne Calment — 122 years, 164 days <b>↗</b></span></a></li>
@@ -237,7 +227,7 @@
     <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11148907/" target="_blank" rel="noopener noreferrer"><strong>ISFM · Feline chronic kidney disease guidelines (2016)</strong><span>Management evidence and renal diet survival studies <b>↗</b></span></a></li>
   </ol>
 </section>
-<section class="closing wrap"><span aria-hidden="true">✳</span><div><h2>Every extra year is <em>its own little miracle.</em></h2><p>A calculator can offer perspective. Good veterinary care, close observation and quality of life matter more than the number.</p></div><a href="#calculator">Try another age ↑</a></section>
+<section class="closing wrap"><span aria-hidden="true">✳</span><div><h2>Every year <em>counts.</em></h2><p>Health and quality of life matter more than any conversion.</p></div><a href="#calculator">Try another age ↑</a></section>
 </main>
 <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">♛</span><span>true <span class="brand-italic">cat</span> years<span class="brand-dot">.</span></span></a><p>Made with curiosity, not veterinary authority. Educational only; not medical advice. No tracking, cookies or data collection.</p><a href="https://github.com/dunctk/true-cat-year-calculator" target="_blank" rel="noopener noreferrer">View source ↗</a></footer>
 <script src="./model.js" defer></script>
