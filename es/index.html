@@ -33,7 +33,7 @@
     <div class="control-panel experience-control">
       <div class="panel-index"><span>EDAD DEL GATO</span><span>AÑOS + MESES</span></div>
       <div class="hero-result">
-        <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49.0</strong><span>años<br>humanos</span></div>
+        <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49,0</strong><span>años<br>humanos</span></div>
         <div class="hero-sub"><span>Equivalencia orientativa</span><span id="stage" class="stage-pill">Sénior</span></div>
       </div>
       <div class="age-fields"><div><label for="years">Años</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Meses</label><select id="months" aria-label="Meses adicionales"><option value="0">0 meses</option><option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option><option value="4">4 meses</option><option value="5">5 meses</option><option value="6">6 meses</option><option value="7">7 meses</option><option value="8">8 meses</option><option value="9">9 meses</option><option value="10">10 meses</option><option value="11">11 meses</option></select></div></div>
@@ -43,7 +43,7 @@
       <div class="presets"><button type="button" data-age="0.5">6 meses</button><button type="button" data-age="2">2 años</button><button type="button" data-age="5">5 años</button><button type="button" data-age="10">10 años</button><button type="button" data-age="15">15 años</button><button type="button" data-age="20">20 años</button><button type="button" data-age="38.0082">Récord ↗</button></div>
       <div class="control-lower">
         <div><p class="control-subhead">Método de conversión</p><div class="switcher" role="group" aria-label="Modelo de conversión de edad"><button id="mode-adjusted" type="button" aria-pressed="true" class="active">Ajustado</button><button id="mode-linear" type="button" aria-pressed="false">% del récord</button></div></div>
-        <div class="record-meter"><div class="record-meter-label"><span>Del récord de longevidad</span><strong id="record-share">39.5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
+        <div class="record-meter"><div class="record-meter-label"><span>Del récord de longevidad</span><strong id="record-share">39,5%</strong></div><div class="progress" aria-hidden="true"><span id="progress-bar"></span></div></div>
       </div>
       <p class="method-explain" id="mode-description">Comparación ilustrativa basada en récords. No es un diagnóstico.</p>
       <div class="result-actions"><button type="button" id="copy-link" class="action-main">Compartir ↗</button><button type="button" id="reset-age" class="action-alt">Restablecer</button></div>
@@ -194,13 +194,13 @@
       <p id="scene-story" class="scene-note">Sénior · 10–19 años</p><p class="scene-disclaimer">Ilustración orientativa · No predice la salud</p>
     </div>
   </div>
-  <div class="comparison-band"><div><span class="mini-overline">COMPARAR</span></div><div><strong id="compare-seven">105</strong><small>Regla de multiplicar por 7</small></div><div><strong id="compare-vet">76</strong><small>Tabla veterinaria habitual</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Nuestro modelo</small></div></div>
+  <div class="comparison-band"><div><span class="mini-overline">COMPARAR</span></div><div><strong id="compare-seven">105</strong><small>Regla de multiplicar por 7</small></div><div><strong id="compare-vet">76</strong><small>Tabla veterinaria habitual</small></div><div class="compare-feature"><strong id="compare-ours">49,0</strong><small>Nuestro modelo</small></div></div>
 </div>
 </section>
 <section class="method-section wrap" id="how-it-works" aria-labelledby="method-heading">
   <div class="section-heading"><div><p class="kicker">EL MÉTODO</p><h2 id="method-heading">Cómo <em>funciona.</em></h2></div><p></p></div>
   <div class="formula-layout">
-    <div class="formula-card"><p class="mini-overline">CONVERSIÓN DE EDAD</p><div class="formula formula-v2" aria-label="H es igual a r por C más B por C por e elevado a menos C dividido entre tres, multiplicado por uno menos C dividido entre C máxima"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>r = <span id="ratio">3.22165</span></strong> se calcula a partir de récords mundiales de longevidad. <strong>B = <span id="boost">10.8519</span></strong> representa la maduración temprana.</p><div class="formula-note">Es una analogía, no un modelo médico validado. La alternativa es H = rC.</div></div>
+    <div class="formula-card"><p class="mini-overline">CONVERSIÓN DE EDAD</p><div class="formula formula-v2" aria-label="H es igual a r por C más B por C por e elevado a menos C dividido entre tres, multiplicado por uno menos C dividido entre C máxima"><span>H = rC + BC · e<sup>−C/3</sup></span><span> · (1 − C/C<sub>max</sub>)</span></div><p><strong>r = <span id="ratio">3,22165</span></strong> se calcula a partir de récords mundiales de longevidad. <strong>B = <span id="boost">10,8519</span></strong> representa la maduración temprana.</p><div class="formula-note">Es una analogía, no un modelo médico validado. La alternativa es H = rC.</div></div>
     <div class="chart-card"><div class="chart-head"><h3>Comparación de curvas</h3><span>0–38 años de gato</span></div><svg id="age-chart" viewBox="0 0 550 295" role="img" aria-label="Comparación de las curvas del modelo ajustado, porcentaje del récord y siete veces la edad del gato"></svg><div class="chart-legend"><span><i class="lg-orange"></i>Nuestro modelo</span><span><i class="lg-green"></i>% del récord</span><span><i class="lg-dotted"></i>Regla ×7</span></div></div>
   </div>
   <p class="accuracy-caveat"><strong>Importante:</strong> Esta equivalencia no mide la edad biológica ni predice la esperanza de vida. Los récords son casos excepcionales.</p>
@@ -208,7 +208,7 @@
 <section class="evidence-section" id="the-evidence" aria-labelledby="evidence-heading"><div class="wrap">
   <div class="section-heading"><div><p class="kicker">LOS DATOS</p><h2 id="evidence-heading">La edad no es <em>un pronóstico.</em></h2></div><p>La supervivencia observada no equivale a una conversión de edad.</p></div>
   <div class="evidence-grid">
-    <div class="survival-card"><div class="chart-head"><h3>¿Cuántos gatos llegan a cada edad?</h3><span>Estudio británico VetCompass · 2019</span></div><svg id="survival-chart" viewBox="0 0 550 285" role="img" aria-label="Supervivencia poblacional estimada desde el nacimiento hasta los 20 años a partir de un estudio veterinario británico"></svg><div class="survival-metrics"><div><strong id="survival-share">35.2%</strong><span>Porcentaje estimado que alcanza esta edad</span></div><div><strong id="death-risk">21.2%</strong><span>Riesgo de fallecer en el siguiente tramo de edad</span></div><div><strong id="years-left">2.72</strong><span>Años de vida restantes de media a esta edad</span></div></div><p class="small-print">Basado en una tabla de supervivencia publicada de 7936 gatos fallecidos. Son datos poblacionales hasta los 20 años, no una predicción para tu gato. El riesgo supone que ya ha alcanzado la edad indicada.</p></div>
+    <div class="survival-card"><div class="chart-head"><h3>¿Cuántos gatos llegan a cada edad?</h3><span>Estudio británico VetCompass · 2019</span></div><svg id="survival-chart" viewBox="0 0 550 285" role="img" aria-label="Supervivencia poblacional estimada desde el nacimiento hasta los 20 años a partir de un estudio veterinario británico"></svg><div class="survival-metrics"><div><strong id="survival-share">35,2%</strong><span>Porcentaje estimado que alcanza esta edad</span></div><div><strong id="death-risk">21,2%</strong><span>Riesgo de fallecer en el siguiente tramo de edad</span></div><div><strong id="years-left">2,72</strong><span>Años de vida restantes de media a esta edad</span></div></div><p class="small-print">Basado en una tabla de supervivencia publicada de 7936 gatos fallecidos. Son datos poblacionales hasta los 20 años, no una predicción para tu gato. El riesgo supone que ya ha alcanzado la edad indicada.</p></div>
     
   </div>
 </div></section>
