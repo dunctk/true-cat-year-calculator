@@ -15,8 +15,15 @@
   const chapter=document.getElementById('story-chapter');
   if(!viewport||!whole||!head||!animeBtn||!threeDBtn)return;
   const maxAge=root.TrueCatYearsModel.CAT_MAX;
+  const es=document.documentElement?.lang?.toLowerCase().startsWith('es')||false;
   const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
-  const stories=[
+  const stories=es?[
+    {max:1,title:'01 / GATITO',text:'Gatito · menos de 1 año'},
+    {max:3,title:'02 / JOVEN',text:'Joven · 1–2 años'},
+    {max:10,title:'03 / ADULTO',text:'Adulto · 3–9 años'},
+    {max:20,title:'04 / SÉNIOR',text:'Sénior · 10–19 años'},
+    {max:Infinity,title:'05 / MUY LONGEVO',text:'Muy longevo · más de 20 años'}
+  ]:[
     {max:1,title:'01 / KITTEN',text:'Kitten · under 1 year'},
     {max:3,title:'02 / YOUNG',text:'Young · 1–2 years'},
     {max:10,title:'03 / ADULT',text:'Adult · 3–9 years'},
@@ -27,7 +34,7 @@
   let mode='anime';
   const supports3D=viewport.classList.contains('webgl-ready');
   threeDBtn.disabled=!supports3D;
-  if(!supports3D)threeDBtn.title='3D is unavailable in this browser';
+  if(!supports3D)threeDBtn.title=es?'El modo 3D no está disponible en este navegador':'3D is unavailable in this browser';
   function setMode(next){
     if(next==='3d'&&!viewport.classList.contains('webgl-ready'))return;
     mode=next==='3d'?'3d':'anime';
