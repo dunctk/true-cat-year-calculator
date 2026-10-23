@@ -17,11 +17,11 @@
   const maxAge=root.TrueCatYearsModel.CAT_MAX;
   const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
   const stories=[
-    {max:1,title:'CHAPTER I · THE FIRST WONDER',text:'A little paw, a big world. Every day is a new discovery.'},
-    {max:3,title:'CHAPTER II · CURIOUS BEGINNINGS',text:'Growing into those ears, and into a hundred little adventures.'},
-    {max:10,title:'CHAPTER III · THE PARIS EXPLORER',text:'Every rooftop, window and sunbeam belongs to our curious companion.'},
-    {max:20,title:'CHAPTER IV · THE WISE COMPANION',text:'A little more wisdom, a little more charm, and so many stories.'},
-    {max:Infinity,title:'CHAPTER V · A LIVING LEGEND',text:'Some extraordinary companions keep turning the pages.'}
+    {max:1,title:'01 / KITTEN',text:'Kitten · under 1 year'},
+    {max:3,title:'02 / YOUNG',text:'Young · 1–2 years'},
+    {max:10,title:'03 / ADULT',text:'Adult · 3–9 years'},
+    {max:20,title:'04 / SENIOR',text:'Senior · 10–19 years'},
+    {max:Infinity,title:'05 / LONG-LIVED',text:'Long-lived · 20+ years'}
   ];
   let age=15;
   let mode='anime';
