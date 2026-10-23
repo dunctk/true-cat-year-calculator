@@ -53,6 +53,7 @@ function syncLanguageLinks(){
    target.searchParams.set('age',fmt(age,4));
    target.searchParams.set('method',mode);
    if($('portrait-3d')?.getAttribute('aria-pressed')==='true')target.searchParams.set('view','3d');
+   else target.searchParams.delete('view');
    link.href=target.toString();
  });
 }
