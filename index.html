@@ -23,15 +23,15 @@
 <div class="wrap">
   <div class="experience-heading">
     <div><p class="kicker"><span class="kicker-rule"></span>UNE PETITE CURIOSITÉ · THE CAT YEARS CALCULATOR</p>
-      <h1 id="calc-heading">How old is your cat,<br><em>really?</em></h1></div>
-    <p class="experience-intro">Every cat has a story. Discover yours with a little Parisian magic, world-record maths and an animated companion who grows along the way.</p>
+      <h1 id="calc-heading">Every cat has<br><em>a whole story.</em></h1></div>
+    <p class="experience-intro">Every cat has a story. Explore the years through an original anime portrait, a Parisian day-and-night world and an age analogy with its assumptions in plain sight.</p>
   </div>
   <div class="calc-grid experience-grid">
     <div class="control-panel experience-control">
       <div class="panel-index"><span>YOUR CAT'S AGE</span><span>IN CAT YEARS</span></div>
       <div class="hero-result">
         <div class="hero-number"><strong id="result-years" aria-live="polite" aria-atomic="true">49.0</strong><span>human<br>years</span></div>
-        <div class="hero-sub"><span>Our illustrative age analogy</span><span id="stage" class="stage-pill">Senior</span></div>
+        <div class="hero-sub"><span>Human years · our illustrative analogy</span><span id="stage" class="stage-pill">Senior</span></div>
       </div>
       <div class="age-fields"><div><label for="years">Years</label><input type="number" id="years" min="0" max="38" step="1" value="15" inputmode="numeric"></div><div><label for="months">Months</label><select id="months" aria-label="Additional months"><option value="0">0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div></div>
       <input type="range" id="age-slider" min="0" max="38" step=".0833333333" value="15" aria-label="Cat age in years">
@@ -194,7 +194,12 @@
       <p id="scene-story" class="scene-note">Every little adventure becomes a treasured memory.</p><p class="scene-disclaimer">Illustrative character · Not a biological-age or health prediction</p>
     </div>
   </div>
-  <div class="life-story-strip" aria-label="Cat life stages"><div class="life-stage"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>0–1 year</small></span></div><div class="life-stage"><span class="life-icon">♧</span><span><strong>Young adult</strong><small>1–6 years</small></span></div><div class="life-stage"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–14 years</small></span></div><div class="life-stage"><span class="life-icon">❀</span><span><strong>Senior</strong><small>15+ years</small></span></div></div><div class="comparison-band"><div><span class="mini-overline">THE SAME CAT, THREE ANSWERS</span><p>Why the method matters</p></div><div><strong id="compare-seven">105</strong><small>The old 7× rule</small></div><div><strong id="compare-vet">76</strong><small>Common veterinary chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our longevity-based model</small></div></div>
+  <div class="life-story-strip" role="group" aria-label="Jump to a cat life stage">
+    <button type="button" class="life-stage" data-age="0.5" aria-pressed="false"><span class="life-icon">✿</span><span><strong>Kitten</strong><small>Under 1 year</small></span></button>
+    <button type="button" class="life-stage" data-age="3" aria-pressed="false"><span class="life-icon">☼</span><span><strong>Young adult</strong><small>1–6 years</small></span></button>
+    <button type="button" class="life-stage" data-age="8" aria-pressed="false"><span class="life-icon">✧</span><span><strong>Mature</strong><small>7–10 years</small></span></button>
+    <button type="button" class="life-stage" data-age="15" aria-pressed="true"><span class="life-icon">❀</span><span><strong>Senior</strong><small>Over 10 years</small></span></button>
+  </div><div class="comparison-band"><div><span class="mini-overline">ONE CAT · THREE WAYS TO COUNT</span><p>The story behind the number</p></div><div><strong id="compare-seven">105</strong><small>7× shortcut</small></div><div><strong id="compare-vet">76</strong><small>Veterinary-style chart</small></div><div class="compare-feature"><strong id="compare-ours">49.0</strong><small>Our record-anchored analogy</small></div></div>
 </div>
 </section>
 <section class="method-section wrap" id="how-it-works" aria-labelledby="method-heading">
