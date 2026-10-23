@@ -58,6 +58,7 @@
   animeBtn.addEventListener('click',()=>setMode('anime'));
   threeDBtn.addEventListener('click',()=>setMode('3d'));
   root.TrueCatYearsStorybook=Object.freeze({setAge,setMode});
-  setMode('anime');
+  const requested3D=new URLSearchParams(root.location?.search||'').get('view')==='3d';
+  setMode(requested3D&&supports3D?'3d':'anime');
   setAge(15);
 })(globalThis);
