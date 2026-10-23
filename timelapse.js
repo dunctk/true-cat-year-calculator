@@ -11,6 +11,7 @@
  const scene=document.querySelector('.scene-panel');
  const daypart=document.getElementById('scene-daypart');
  const MAX_AGE=root.TrueCatYearsModel?.CAT_MAX || 38+3/365.2425;
+ const es=document.documentElement?.lang?.toLowerCase().startsWith('es')||false;
  const SECONDS_IN_STORYBOARD=42; // CSS sampling domain, NOT elapsed time.
  const YEARS_PER_ILLUSTRATED_DAY=2;
  if(!scene)return;
@@ -24,11 +25,11 @@
      delay:(-SECONDS_IN_STORYBOARD*progress).toFixed(5)+'s'});
  }
  function daypartFor(progress){
-   if(progress<.14 || progress>=.94)return 'Sunrise';
-   if(progress<.40)return 'Daylight';
-   if(progress<.60)return 'Golden hour';
-   if(progress<.72)return 'Sunset';
-   return 'Starry night';
+   if(progress<.14 || progress>=.94)return es?'Amanecer':'Sunrise';
+   if(progress<.40)return es?'Día':'Daylight';
+   if(progress<.60)return es?'Hora dorada':'Golden hour';
+   if(progress<.72)return es?'Atardecer':'Sunset';
+   return es?'Noche estrellada':'Starry night';
  }
  function setAge(value){
    const frame=frameForAge(value);
