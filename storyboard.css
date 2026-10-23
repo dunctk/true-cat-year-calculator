@@ -1,0 +1,238 @@
+/*
+ * Cat Chronicles — an original, dependency-free anime storybook art direction.
+ * This layer sits on top of the existing evidence-rich calculator styles.
+ * No external fonts, stock art, UI frameworks or auto-playing scene backgrounds.
+ */
+:root{
+ --story-plum:#524668;
+ --story-ink:#574a66;
+ --story-rose:#b96395;
+ --story-rose-light:#f2c6da;
+ --story-lilac:#eee5f5;
+ --story-cream:#fff8ec;
+ --story-mint:#6ca8a7;
+ --story-rule:#dfbdd3;
+}
+body{background:#fff8f0}
+.site-header{
+ background:linear-gradient(94deg,#fffbf2,#f9eafa 56%,#eee8f8);
+ box-shadow:0 3px 0 #fff8f0;
+}
+.site-header .brand{color:#574a66}
+.site-header .brand-mark{background:#665075;color:#fff0dc;box-shadow:inset 0 0 0 2px #fff6e581,0 3px 0 #e6b1ca}
+.site-header .brand-dot{color:#be6c9f}
+.site-header nav a:hover{color:#a34d80}
+.experience-section{
+ background:radial-gradient(circle at 78% 18%,#fffef4b9,transparent 24%),
+            linear-gradient(128deg,#fff9ed 1%,#f8dfe7 43%,#e6e3f5 100%);
+}
+.experience-heading{align-items:end;position:relative}
+.experience-heading .kicker{color:#9c648b;font-size:11px;letter-spacing:.14em}
+.experience-heading h1{
+ font-size:clamp(53px,6vw,91px);
+ letter-spacing:-.064em;
+ line-height:.96;
+ color:#504864;
+ max-width:none;
+ text-wrap:balance;
+}
+.experience-heading h1 em{color:#b45e91;text-shadow:1px 2px 0 #fff4ed}
+.experience-intro{max-width:340px;color:#625872;font-size:18px;line-height:1.55}
+.experience-grid{grid-template-columns:.96fr 1.04fr;gap:18px;align-items:stretch}
+.experience-control{
+ background:linear-gradient(150deg,#fffefa 0%,#fff5ee 58%,#f9eaf4 100%);
+ border:2px solid #cfa7bd;border-radius:23px;
+ box-shadow:0 18px 38px #6c557528,0 5px 0 #b899b047;
+ outline-color:#ffeadf;padding:29px 31px;
+}
+.experience-control .panel-index{color:#a2688f}
+.experience-control .panel-index span+span{color:#917991}
+.hero-result{border-bottom-color:#e9cede;padding-bottom:16px}
+.hero-number strong{color:#564762;font-size:clamp(85px,8.4vw,117px)}
+.hero-number span{color:#76627d}
+.hero-sub{color:#79687e}
+.stage-pill{background:#f7e4ef;border-color:#ddacc9;color:#835474}
+.experience-control .age-fields label{color:#655772}
+.experience-control .age-fields input,.experience-control .age-fields select{border:1.5px solid #dcb7cc;border-radius:12px;color:#55496b}
+.experience-control input[type=range]{background:linear-gradient(90deg,#bd68a3,#e5a4c3 62%,#dfcadf)}
+.experience-control input[type=range]::-webkit-slider-thumb{background:#8d548c;box-shadow:0 0 0 2px #8d548c,0 3px 11px #61456948}
+.experience-control input[type=range]::-moz-range-thumb{background:#8d548c;box-shadow:0 0 0 2px #8d548c,0 3px 11px #61456948}
+.experience-control .quick-label{color:#916b89}
+.experience-control .presets button{border:1px solid #dcb5cc;background:#fff9f5;color:#76576f;box-shadow:0 2px 0 #ead3e1}
+.experience-control .presets button:hover,.experience-control .presets button.active{background:#b36598;border-color:#b36598;color:white}
+.control-lower{border-top-color:#e8cadd}
+.control-lower .switcher{background:#f0dce9}
+.control-lower .switcher .active{color:#64516e;background:#fffdf8}
+.record-meter .progress{background:#eddaea}.record-meter .progress span{background:#bc78a9}
+.experience-control .action-main{background:#615077;box-shadow:0 3px 0 #ae8dab}
+.experience-control .action-main:hover{background:#804f82}
+.experience-control .action-alt{border-color:#d2aac3;color:#6c5975}
+.scene-panel{
+ border:2px solid #a7799f;border-radius:24px;
+ background-color:#e9d6e9;
+ box-shadow:0 22px 40px #6e547e38,0 5px 0 #e6b6c568;
+ overflow:hidden;isolation:isolate;
+}
+.scene-panel::before{
+ background-image:url('./paris-balcony.svg');
+ filter:blur(.65px) saturate(1.25);
+ opacity:1;
+}
+.paris-timelapse{filter:blur(.65px) saturate(1.20)}
+.scene-panel::after{border-color:#fff9ee91;box-shadow:inset 0 0 0 1px #b482ad55}
+.scene-panel .cat-viewport{isolation:isolate;min-height:330px}
+.scene-panel .cat-viewport::before{
+ background:radial-gradient(circle at 50% 48%,#fff9e9a8,transparent 66%);
+}
+.scene-top{
+ display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+ padding:17px 18px 0;
+ color:#5a496c;
+}
+.scene-top .scene-title{
+ flex-shrink:1;
+ font:700 10px/1.2 var(--sans);
+ background:#fff7edee;
+ border:1px solid #c79cb9;
+ padding:8px 11px;border-radius:100px;
+ color:#75516f;letter-spacing:.065em;
+ box-shadow:0 2px 0 #d8adbf7d;
+}
+.scene-status-wrap{margin-left:auto;gap:6px;display:flex;align-items:center}
+.scene-daypart{font:700 9px var(--sans);background:#fff8eee5;color:#805c7b;border-color:#d6a9c4}
+.portrait-switch{
+ display:flex;align-items:center;gap:2px;
+ padding:3px;border:1px solid #c79db7;border-radius:100px;
+ background:#fff8f1ea;box-shadow:0 2px 0 #d4b2c179;
+}
+.portrait-switch button{
+ border:0;border-radius:100px;padding:6px 10px;
+ color:#80637d;background:transparent;
+ font:700 10px/1.3 var(--sans);white-space:nowrap;
+ transition:background-color .15s,color .15s;
+}
+.portrait-switch button.active{color:#fff;background:#795779;box-shadow:0 2px 4px #77516a4a}
+.portrait-switch button:hover:not(.active):not(:disabled){background:#f6e5ef;color:#6c4a72}
+.portrait-switch button:disabled{opacity:.42;cursor:not-allowed}
+.portrait-switch button:focus-visible{outline:2px solid #5d4974;outline-offset:2px}
+.cat-viewport.storybook-mode #cat-canvas{visibility:hidden;pointer-events:none}
+.cat-viewport.storybook-mode .cat-fallback{display:grid!important;opacity:1!important}
+.cat-viewport:not(.storybook-mode).webgl-ready .cat-fallback{display:none}
+.cat-fallback{align-items:center;justify-items:center}
+.cat-viewport .cat-fallback svg.anime-portrait{
+ width:min(99%,465px);height:100%;max-height:100%;display:block;
+ overflow:visible;
+ filter:drop-shadow(0 14px 15px #51477026);
+}
+#anime-eyes{
+ transform-box:fill-box;transform-origin:center center;
+ animation:anime-blink 6.3s ease-in-out infinite;
+}
+#anime-tail{
+ transform-box:fill-box;transform-origin:13% 89%;
+ animation:anime-tail-swish 5.8s ease-in-out infinite;
+}
+@keyframes anime-blink{
+ 0%,43%,46%,84%,87%,100%{transform:scaleY(1)}
+ 44.6%,85.4%{transform:scaleY(.06)}
+}
+@keyframes anime-tail-swish{
+ 0%,100%{transform:rotate(-1deg)}
+ 30%{transform:rotate(4deg)}
+ 69%{transform:rotate(-3deg)}
+}
+.scene-foot{
+ align-items:baseline;
+ color:#6a5174;padding:0 19px 6px;gap:10px;
+ font:700 10px var(--sans);letter-spacing:.075em;
+ text-shadow:0 1px 5px #fff8f4;
+}
+.scene-foot span+span{font:italic 18px var(--serif);color:#654c75;white-space:nowrap}
+.scene-note{
+ max-width:100%;padding:0 19px;margin:0 0 6px;
+ font:italic 15px/1.3 var(--serif);color:#584c66;
+ text-shadow:0 1px 5px #fff8f3;
+}
+.scene-disclaimer{
+ position:relative;z-index:2;margin:0 19px 16px;
+ font:600 10px/1.35 var(--sans);color:#7d6c7d;
+ text-shadow:0 1px 4px #fff8f4;
+}
+.life-story-strip{
+ background:#fff8f1;border:1.5px solid #ddbad0;
+ border-radius:18px;box-shadow:0 3px 0 #e5cada62;
+ overflow:hidden;gap:0;
+}
+.life-story-strip .life-stage{
+ position:relative;display:flex;justify-content:center;align-items:center;text-align:left;
+ min-width:0;min-height:77px;width:100%;
+ background:transparent;color:#67576c;
+ border:0;border-right:1px solid #e8cddc;cursor:pointer;
+ transition:background-color .15s ease,box-shadow .15s ease;
+}
+.life-story-strip .life-stage:last-child{border-right:0}
+.life-story-strip .life-stage .life-icon{color:#b6739f;font-size:31px}
+.life-story-strip .life-stage strong{color:#635168}
+.life-story-strip .life-stage small{color:#92748a}
+.life-story-strip .life-stage.is-current{
+ background:linear-gradient(150deg,#fce0ed,#f4e5f7);
+ box-shadow:inset 0 4px 0 #b46999;
+}
+.life-story-strip .life-stage:hover{background:#f8e5ed}
+.life-story-strip .life-stage:focus-visible{outline:3px solid #975f92;outline-offset:-4px}
+.comparison-band{border-radius:16px;overflow:hidden;border-color:#e5c3d5;box-shadow:0 3px 0 #e5c9d844}
+.comparison-band .compare-feature{background:#f5e0ef}
+.comparison-band strong{color:#57496b}
+.chart-legend .lg-orange{background:#b65e96}
+.chart-legend .lg-green{background:#77a9ad}
+.chart-card,.formula-card,.survival-card,.kidney-card{border-radius:18px}
+.section-heading h2 em,.sources-section h2 em{color:#ad638e}
+.accuracy-caveat{border-left-color:#b86599}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#96649a}
+@media(max-width:1050px){
+ .experience-heading h1{font-size:clamp(50px,6vw,78px)}
+ .experience-intro{font-size:16px}
+ .scene-top{padding:12px 12px 0;gap:6px}
+ .portrait-switch button{padding:6px 8px}
+ .scene-top .scene-title{font-size:9px}
+ .scene-daypart{font-size:8px}
+ .scene-note{font-size:14px}
+}
+@media(max-width:700px){
+ .experience-section{padding-top:22px}
+ .experience-heading h1{font-size:clamp(48px,10vw,69px);margin:8px 0 12px}
+ .experience-intro{max-width:100%;font-size:15px}
+ .experience-control{padding:20px}
+ .experience-control>.scene-panel{
+   height:300px;min-height:300px;margin:10px 0 17px;
+   border-radius:19px;box-shadow:0 10px 24px #62536a24;
+ }
+ .experience-control>.scene-panel .cat-viewport{min-height:206px}
+ .experience-control>.scene-panel .scene-top{padding:12px 12px 0}
+ .experience-control>.scene-panel .scene-foot{padding:0 13px 3px}
+ .experience-control>.scene-panel .scene-note{display:block;margin:0 13px 3px;padding:0;font-size:12px}
+ .experience-control>.scene-panel .scene-disclaimer{display:none}
+ .scene-top .scene-title{font-size:9px}
+ .scene-daypart{display:none}
+ .life-story-strip{grid-template-columns:1fr 1fr}
+ .life-story-strip .life-stage{min-height:71px;justify-content:flex-start}
+ .life-story-strip .life-stage:nth-child(2){border-right:0}
+ .life-story-strip .life-stage:nth-child(-n+2){border-bottom:1px solid #e5c4d5}
+ .life-story-strip .life-stage .life-icon{font-size:26px}
+}
+@media(max-width:400px){
+ .experience-control>.scene-panel{height:271px;min-height:271px}
+ .experience-control>.scene-panel .cat-viewport{min-height:182px}
+ .scene-top .scene-title{font-size:8px;padding:6px 7px}
+ .portrait-switch{padding:2px}
+ .portrait-switch button{font-size:9px;padding:5px 7px}
+ .scene-foot{font-size:9px}
+ .scene-foot span+span{font-size:15px}
+ .scene-note{font-size:11px}
+ .life-story-strip .life-stage{gap:5px;padding:9px}
+ .life-story-strip .life-stage strong{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ #anime-eyes,#anime-tail{animation:none!important}
+ .portrait-switch button,.life-story-strip .life-stage{transition:none}
+}
