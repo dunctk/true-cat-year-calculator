@@ -18,6 +18,26 @@ test('both languages have self-canonicals, reciprocal hreflang and switches',()=
     assert.equal((text.match(/<link rel="canonical"/g)||[]).length,1);
   }
 });
+test('a short, factual record-scale explanation appears above both calculators',()=>{
+  for(const [page,heading,lead,ratio] of [
+    [en,'Cat years.','The 7× rule doesn\'t add up.','3.2×'],
+    [es,'Años de gato.','La regla de multiplicar por 7 no cuadra.','3,2×']
+  ]){
+    const headline=page.indexOf('id="calc-heading"');
+    const intro=page.indexOf('class="age-scale-note"');
+    const calculator=page.indexOf('class="calc-grid experience-grid"');
+    assert.ok(headline!==-1&&intro>headline&&calculator>intro,'intro must precede calculator');
+    assert.ok(page.includes(heading));
+    assert.ok(page.includes(lead));
+    assert.ok(page.includes('<strong>'+ratio+'</strong>'));
+    const snippet=page.slice(intro,calculator);
+    assert.ok(snippet.includes('38')&&snippet.includes('122'));
+    assert.ok(snippet.includes('https://www.guinnessworldrecords.com/world-records/oldest-cat-ever'));
+    assert.ok(snippet.includes('https://www.guinnessworldrecords.com/world-records/oldest-person'));
+    assert.ok(!/\b34\b/.test(snippet),'verified cat record is 38, not 34');
+  }
+});
+
 test('Spanish static page references existing shared assets from its subdirectory',()=>{
   for(const asset of ['favicon.svg','styles.css','storyboard.css','model.js','cat-growth.js','cat-scene.js','timelapse.js','storybook.js','app.js']){
     assert.ok(es.includes('../'+asset),'missing ../'+asset);
