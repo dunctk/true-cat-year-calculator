@@ -310,3 +310,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
  [lang="es"] .experience-control .switcher button{font-size:9px}
  [lang="es"] .scene-top .scene-title{font-size:8px}
 }
+
+/* Explain our age scale clearly before the calculator, in both languages. */
+.age-scale-note{
+  display:grid;grid-template-columns:120px minmax(0,1fr);
+  align-items:center;gap:15px;
+  padding:13px 17px;margin:0 0 17px;
+  color:#284650;background:#f8faf5;
+  border:1px solid #b4c8c0;border-left:4px solid #317e79;
+  border-radius:8px;
+}
+.age-scale-factor{
+  display:flex;align-items:baseline;gap:9px;
+  white-space:nowrap;font-family:var(--sans);
+}
+.age-scale-factor s{color:#788a8b;font-size:19px;font-weight:700;text-decoration-thickness:2px}
+.age-scale-factor strong{color:#286d6a;font-size:26px;font-weight:850;letter-spacing:-.06em}
+.age-scale-note p{
+  margin:0;max-width:100%;
+  font:500 14px/1.48 var(--sans);
+}
+.age-scale-note p strong{font-weight:800;color:#203943}
+.age-scale-note p a{
+  color:#1f6566;text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;
+}
+.age-scale-note p a:hover{color:#12464f}
+@media(max-width:700px){
+  .age-scale-note{grid-template-columns:1fr;gap:4px;padding:11px 13px;margin-bottom:15px}
+  .age-scale-factor s{font-size:16px}
+  .age-scale-factor strong{font-size:21px}
+  .age-scale-note p{font-size:13px;line-height:1.45}
+}
